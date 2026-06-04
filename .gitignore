@@ -1,2 +1,4 @@
-.claude/
-.figma-token
+figma-home*.png
+node_modules/
+dist/
+.DS_Store

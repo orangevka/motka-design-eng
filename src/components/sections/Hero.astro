@@ -1,0 +1,292 @@
+---
+// Hero section — 1440×650 pixel-perfect (Figma node 15:334)
+// Card strip is animation-ready: overflow:hidden viewport + .hero-strip__track flex row
+---
+
+<section class="hero">
+  <!-- Decorative background shape (x=-68,y=52 relative to section, w=920 h=552) -->
+  <div class="hero__deco" aria-hidden="true">
+    <img src="/assets/hero/decorative-shape.svg" alt="" width="920" height="552" />
+  </div>
+
+  <!-- Text + nav content block (x=40,y=80 in section, w=900) -->
+  <div class="hero__content">
+    <div class="hero__heading">
+      <h1 class="hero__title">Design<br />Subscription</h1>
+      <p class="hero__subtitle">Fixed monthly price. Pause anytime</p>
+    </div>
+
+    <!-- "For" label + audience chips -->
+    <div class="hero__audience">
+      <span class="hero__for-label">For</span>
+      <div class="hero__chips">
+        <div class="hero__chip">
+          <img src="/assets/hero/nav-startups.svg" alt="" width="24" height="24" aria-hidden="true" />
+          <span>Startups</span>
+        </div>
+        <div class="hero__chip">
+          <img src="/assets/hero/nav-product.svg" alt="" width="24" height="24" aria-hidden="true" />
+          <span>Product marketing</span>
+        </div>
+        <div class="hero__chip">
+          <img src="/assets/hero/nav-growing.svg" alt="" width="24" height="24" aria-hidden="true" />
+          <span>Growing companies</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA buttons (x=40, y=444 in section) -->
+  <div class="hero__actions">
+    <a href="/contacts.html" class="hero__btn hero__btn--primary">Book a call</a>
+    <a href="/#plans" class="hero__btn hero__btn--outline">See plans</a>
+  </div>
+
+  <!-- Card strip viewport wrapper — overflow:hidden keeps strip clipped (no page scroll) -->
+  <!-- stage ④: animate __track horizontally (marquee). Static offset for now. -->
+  <div class="hero-strip" aria-hidden="true">
+    <div class="hero-strip__track">
+      <!-- Cards 1-2: detailed composites matching Figma (15:336, 15:340) -->
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-1.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-2.png" alt="" width="400" height="530" />
+      </div>
+      <!-- Cards 3-11: portfolio work samples (animation track filler) -->
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-720.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-721.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-722.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-723.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-724.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-725.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-726.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-727.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-728.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-729.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-730.png" alt="" width="400" height="530" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ─── Hero section ────────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  /* ─── Decorative background shape ────────────────────────────── */
+  /* Figma: x=-68, y=52, w=920, h=552 (relative to section origin) */
+  .hero__deco {
+    position: absolute;
+    left: -68px;
+    top: 52px;
+    width: 920px;
+    height: 552px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero__deco img {
+    width: 920px;
+    height: 552px;
+  }
+
+  /* ─── Content block (heading + audience) ─────────────────────── */
+  /* Figma: x=40, y=80, w=900 */
+  .hero__content {
+    position: absolute;
+    left: 40px;
+    top: 80px;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;   /* 228px heading + 32px gap = 260px; buttons at y=444 → 444-80=364=228+136 */
+    z-index: 1;
+  }
+
+  .hero__heading {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Heading: "Design Subscription" — 80px Bold, lh=80px, Factor A */
+  .hero__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 80px;
+    letter-spacing: -0.5px;
+    color: var(--color-ink);
+    width: 900px;
+    /* 2 lines × 80px = 160px total */
+  }
+
+  /* Subtitle: 40px Regular, lh=52px */
+  .hero__subtitle {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 52px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  /* ─── Audience chips ("For …") ────────────────────────────────── */
+  /* Figma: gap=16px between "For" label and container; chips gap=8px */
+  .hero__audience {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero__for-label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  .hero__chips {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero__chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--color-sand); /* #f3efed */
+    border-radius: var(--radius-2xl); /* 16px */
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .hero__chip img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  /* ─── CTA Buttons ─────────────────────────────────────────────── */
+  /* Figma: x=40, y=444, w=311, h=60; gap=8px between buttons */
+  .hero__actions {
+    position: absolute;
+    left: 40px;
+    top: 444px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1;
+  }
+
+  .hero__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-2xl); /* 16px */
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* Primary button: dark bg, 156×60 */
+  .hero__btn--primary {
+    background: var(--color-ink); /* #333 */
+    color: #fff;
+    padding: 20px 32px 16px; /* pt=20, pb=16, px=32 → h=60 */
+    width: 156px;
+  }
+
+  /* Outline button: transparent bg + border, 147×60 */
+  .hero__btn--outline {
+    background: transparent;
+    color: #262626;
+    border: 2px solid #d6ccc7;
+    padding: 18px 32px 14px; /* compensate 2px border: 20-2=18 pb=16-2=14 */
+    width: 147px;
+  }
+
+  /* ─── Card strip ──────────────────────────────────────────────── */
+  /*
+   * Figma: card works at x=429, y=60, width=4559, height=530
+   * We want: viewport starts at x=429 from section left,
+   * extending to right edge (1440-429=1011px wide viewport)
+   * Cards are 400px wide with ~14.79px gap → total track ~4559px
+   */
+
+  /* Overflow-hidden viewport — clips the track, no page overflow */
+  .hero-strip {
+    position: absolute;
+    left: 429px;
+    top: 60px;
+    width: calc(100% - 429px); /* 1440-429=1011px at 1440 */
+    height: 530px;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  /* Single flex row holding all cards */
+  /* stage ④: animate __track horizontally (marquee). Static offset for now. */
+  .hero-strip__track {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14.79px; /* Figma gap between cards in strip (414.79-400=14.79) */
+    width: max-content;
+    height: 530px;
+    /* Static: show from start (leftmost visible card aligns with left edge) */
+    transform: translateX(0);
+  }
+
+  .hero-strip__card {
+    width: 400px;
+    height: 530px;
+    flex-shrink: 0;
+    border-radius: 26px;
+    overflow: hidden;
+  }
+
+  .hero-strip__card img {
+    width: 400px;
+    height: 530px;
+    object-fit: cover;
+    display: block;
+  }
+</style>

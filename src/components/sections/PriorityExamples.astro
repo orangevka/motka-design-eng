@@ -593,4 +593,238 @@
     flex-shrink: 0;
     box-sizing: border-box;
   }
+
+  /* ─── Responsive: 1280px ────────────────────────────────────────── */
+  @media (max-width: 1280px) {
+    /* Cards-outer: prevent extending beyond viewport, clip inside section overflow:hidden */
+    .priority__cards-outer {
+      margin-right: 0;
+      /* overflow is clipped by .priority { overflow: hidden } */
+    }
+
+    /* Cards: shrink so card 1 fits ~fully, card 2 peeks */
+    .priority__card {
+      width: 860px;
+      min-width: 860px;
+      height: auto;
+    }
+
+    .priority__card-info {
+      height: auto;
+    }
+
+    /* Sprint badge 2: reposition for narrower card gap */
+    .priority__sprint--2 {
+      left: 900px; /* ~= card1 width + gap */
+    }
+  }
+
+  /* ─── Responsive: 1024px ────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .priority__heading {
+      font-size: 36px;
+      line-height: 40px;
+    }
+
+    .priority__card {
+      width: 720px;
+      min-width: 720px;
+    }
+
+    .priority__sprint--2 {
+      left: 760px; /* ~= card1 width + gap */
+    }
+
+    /* Stats: allow wrapping at this width */
+    .priority__stats {
+      flex-wrap: wrap;
+      row-gap: 16px;
+    }
+
+    /* Hide separators when wrapping (they look odd between rows) */
+    .priority__sep {
+      display: none;
+    }
+
+    /* Give stats flexible widths */
+    .priority__stats .priority__stat:nth-child(1),
+    .priority__stats .priority__stat:nth-child(3),
+    .priority__stats .priority__stat:nth-child(5),
+    .priority__stats .priority__stat:nth-child(7) {
+      width: auto;
+      min-width: 0;
+    }
+  }
+
+  /* ─── Responsive: 768px — stack cards vertically ────────────────── */
+  @media (max-width: 768px) {
+    .priority {
+      padding-block: 48px;
+    }
+
+    .priority__heading {
+      font-size: 30px;
+      line-height: 34px;
+    }
+
+    .priority__subtext {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    .priority__heading-row {
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 56px; /* extra room for badge hanging above first card */
+    }
+
+    /* Cards-outer: remove left margin, let container handle sides */
+    .priority__cards-outer {
+      margin-left: 0;
+      padding: 0 var(--container-pad);
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    /* Cards: stack vertically, full container width */
+    .priority__cards {
+      flex-direction: column;
+      gap: 56px; /* room for badge on second card */
+    }
+
+    .priority__card {
+      width: 100%;
+      min-width: 0;
+      height: auto;
+    }
+
+    /* Sprint badges: reposition relative to cards-outer (which is now padded) */
+    .priority__sprint {
+      position: relative;
+      left: auto;
+      top: auto;
+      margin-bottom: -14px; /* hang over card top */
+      align-self: flex-start;
+    }
+
+    /* Wrap each card+badge in a column flow */
+    .priority__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* Badge 1 sits above card 1 */
+    .priority__sprint--1 {
+      position: relative;
+      left: 47px;
+      top: auto;
+      margin-bottom: 0;
+    }
+
+    /* Badge 2 sits above card 2 */
+    .priority__sprint--2 {
+      position: relative;
+      left: 47px;
+      top: auto;
+      margin-top: 42px; /* gap between card 1 bottom and badge 2 */
+      margin-bottom: 0;
+    }
+
+    /* Cards: first card follows badge 1; second card follows badge 2 */
+    .priority__cards-outer {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Re-order: badge1, card1, badge2, card2 */
+    .priority__sprint--1 { order: 1; }
+    .priority__cards { order: 2; flex-direction: column; gap: 0; }
+    .priority__sprint--2 { order: 3; }
+
+    /* We can't interleave badges with cards using order alone since cards is a container.
+       Instead, absolutely position badges relative to cards-outer (which is now position:relative) */
+    .priority__cards-outer {
+      position: relative;
+    }
+
+    .priority__card-info {
+      height: auto;
+    }
+
+    .priority__card-title {
+      white-space: normal;
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    /* Stats: wrap to 2×2 grid */
+    .priority__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+
+    .priority__sep {
+      display: none;
+    }
+
+    .priority__stats .priority__stat:nth-child(1),
+    .priority__stats .priority__stat:nth-child(3),
+    .priority__stats .priority__stat:nth-child(5),
+    .priority__stats .priority__stat:nth-child(7) {
+      width: auto;
+    }
+
+    /* Image: fluid, auto height */
+    .priority__card-img {
+      height: auto;
+      min-height: 240px;
+    }
+
+    .priority__card-img-inner {
+      position: static;
+      transform: none;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  /* ─── Responsive: 390px (mobile) ────────────────────────────────── */
+  @media (max-width: 390px) {
+    .priority__heading {
+      font-size: 26px;
+      line-height: 30px;
+    }
+
+    .priority__subtext {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .priority__card {
+      padding: 24px;
+    }
+
+    .priority__stat-num {
+      font-size: 26px;
+      line-height: 34px;
+    }
+
+    .priority__stat-label {
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    /* Badge: scale down slightly if needed */
+    .priority__sprint {
+      width: 170px;
+    }
+
+    .priority__sprint-num {
+      font-size: 34px;
+      line-height: 36px;
+    }
+  }
 </style>

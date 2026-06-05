@@ -1,0 +1,50 @@
+---
+const links = [
+  { label: 'Portfolio', href: '/portfolio.html', dropdown: true },
+  { label: 'About', href: '/about.html' },
+  { label: 'Design Subscription', href: '/' },
+  { label: 'Contact us', href: '/contacts.html' },
+];
+---
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Motka Design — home">
+      <img src="/assets/nav/logo.svg" width="133" height="50" alt="Motka Design" />
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      {links.map((l) => (
+        <a class:list={['site-nav__item', l.dropdown && 'site-nav__item--dropdown']} href={l.href}>
+          {l.label}
+          {l.dropdown && (
+            <img class="site-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
+          )}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header { width: 100%; background: var(--color-bg); }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-5); /* 20px → итоговая высота 90px (50 + 20*2) */
+  }
+  .site-header__logo { display: block; flex-shrink: 0; }
+  .site-header__logo img { width: 133px; height: 50px; }
+
+  .site-nav { display: flex; align-items: center; gap: var(--space-7); /* 28px */ }
+  .site-nav__item {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+  .site-nav__item--dropdown { display: inline-flex; align-items: center; gap: var(--space-1); /* 4px */ }
+  .site-nav__chevron { width: 20px; height: 20px; }
+</style>

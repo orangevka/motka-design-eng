@@ -1,0 +1,345 @@
+---
+// Testimonials section — 1440×748 pixel-perfect (Figma node 15:8401)
+// 3-column card row; quotes in Spectral; stars + platform icon header; Clutch footer link
+---
+
+<section class="testimonials">
+  <div class="testimonials__inner">
+
+    <!-- Heading -->
+    <h2 class="testimonials__heading">What clients say</h2>
+
+    <!-- Cards row -->
+    <div class="testimonials__cards">
+
+      <!-- Card 1: Zbigniew Janic -->
+      <div class="testimonials__card">
+        <div class="testimonials__card-header">
+          <img
+            class="testimonials__platform-icon"
+            src="/assets/testimonials/platform-icon-1.svg"
+            alt=""
+            aria-hidden="true"
+            width="24"
+            height="24"
+          />
+          <div class="testimonials__stars-wrap">
+            <img
+              src="/assets/testimonials/stars-row.svg"
+              alt="5 stars"
+              width="92"
+              height="21"
+            />
+          </div>
+        </div>
+        <p class="testimonials__quote">They propose fresh and unique ideas. Trust their expertise — they know what they're doing in design.</p>
+        <hr class="testimonials__divider" />
+        <div class="testimonials__author">
+          <img
+            class="testimonials__avatar"
+            src="/assets/testimonials/avatar-zbigniew.png"
+            alt="Zbigniew Janic"
+            width="80"
+            height="80"
+          />
+          <div class="testimonials__author-info">
+            <p class="testimonials__author-name">Zbigniew Janic</p>
+            <p class="testimonials__author-role">Former Brand Manager, Algorithmics — global franchise</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Phil Akhnazarov -->
+      <div class="testimonials__card">
+        <div class="testimonials__card-header">
+          <img
+            class="testimonials__platform-icon"
+            src="/assets/testimonials/platform-icon-2.svg"
+            alt=""
+            aria-hidden="true"
+            width="24"
+            height="24"
+          />
+          <div class="testimonials__stars-wrap">
+            <img
+              src="/assets/testimonials/stars-row.svg"
+              alt="5 stars"
+              width="92"
+              height="21"
+            />
+          </div>
+        </div>
+        <p class="testimonials__quote">They didn't just redesign our website — they helped us articulate who we are as a company and why that matters to our customers.</p>
+        <hr class="testimonials__divider" />
+        <div class="testimonials__author">
+          <img
+            class="testimonials__avatar"
+            src="/assets/testimonials/avatar-phil.png"
+            alt="Phil Akhnazarov"
+            width="80"
+            height="80"
+          />
+          <div class="testimonials__author-info">
+            <p class="testimonials__author-name">Phil Akhnazarov</p>
+            <p class="testimonials__author-role">Marketing Director, MTX Connect — Luxembourg</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Masha Sharma -->
+      <div class="testimonials__card">
+        <div class="testimonials__card-header">
+          <img
+            class="testimonials__platform-icon"
+            src="/assets/testimonials/platform-icon-3.svg"
+            alt=""
+            aria-hidden="true"
+            width="24"
+            height="24"
+          />
+          <div class="testimonials__stars-wrap">
+            <img
+              src="/assets/testimonials/stars-row.svg"
+              alt="5 stars"
+              width="92"
+              height="21"
+            />
+          </div>
+        </div>
+        <p class="testimonials__quote">We were able to raise our funding, and our user adoption has been increasing. Our platform engagement has remained at 75%.</p>
+        <hr class="testimonials__divider" />
+        <div class="testimonials__author">
+          <img
+            class="testimonials__avatar"
+            src="/assets/testimonials/avatar-masha.png"
+            alt="Masha Sharma"
+            width="80"
+            height="80"
+          />
+          <div class="testimonials__author-info">
+            <p class="testimonials__author-name">Masha Sharma</p>
+            <p class="testimonials__author-role">Former CTO, RealAtom — USA</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cards -->
+
+    <!-- Footer: More feedback on Clutch -->
+    <div class="testimonials__footer">
+      <span class="testimonials__footer-text">More feedback on</span>
+      <a href="https://clutch.co" class="testimonials__clutch-link" target="_blank" rel="noopener noreferrer">
+        <img
+          class="testimonials__clutch-icon"
+          src="/assets/testimonials/clutch-icon.jpg"
+          alt="Clutch"
+          width="24"
+          height="24"
+        />
+        <span class="testimonials__footer-text">Сlutch</span>
+      </a>
+      <img
+        class="testimonials__arrow"
+        src="/assets/testimonials/arrow.svg"
+        alt=""
+        aria-hidden="true"
+        width="60"
+        height="60"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ─── Section wrapper ─────────────────────────────────────────── */
+  .testimonials {
+    width: 100%;
+    background: var(--color-bg);
+    box-sizing: border-box;
+    padding: 64px 40px;
+  }
+
+  .testimonials__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+
+  /* ─── Heading ────────────────────────────────────────────────── */
+  .testimonials__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 46px;
+    letter-spacing: 0;
+    color: var(--color-ink);
+    margin: 0;
+    align-self: flex-start;
+    width: 100%;
+  }
+
+  /* ─── Cards container ─────────────────────────────────────────── */
+  .testimonials__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: stretch;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* ─── Individual card ─────────────────────────────────────────── */
+  .testimonials__card {
+    flex: 1 0 0;
+    min-width: 1px;
+    min-height: 444px;
+    background: var(--color-bg);
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+  }
+
+  /* ─── Card header: platform icon + stars ─────────────────────── */
+  .testimonials__card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .testimonials__platform-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .testimonials__stars-wrap {
+    /* The stars SVG is a speech-bubble shape at 92×21 display size */
+    width: 92px;
+    height: 21px;
+    flex-shrink: 0;
+    overflow: visible;
+  }
+
+  .testimonials__stars-wrap img {
+    width: 92px;
+    height: 21px;
+    display: block;
+  }
+
+  /* ─── Quote text ─────────────────────────────────────────────── */
+  .testimonials__quote {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 34px;
+    letter-spacing: -0.64px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    flex: 1;
+    word-break: break-word;
+  }
+
+  /* ─── Divider ────────────────────────────────────────────────── */
+  .testimonials__divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 0;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  /* ─── Author row ─────────────────────────────────────────────── */
+  .testimonials__author {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .testimonials__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .testimonials__author-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .testimonials__author-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color: var(--color-ink);
+    margin: 0;
+    width: 100%;
+  }
+
+  .testimonials__author-role {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    width: 100%;
+  }
+
+  /* ─── Footer: "More feedback on Clutch" ─────────────────────── */
+  .testimonials__footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .testimonials__footer-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  .testimonials__clutch-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .testimonials__clutch-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: block;
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  .testimonials__arrow {
+    width: 60px;
+    height: 60px;
+    display: block;
+    flex-shrink: 0;
+  }
+</style>

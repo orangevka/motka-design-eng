@@ -5,3 +5,4 @@ dist/
 scripts/_shots/
 .DS_Store
 **/.backups/
+*.stackdump

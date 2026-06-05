@@ -105,6 +105,97 @@
     flex-shrink: 0;
   }
 
+  /* ── Responsive ─────────────────────────────────────────── */
+
+  /* 1280 — slightly tighter gap */
+  @media (max-width: 1280px) {
+    .client-logos__row {
+      gap: 48px;
+    }
+  }
+
+  /* 1024 — reduce gap further, allow logos to shrink a little */
+  @media (max-width: 1024px) {
+    .client-logos__row {
+      gap: 36px;
+    }
+    .client-logos__logo {
+      flex-shrink: 1;
+    }
+  }
+
+  /* 768 — wrap to 2-3 per row, scale logos down */
+  @media (max-width: 768px) {
+    .client-logos {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .client-logos__row {
+      gap: 28px 32px;
+    }
+    .client-logos__logo {
+      height: 56px;
+    }
+    .leverate-inner {
+      transform: scale(0.82);
+      transform-origin: center center;
+    }
+    .client-logos__logo--mtx img,
+    .client-logos__logo--algoritmika img,
+    .client-logos__logo--hirebus img {
+      width: auto;
+      height: 36px;
+    }
+    .client-logos__logo--algoritmika {
+      width: auto;
+    }
+    .client-logos__logo--congratz {
+      width: auto;
+      overflow: visible;
+    }
+    .congratz-icon {
+      width: 48px;
+      height: auto;
+    }
+    .congratz-text {
+      font-size: 23px;
+      margin-left: 46px;
+      margin-top: 9px;
+    }
+  }
+
+  /* 390 — mobile: 2 per row, smaller gap */
+  @media (max-width: 390px) {
+    .client-logos {
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 48px;
+    }
+    .client-logos__row {
+      gap: 20px 24px;
+    }
+    .client-logos__logo {
+      height: 48px;
+    }
+    .leverate-inner {
+      transform: scale(0.68);
+      transform-origin: center center;
+    }
+    .client-logos__logo--mtx img,
+    .client-logos__logo--algoritmika img,
+    .client-logos__logo--hirebus img {
+      height: 30px;
+    }
+    .congratz-icon {
+      width: 40px;
+    }
+    .congratz-text {
+      font-size: 19px;
+      margin-left: 38px;
+      margin-top: 7px;
+    }
+  }
+
   /* Leverate: relative container holding text + rotated arrow */
   .leverate-inner {
     position: relative;

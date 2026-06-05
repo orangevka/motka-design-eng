@@ -1,0 +1,194 @@
+---
+// ClientLogos section — 1440×182 pixel-perfect (Figma node 15:8343)
+// Horizontal row of 5 client logos, evenly spaced/centered
+// pt=32, pb=80, px=40; logos row gap=64px, height=70px per logo
+---
+
+<section class="client-logos">
+  <div class="client-logos__row">
+
+    <!-- leverate: text wordmark (135.6×30.2) + arrow (25.4×22 rotated) -->
+    <div class="client-logos__logo client-logos__logo--leverate" aria-label="Leverate">
+      <div class="leverate-inner">
+        <img
+          class="leverate-text"
+          src="/assets/logos/leverate-text.svg"
+          alt="leverate"
+          width="135.599"
+          height="30.161"
+        />
+        <img
+          class="leverate-arrow"
+          src="/assets/logos/leverate-arrow.svg"
+          alt=""
+          aria-hidden="true"
+          width="21.984"
+          height="25.385"
+        />
+      </div>
+    </div>
+
+    <!-- mtx connect: full logo (129.277×52.519) -->
+    <div class="client-logos__logo client-logos__logo--mtx" aria-label="MTX Connect">
+      <img
+        src="/assets/logos/mtx-image.svg"
+        alt="MTX Connect"
+        width="129.277"
+        height="52.519"
+      />
+    </div>
+
+    <!-- Algoritmika: dark pill logo (168.655×42.563) -->
+    <div class="client-logos__logo client-logos__logo--algoritmika" aria-label="Algoritmika">
+      <img
+        src="/assets/logos/algoritmika.svg"
+        alt="Algoritmika"
+        width="168.655"
+        height="42.563"
+      />
+    </div>
+
+    <!-- congratz: icon (58.789×60.207) + wordmark text -->
+    <div class="client-logos__logo client-logos__logo--congratz" aria-label="congratz">
+      <div class="congratz-inner">
+        <img
+          class="congratz-icon"
+          src="/assets/logos/congratz-icon.svg"
+          alt=""
+          aria-hidden="true"
+          width="58.789"
+          height="60.207"
+        />
+        <span class="congratz-text">congratz</span>
+      </div>
+    </div>
+
+    <!-- hirebus: wordmark (192.612×41.771) -->
+    <div class="client-logos__logo client-logos__logo--hirebus" aria-label="hirebus">
+      <img
+        src="/assets/logos/hirebus.svg"
+        alt="hirebus"
+        width="192.612"
+        height="41.771"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .client-logos {
+    width: 100%;
+    background: var(--color-bg);
+    padding-top: 32px;
+    padding-bottom: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
+  }
+
+  .client-logos__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+    width: 100%;
+  }
+
+  /* Each logo wrapper is 70px tall, centered vertically */
+  .client-logos__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    flex-shrink: 0;
+  }
+
+  /* Leverate: relative container holding text + rotated arrow */
+  .leverate-inner {
+    position: relative;
+    width: 138.529px;
+    height: 50.242px;
+  }
+
+  .leverate-text {
+    position: absolute;
+    left: 0;
+    top: 11.05px;
+    width: 135.599px;
+    height: 30.161px;
+    display: block;
+  }
+
+  /* Arrow: rotated 90°, positioned at left=116.55, top=-9.03 (relative to inner container) */
+  .leverate-arrow {
+    position: absolute;
+    left: 116.55px;
+    top: -9.03px;
+    width: 21.984px;
+    height: 25.385px;
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
+    display: block;
+  }
+
+  /* MTX logo */
+  .client-logos__logo--mtx img {
+    width: 129.277px;
+    height: 52.519px;
+    display: block;
+  }
+
+  /* Algoritmika: fixed size */
+  .client-logos__logo--algoritmika {
+    width: 168.226px;
+  }
+  .client-logos__logo--algoritmika img {
+    width: 168.655px;
+    height: 42.563px;
+    display: block;
+  }
+
+  /* congratz: icon + text overlay in a grid */
+  .client-logos__logo--congratz {
+    width: 184.032px;
+    overflow: hidden;
+  }
+
+  .congratz-inner {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content;
+    position: relative;
+  }
+
+  .congratz-icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: 58.789px;
+    height: 60.207px;
+    display: block;
+  }
+
+  .congratz-text {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    margin-left: 56.53px;
+    margin-top: 11.29px;
+    font-family: 'Outfit', 'Factor A', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 28.7px;
+    line-height: normal;
+    color: #262626;
+    white-space: nowrap;
+  }
+
+  /* hirebus */
+  .client-logos__logo--hirebus img {
+    width: 192.612px;
+    height: 41.771px;
+    display: block;
+  }
+</style>

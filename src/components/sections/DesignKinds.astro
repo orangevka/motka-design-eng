@@ -96,7 +96,7 @@
     <div class="dk__footer">
       <p class="dk__footer-text">
         You don't need four designers for different task types.<br />
-        We handle all of it in <span class="dk__highlight">one ongoing workflow</span>
+        We handle all of it in <span class="dk__highlight"><span class="dk__handle dk__handle--tl"></span><span class="dk__handle dk__handle--tr"></span><span class="dk__handle dk__handle--bl"></span><span class="dk__handle dk__handle--br"></span>one ongoing workflow</span>
       </p>
     </div>
 
@@ -266,18 +266,35 @@
     text-align: center;
   }
 
-  /* "one ongoing workflow" — CSS selection-box outline highlight */
+  /* "one ongoing workflow" — Figma selection-box imitation */
   .dk__highlight {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 28px;
     line-height: 40px;
     color: var(--color-ink);
-    display: inline;
-    /* Blue selection-box outline matching Figma decorative highlight */
-    border: 2px solid #5b8def;
-    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    border: 2px solid #0b99ff;
+    border-radius: 0;
     padding: 2px 6px;
     margin-left: 4px;
   }
+
+  /* Corner anchor-point handles */
+  .dk__handle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border: 2px solid #0b99ff;
+    display: block;
+    pointer-events: none;
+  }
+  /* Centered on the outer corner: outer corner is at -2px (border width),
+     8px handle centered = -2px - 4px = -6px from padding-box edge */
+  .dk__handle--tl { top: -6px; left: -6px; }
+  .dk__handle--tr { top: -6px; right: -6px; }
+  .dk__handle--bl { bottom: -6px; left: -6px; }
+  .dk__handle--br { bottom: -6px; right: -6px; }
 </style>

@@ -1,10 +1,31 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import Hero from '../components/sections/Hero.astro';
+import BenefitsCards from '../components/sections/BenefitsCards.astro';
+import Statement from '../components/sections/Statement.astro';
+import DesignKinds from '../components/sections/DesignKinds.astro';
+import PriorityExamples from '../components/sections/PriorityExamples.astro';
+import ClientLogos from '../components/sections/ClientLogos.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Process from '../components/sections/Process.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import Faq from '../components/sections/Faq.astro';
+import Footer from '../components/Footer.astro';
 ---
 <Base title="Design Subscription — Motka Design" description="Fixed monthly price. Pause anytime.">
   <Nav />
-  <main class="container">
-    <!-- секции лендинга добавляются по мере вёрстки -->
+  <main>
+    <Hero />
+    <BenefitsCards />
+    <Statement />
+    <DesignKinds />
+    <PriorityExamples />
+    <ClientLogos />
+    <Testimonials />
+    <Process />
+    <Pricing />
+    <Faq />
   </main>
+  <Footer />
 </Base>

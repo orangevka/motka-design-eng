@@ -1,0 +1,17 @@
+{
+  "name": "motka-design-eng",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "shoot": "node scripts/shoot.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

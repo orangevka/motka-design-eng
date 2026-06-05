@@ -87,22 +87,12 @@
             <div class="process__mock process__mock--2">
               <div class="process__figma-mock">
                 <img src="/assets/process/step2-mock.png" alt="" width="262" height="180" class="process__figma-bg" />
-                <!-- Selection box handles -->
+                <!-- Selection box: solid 1px blue border, sharp corners, 4 corner anchor handles -->
                 <div class="process__selection">
-                  <div class="process__selection-col">
-                    <div class="process__handle"></div>
-                    <div class="process__selection-vline"></div>
-                    <div class="process__handle"></div>
-                  </div>
-                  <div class="process__selection-labels">
-                    <div class="process__hline"></div>
-                    <div class="process__hline"></div>
-                  </div>
-                  <div class="process__selection-col">
-                    <div class="process__handle"></div>
-                    <div class="process__selection-vline"></div>
-                    <div class="process__handle"></div>
-                  </div>
+                  <div class="process__handle process__handle--tl"></div>
+                  <div class="process__handle process__handle--tr"></div>
+                  <div class="process__handle process__handle--bl"></div>
+                  <div class="process__handle process__handle--br"></div>
                 </div>
                 <!-- "Let's go" text overlay -->
                 <p class="process__letsgo">Let's go</p>
@@ -406,54 +396,33 @@
     display: block;
   }
 
-  /* Selection box (bounding box handles) */
+  /* Selection box: 1px solid blue border, sharp corners */
   .process__selection {
     position: absolute;
     left: 14.61px;
     top: 55px;
     width: 149px;
     height: 86px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    border: 1px solid #0b99ff;
+    border-radius: 0;
+    box-sizing: border-box;
   }
 
-  .process__selection-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-  }
-
+  /* Corner anchor handles: 8×8px white square with 2px blue border, centered on each corner */
   .process__handle {
+    position: absolute;
     width: 8px;
     height: 8px;
     background: #fff;
     border: 2px solid #0b99ff;
-    flex-shrink: 0;
+    border-radius: 0;
+    box-sizing: border-box;
   }
 
-  .process__selection-vline {
-    flex: 1 0 0;
-    width: 1px;
-    background: #0b99ff;
-    opacity: 0.5;
-  }
-
-  .process__selection-labels {
-    flex: 1 0 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-block: 3px;
-  }
-
-  .process__hline {
-    width: 100%;
-    height: 1px;
-    background: #0b99ff;
-    opacity: 0.5;
-  }
+  .process__handle--tl { top: -4px;  left: -4px;  }
+  .process__handle--tr { top: -4px;  right: -4px; }
+  .process__handle--bl { bottom: -4px; left: -4px;  }
+  .process__handle--br { bottom: -4px; right: -4px; }
 
   /* "Let's go" text overlay */
   .process__letsgo {

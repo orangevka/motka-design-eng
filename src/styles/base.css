@@ -19,3 +19,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; }
   margin-inline: auto;
   padding-inline: var(--container-pad);
 }
+
+@media (max-width: 1024px) { :root { --container-pad: 24px; } }
+@media (max-width: 768px)  { :root { --container-pad: 16px; } }

@@ -349,4 +349,194 @@
     object-fit: cover;
     display: block;
   }
+
+  /* ─── Responsive: 1280 ────────────────────────────────────────── */
+  @media (max-width: 1279px) {
+    .hero__title {
+      font-size: 72px;
+      line-height: 72px;
+      width: auto;
+    }
+    .hero__subtitle {
+      font-size: 34px;
+      line-height: 44px;
+    }
+    /* Keep content within viewport */
+    .hero__content {
+      width: calc(100% - 68px); /* 34px left + 34px right breathing room */
+      max-width: 540px;
+    }
+  }
+
+  /* ─── Responsive: 1024 ────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .hero {
+      height: 600px;
+    }
+    .hero__title {
+      font-size: 60px;
+      line-height: 62px;
+    }
+    .hero__subtitle {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    .hero__chip {
+      font-size: 17px;
+      line-height: 17px;
+    }
+    .hero__content {
+      max-width: 460px;
+    }
+    .hero__actions {
+      top: 410px;
+    }
+  }
+
+  /* ─── Responsive: 768 and below ──────────────────────────────── */
+  /* Layout: stacked — text block on top (static flow), card strip
+     below as a full-width clipped band. Hero becomes auto-height. */
+  @media (max-width: 768px) {
+    .hero {
+      height: auto;
+      overflow: hidden;
+    }
+
+    /* Inner wrapper: static flow, auto height */
+    .hero__inner {
+      height: auto;
+      padding: 40px 24px 0;
+    }
+
+    /* Remove the white gradient mask — not needed in stacked layout */
+    .hero__inner::before {
+      display: none;
+    }
+
+    /* Deco shape: hide on mobile — it's positioned for desktop overlap */
+    .hero__deco {
+      display: none;
+    }
+
+    /* Content: static flow (not absolute), full width */
+    .hero__content {
+      position: static;
+      width: 100%;
+      max-width: 100%;
+      top: auto;
+      left: auto;
+      gap: 24px;
+    }
+
+    .hero__title {
+      font-size: clamp(36px, 10vw, 52px);
+      line-height: 1;
+      width: auto;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(20px, 5.5vw, 28px);
+      line-height: 1.35;
+      white-space: normal;
+    }
+
+    /* Audience chips: allow wrap */
+    .hero__audience {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .hero__chips {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero__chip {
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    /* CTA buttons: static flow below content */
+    .hero__actions {
+      position: static;
+      top: auto;
+      left: auto;
+      margin-top: 24px;
+      padding-bottom: 32px;
+    }
+
+    /* Buttons: tappable ≥44px */
+    .hero__btn {
+      min-height: 44px;
+      padding: 10px 28px;
+    }
+    .hero__btn--primary {
+      width: auto;
+      padding: 10px 28px;
+    }
+    .hero__btn--outline {
+      width: auto;
+      padding: 8px 28px;
+    }
+
+    /* Card strip: full-width band, clipped, below text */
+    .hero-strip {
+      position: static;
+      left: auto;
+      top: auto;
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    .hero-strip__track {
+      height: 260px;
+      gap: 10px;
+    }
+
+    .hero-strip__card {
+      width: 200px;
+      height: 260px;
+      border-radius: 16px;
+    }
+    .hero-strip__card img {
+      width: 200px;
+      height: 260px;
+    }
+  }
+
+  /* ─── Responsive: 390 (small mobile) ─────────────────────────── */
+  @media (max-width: 430px) {
+    .hero__inner {
+      padding: 32px 16px 0;
+    }
+
+    .hero__title {
+      font-size: clamp(32px, 9vw, 40px);
+    }
+
+    .hero__subtitle {
+      font-size: clamp(18px, 5vw, 22px);
+    }
+
+    .hero__chip {
+      font-size: 14px;
+      line-height: 14px;
+      padding: 6px 10px;
+    }
+
+    .hero-strip {
+      height: 220px;
+    }
+    .hero-strip__track {
+      height: 220px;
+    }
+    .hero-strip__card {
+      width: 170px;
+      height: 220px;
+    }
+    .hero-strip__card img {
+      width: 170px;
+      height: 220px;
+    }
+  }
 </style>

@@ -4,88 +4,92 @@
 ---
 
 <section class="hero">
-  <!-- Decorative background shape (x=-68,y=52 relative to section, w=920 h=552) -->
-  <div class="hero__deco" aria-hidden="true">
-    <img src="/assets/hero/decorative-shape.svg" alt="" width="920" height="552" />
-  </div>
-
-  <!-- Text + nav content block (x=40,y=80 in section, w=900) -->
-  <div class="hero__content">
-    <div class="hero__heading">
-      <h1 class="hero__title">Design<br />Subscription</h1>
-      <p class="hero__subtitle">Fixed monthly price. Pause anytime</p>
+  <!-- Centered inner wrapper — max-width 1440, clips imagery at the 1440 column's right edge.
+       All absolute-positioned children are now relative to this wrapper, not the viewport. -->
+  <div class="hero__inner">
+    <!-- Decorative background shape (x=-68,y=52 relative to wrapper, w=920 h=552) -->
+    <div class="hero__deco" aria-hidden="true">
+      <img src="/assets/hero/decorative-shape.svg" alt="" width="920" height="552" />
     </div>
 
-    <!-- "For" label + audience chips -->
-    <div class="hero__audience">
-      <span class="hero__for-label">For</span>
-      <div class="hero__chips">
-        <div class="hero__chip">
-          <img src="/assets/hero/nav-startups.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <span>Startups</span>
-        </div>
-        <div class="hero__chip">
-          <img src="/assets/hero/nav-product.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <span>Product marketing</span>
-        </div>
-        <div class="hero__chip">
-          <img src="/assets/hero/nav-growing.svg" alt="" width="24" height="24" aria-hidden="true" />
-          <span>Growing companies</span>
+    <!-- Text + nav content block (x=40,y=80 in wrapper, w=900) -->
+    <div class="hero__content">
+      <div class="hero__heading">
+        <h1 class="hero__title">Design<br />Subscription</h1>
+        <p class="hero__subtitle">Fixed monthly price. Pause anytime</p>
+      </div>
+
+      <!-- "For" label + audience chips -->
+      <div class="hero__audience">
+        <span class="hero__for-label">For</span>
+        <div class="hero__chips">
+          <div class="hero__chip">
+            <img src="/assets/hero/nav-startups.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span>Startups</span>
+          </div>
+          <div class="hero__chip">
+            <img src="/assets/hero/nav-product.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span>Product marketing</span>
+          </div>
+          <div class="hero__chip">
+            <img src="/assets/hero/nav-growing.svg" alt="" width="24" height="24" aria-hidden="true" />
+            <span>Growing companies</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- CTA buttons (x=40, y=444 in section) -->
-  <div class="hero__actions">
-    <a href="/contacts.html" class="hero__btn hero__btn--primary">Book a call</a>
-    <a href="/#plans" class="hero__btn hero__btn--outline">See plans</a>
-  </div>
+    <!-- CTA buttons (x=40, y=444 in wrapper) -->
+    <div class="hero__actions">
+      <a href="/contacts.html" class="hero__btn hero__btn--primary">Book a call</a>
+      <a href="/#plans" class="hero__btn hero__btn--outline">See plans</a>
+    </div>
 
-  <!-- Card strip viewport wrapper — overflow:hidden keeps strip clipped (no page scroll) -->
-  <!-- stage ④: animate __track horizontally (marquee). Static offset for now. -->
-  <div class="hero-strip" aria-hidden="true">
-    <div class="hero-strip__track">
-      <!-- Cards 1-2: detailed composites matching Figma (15:336, 15:340) -->
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-1.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-2.png" alt="" width="400" height="530" />
-      </div>
-      <!-- Cards 3-11: portfolio work samples (animation track filler) -->
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-720.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-721.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-722.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-723.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-724.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-725.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-726.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-727.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-728.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-729.png" alt="" width="400" height="530" />
-      </div>
-      <div class="hero-strip__card">
-        <img src="/assets/hero/card-730.png" alt="" width="400" height="530" />
+    <!-- Card strip viewport wrapper — overflow:hidden keeps strip clipped (no page scroll) -->
+    <!-- stage ④: animate __track horizontally (marquee). Static offset for now. -->
+    <div class="hero-strip" aria-hidden="true">
+      <div class="hero-strip__track">
+        <!-- Cards 1-2: detailed composites matching Figma (15:336, 15:340) -->
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-1.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-2.png" alt="" width="400" height="530" />
+        </div>
+        <!-- Cards 3-11: portfolio work samples (animation track filler) -->
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-720.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-721.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-722.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-723.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-724.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-725.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-726.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-727.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-728.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-729.png" alt="" width="400" height="530" />
+        </div>
+        <div class="hero-strip__card">
+          <img src="/assets/hero/card-730.png" alt="" width="400" height="530" />
+        </div>
       </div>
     </div>
   </div>
@@ -97,8 +101,20 @@
     position: relative;
     width: 100%;
     height: 650px;
-    overflow: hidden;
     background: var(--color-bg);
+  }
+
+  /* ─── Centered inner wrapper — clips hero composition at 1440px ── */
+  /* On viewports >1440 the outer .hero shows white bg beyond the edges.
+     position:relative makes this the positioning context for all
+     absolute children (deco, content, actions, strip). */
+  .hero__inner {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    margin-inline: auto;
+    overflow: hidden;
   }
 
   /* ─── White mask — keeps carousel hidden until x≈597 ─────────── */
@@ -106,8 +122,9 @@
      is fully masked). This ::before covers [0..557] solid white then
      fades to transparent over the next 40px, reaching transparent at
      x=597 — matching Figma's reveal point.
+     Placed on __inner so gradient coords are relative to the 1440 column.
      z-index: 2 — above card strip (z=1), below text (z=3). */
-  .hero::before {
+  .hero__inner::before {
     content: '';
     position: absolute;
     inset: 0;

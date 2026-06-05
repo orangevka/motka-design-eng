@@ -1,0 +1,40 @@
+:root {
+  /* fonts */
+  --font-display: 'Factor A', system-ui, sans-serif;
+  --font-serif: 'Spectral', Georgia, serif;
+
+  /* colors */
+  --color-ink: #333333;
+  --color-text-secondary: #4a4a4a;
+  --color-text-quaternary: #8a8a8a;
+  --color-bg: #ffffff;
+  --color-sand: #f3efed;
+  --color-subtle: #f2f2f2;
+  --color-brand: #f81c1c;
+  --color-accent: #fe583e;
+  --color-cta: #6cd6ab;
+  --color-dark: #111111; /* тёмные карточки — подтвердить точное значение по секции FAQ/CTA */
+
+  --color-neutral-0: #ffffff;
+  --color-neutral-100: #f3efed;
+  --color-neutral-300: #a3a3a3;
+  --color-neutral-700: #4a4a4a;
+
+  --border-default: #bdbdbd;
+  --border-strong: #a3a3a3;
+  --border-subtle: #f3efed;
+
+  /* spacing */
+  --space-0: 0; --space-1: 4px; --space-2: 8px; --space-3: 12px;
+  --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-7: 28px;
+  --space-8: 32px; --space-9: 36px; --space-10: 40px; --space-12: 48px;
+  --space-16: 64px; --space-20: 80px;
+
+  /* radii */
+  --radius-2xl: 16px;
+  --radius-4xl: 32px;
+
+  /* layout */
+  --container-max: 1440px;
+  --container-pad: 40px; /* гуттер по краям контейнера */
+}

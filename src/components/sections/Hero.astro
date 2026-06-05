@@ -45,51 +45,55 @@
       <a href="/#plans" class="hero__btn hero__btn--outline">See plans</a>
     </div>
 
-    <!-- Card strip viewport wrapper — overflow:hidden keeps strip clipped (no page scroll) -->
-    <!-- stage ④: animate __track horizontally (marquee). Static offset for now. -->
-    <div class="hero-strip" aria-hidden="true">
-      <div class="hero-strip__track">
-        <!-- Cards 1-2: detailed composites matching Figma (15:336, 15:340) -->
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-1.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-2.png" alt="" width="400" height="530" />
-        </div>
-        <!-- Cards 3-11: portfolio work samples (animation track filler) -->
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-720.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-721.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-722.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-723.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-724.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-725.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-726.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-727.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-728.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-729.png" alt="" width="400" height="530" />
-        </div>
-        <div class="hero-strip__card">
-          <img src="/assets/hero/card-730.png" alt="" width="400" height="530" />
-        </div>
+  </div>
+
+  <!-- Card strip — direct child of .hero (NOT inside .hero__inner) so it is NOT
+       clipped at the 1440-column right edge. .hero { overflow:hidden } clips it
+       at the viewport edge instead. Left position mirrors 429px from the column's
+       left edge: calc(50% - 720px + 429px) = calc(50% - 291px). -->
+  <!-- stage ④: animate __track horizontally (marquee). Static offset for now. -->
+  <div class="hero-strip" aria-hidden="true">
+    <div class="hero-strip__track">
+      <!-- Cards 1-2: detailed composites matching Figma (15:336, 15:340) -->
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-1.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-2.png" alt="" width="400" height="530" />
+      </div>
+      <!-- Cards 3-11: portfolio work samples (animation track filler) -->
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-720.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-721.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-722.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-723.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-724.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-725.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-726.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-727.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-728.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-729.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-730.png" alt="" width="400" height="530" />
       </div>
     </div>
   </div>
@@ -97,24 +101,26 @@
 
 <style>
   /* ─── Hero section ────────────────────────────────────────────── */
+  /* overflow:hidden clips the card strip at the viewport edge (right-bleed).
+     position:relative is the positioning context for .hero-strip. */
   .hero {
     position: relative;
     width: 100%;
     height: 650px;
     background: var(--color-bg);
+    overflow: hidden;
   }
 
-  /* ─── Centered inner wrapper — clips hero composition at 1440px ── */
-  /* On viewports >1440 the outer .hero shows white bg beyond the edges.
-     position:relative makes this the positioning context for all
-     absolute children (deco, content, actions, strip). */
+  /* ─── Centered inner wrapper ──────────────────────────────────── */
+  /* overflow removed — strip is now a sibling, not a child, so this
+     wrapper no longer clips it. Text/deco/gradient remain here. */
   .hero__inner {
     position: relative;
     width: 100%;
     max-width: 1440px;
     height: 100%;
     margin-inline: auto;
-    overflow: hidden;
+    z-index: 2; /* forms stacking context above .hero-strip (z=1) */
   }
 
   /* ─── White mask — keeps carousel hidden until x≈597 ─────────── */
@@ -298,15 +304,21 @@
    * Cards are 400px wide with ~14.79px gap → total track ~4559px
    */
 
-  /* Overflow-hidden viewport — clips the track, no page overflow.
+  /* Card strip — positioned relative to .hero (viewport-width).
+     Left edge mirrors 429px from the centered 1440-column's left edge:
+       column left = calc(50% - 720px)
+       strip left  = calc(50% - 720px + 429px) = calc(50% - 291px)
+     At 1440vw: 720-291 = 429px ✓ (identical to before)
+     At 1920vw: 960-291 = 669px — strip starts at 669px, runs to right edge.
+     overflow:visible — .hero clips at viewport edge.
      z-index: 1 — below deco (z=2) and content (z=3). */
   .hero-strip {
     position: absolute;
-    left: 429px;
+    left: calc(50% - 291px);
     top: 60px;
-    width: calc(100% - 429px); /* 1440-429=1011px at 1440 */
+    width: calc(100% - (50% - 291px)); /* extends to .hero right edge */
     height: 530px;
-    overflow: hidden;
+    overflow: visible;
     z-index: 1;
   }
 

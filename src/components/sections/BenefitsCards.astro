@@ -216,4 +216,188 @@
     width: 138.667px;
     height: 56.303px;
   }
+
+  /* ─── 1280 ────────────────────────────────────────────────────── */
+  @media (max-width: 1280px) {
+    .benefits__heading {
+      font-size: 38px;
+      line-height: 42px;
+    }
+
+    .benefits__cards {
+      gap: 16px;
+    }
+
+    .benefits__card {
+      padding: 28px;
+    }
+
+    .benefits__card-title {
+      font-size: 22px;
+    }
+
+    .benefits__card-body {
+      font-size: 18px;
+    }
+
+    /* Re-anchor graphics to right/bottom edge so they stay visible */
+    .benefits__graphic--1 {
+      left: auto;
+      right: 10px;
+      top: auto;
+      bottom: 16px;
+    }
+
+    .benefits__graphic--2 {
+      left: auto;
+      right: 10px;
+      top: auto;
+      bottom: 16px;
+    }
+
+    .benefits__graphic--3 {
+      left: auto;
+      right: 10px;
+      top: auto;
+      bottom: 20px;
+    }
+  }
+
+  /* ─── 1024 ────────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .benefits__heading {
+      font-size: 34px;
+      line-height: 38px;
+    }
+
+    .benefits__cards {
+      gap: 12px;
+    }
+
+    .benefits__card {
+      padding: 24px;
+      gap: 24px;
+    }
+
+    .benefits__card-title {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    .benefits__card-body {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    /* Release fixed text-block height so text isn't clipped when cards narrow */
+    .benefits__card:nth-child(1) .benefits__card-text,
+    .benefits__card:nth-child(2) .benefits__card-text {
+      height: auto;
+      overflow: visible;
+    }
+  }
+
+  /* ─── 768 — stack to single column ───────────────────────────── */
+  @media (max-width: 768px) {
+    .benefits__heading {
+      font-size: clamp(28px, 5vw, 36px);
+      line-height: 1.15;
+    }
+
+    .benefits__cards {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .benefits__card {
+      flex: none;
+      width: 100%;
+      padding: 28px;
+      gap: 24px;
+      /* Give card enough min-height so graphic doesn't overlap text */
+      min-height: 220px;
+    }
+
+    /* Anchor graphics to bottom-right corner inside the stacked cards */
+    .benefits__graphic--1 {
+      left: auto;
+      right: 20px;
+      top: auto;
+      bottom: 20px;
+    }
+
+    .benefits__graphic--2 {
+      left: auto;
+      right: 20px;
+      top: auto;
+      bottom: 20px;
+    }
+
+    .benefits__graphic--3 {
+      left: auto;
+      right: 20px;
+      top: auto;
+      bottom: 20px;
+    }
+  }
+
+  /* ─── 390 — mobile ────────────────────────────────────────────── */
+  @media (max-width: 430px) {
+    .benefits {
+      padding-block: 40px;
+    }
+
+    .benefits__heading {
+      font-size: clamp(24px, 7vw, 30px);
+      line-height: 1.2;
+    }
+
+    .benefits__card {
+      padding: 24px;
+      border-radius: 20px;
+      gap: 20px;
+      min-height: 200px;
+    }
+
+    .benefits__card-title {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    .benefits__card-body {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    .benefits__arrow {
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Keep graphics in corner but smaller on 390 */
+    .benefits__graphic {
+      opacity: 0.8;
+    }
+
+    .benefits__graphic--1 {
+      width: 68px;
+      height: 65px;
+      right: 16px;
+      bottom: 16px;
+    }
+
+    .benefits__graphic--2 {
+      width: 92px;
+      height: 53px;
+      right: 16px;
+      bottom: 16px;
+    }
+
+    .benefits__graphic--3 {
+      width: 110px;
+      height: 45px;
+      right: 16px;
+      bottom: 16px;
+    }
+  }
 </style>

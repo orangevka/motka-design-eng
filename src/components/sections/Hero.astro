@@ -102,7 +102,9 @@
   }
 
   /* ─── Decorative background shape ────────────────────────────── */
-  /* Figma: x=-68, y=52, w=920, h=552 (relative to section origin) */
+  /* Figma: x=-68, y=52, w=920, h=552 (relative to section origin).
+     z-index: 2 so it renders ABOVE the card strip (z=1), fading
+     cards to white where text overlaps them. */
   .hero__deco {
     position: absolute;
     left: -68px;
@@ -110,7 +112,7 @@
     width: 920px;
     height: 552px;
     pointer-events: none;
-    z-index: 0;
+    z-index: 2;
   }
   .hero__deco img {
     width: 920px;
@@ -118,7 +120,9 @@
   }
 
   /* ─── Content block (heading + audience) ─────────────────────── */
-  /* Figma: x=40, y=80, w=900 */
+  /* Figma: Frame 2131328137 at x=40, y=80, w=900, h=300.
+     Heading (h=228) + 32px gap + Nav Items (h=40) = 300px total.
+     z-index: 3 so text sits above the deco gradient. */
   .hero__content {
     position: absolute;
     left: 40px;
@@ -126,8 +130,8 @@
     width: 900px;
     display: flex;
     flex-direction: column;
-    gap: 32px;   /* 228px heading + 32px gap = 260px; buttons at y=444 → 444-80=364=228+136 */
-    z-index: 1;
+    gap: 32px;
+    z-index: 3;
   }
 
   .hero__heading {
@@ -202,7 +206,8 @@
   }
 
   /* ─── CTA Buttons ─────────────────────────────────────────────── */
-  /* Figma: x=40, y=444, w=311, h=60; gap=8px between buttons */
+  /* Figma: x=40, y=444, w=311, h=60; gap=8px between buttons.
+     z-index: 3 so buttons sit above the deco gradient overlay. */
   .hero__actions {
     position: absolute;
     left: 40px;
@@ -210,7 +215,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    z-index: 1;
+    z-index: 3;
   }
 
   .hero__btn {
@@ -251,7 +256,8 @@
    * Cards are 400px wide with ~14.79px gap → total track ~4559px
    */
 
-  /* Overflow-hidden viewport — clips the track, no page overflow */
+  /* Overflow-hidden viewport — clips the track, no page overflow.
+     z-index: 1 — below deco (z=2) and content (z=3). */
   .hero-strip {
     position: absolute;
     left: 429px;
@@ -259,7 +265,7 @@
     width: calc(100% - 429px); /* 1440-429=1011px at 1440 */
     height: 530px;
     overflow: hidden;
-    z-index: 0;
+    z-index: 1;
   }
 
   /* Single flex row holding all cards */

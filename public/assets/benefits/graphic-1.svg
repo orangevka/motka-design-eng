@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 84 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2087329369">
+<rect id="Rectangle 240646605" width="34" height="34" transform="matrix(1 0 0 -1 34 46)" fill="var(--fill-0, #F3C149)"/>
+<rect id="Rectangle 240646607" width="34" height="34" transform="matrix(1 0 0 -1 34 80)" fill="var(--fill-0, #050505)"/>
+<path id="Intersect" d="M34 12C34 30.4093 49.1176 45.4016 68 46V12L34 12Z" fill="url(#paint0_linear_0_50)"/>
+<circle id="Ellipse 2122" cx="12.5" cy="12.5" r="12.5" transform="matrix(1 0 0 -1 59 25)" fill="var(--fill-0, #6CD6AB)"/>
+<path id="Rectangle 240646606" d="M34 12V46H0L34 12Z" fill="var(--fill-0, #F3C149)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_50" x1="37.2228" y1="12.0007" x2="37.2228" y2="46" gradientUnits="userSpaceOnUse">
+<stop stop-color="#627DFF"/>
+<stop offset="1" stop-color="#FF5500"/>
+</linearGradient>
+</defs>
+</svg>

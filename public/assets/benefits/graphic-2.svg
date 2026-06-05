@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 115.001 65.999" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2087329368">
+<path id="Intersect" d="M53.002 0C67.0804 0 78.5453 11.1823 79.0029 25.1494H53.001V0H53.002Z" fill="var(--fill-0, #F3C149)"/>
+<path id="Union" d="M53.001 51H27.001V51.001H0C0.47494 36.561 12.3805 25 27 25H27.0088C27.55 11.3355 38.6276 0.380612 52.3428 0.0400391L53.001 0.03125V51Z" fill="url(#paint0_linear_0_8)"/>
+<path id="Intersect_2" d="M28.0059 36.001C19.6091 36.001 12.7707 42.6705 12.498 51.001H43.5127C43.2401 42.6706 36.4025 36.0011 28.0059 36.001Z" fill="var(--fill-0, #627DFF)"/>
+<path id="Intersect_3" d="M28.0078 65.999C36.4046 65.999 43.243 59.3295 43.5156 50.999H12.501C12.7736 59.3294 19.6112 65.9989 28.0078 65.999Z" fill="var(--fill-0, #6CD6AB)"/>
+<rect id="Rectangle 240646603" x="53.001" y="25" width="26" height="26" fill="var(--fill-0, #6CD6AB)"/>
+<rect id="Rectangle 240646604" width="36" height="26" transform="matrix(1 0 0 -1 79.001 51)" fill="var(--fill-0, #6CD6AB)"/>
+<path id="Union_2" d="M95.0049 35.0322C103.497 35.0322 110.441 41.644 110.979 50H111.005C111.002 50.0848 110.996 50.1694 110.992 50.2539C110.996 50.3387 111.002 50.4236 111.005 50.5088H110.979C110.441 58.8648 103.497 65.4765 95.0049 65.4766C86.5132 65.4766 79.5684 58.8648 79.0312 50.5088H79.0049C79.0077 50.4236 79.0125 50.3387 79.0166 50.2539C79.0125 50.1694 79.0077 50.0848 79.0049 50H79.0312C79.5684 41.644 86.5132 35.0322 95.0049 35.0322Z" fill="var(--fill-0, #050505)"/>
+<circle id="Ellipse 2122" cx="6.00001" cy="6.00001" r="6.00001" transform="matrix(1 0 0 -1 96.001 51)" fill="var(--fill-0, #54B87F)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_8" x1="26.5005" y1="0.03125" x2="26.5005" y2="51.001" gradientUnits="userSpaceOnUse">
+<stop stop-color="#627DFF"/>
+<stop offset="1" stop-color="#FF5500"/>
+</linearGradient>
+</defs>
+</svg>

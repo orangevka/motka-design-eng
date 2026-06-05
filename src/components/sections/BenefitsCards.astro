@@ -1,0 +1,219 @@
+---
+// BenefitsCards section — 1440×564 pixel-perfect (Figma node 15:6415)
+// 3 benefit cards: Start faster / Work with 1 connected team / Keep continuity from task to task
+---
+
+<section class="benefits">
+  <div class="container">
+    <div class="benefits__inner">
+
+      <!-- Heading -->
+      <h2 class="benefits__heading">
+        Subscription is built for teams<br />where design never stops
+      </h2>
+
+      <!-- Cards row -->
+      <div class="benefits__cards">
+
+        <!-- Card 1: Start faster -->
+        <div class="benefits__card">
+          <div class="benefits__card-text">
+            <p class="benefits__card-title">Start faster</p>
+            <p class="benefits__card-body">Skip the hiring / contracting delay&nbsp;<br />and keep design moving.</p>
+          </div>
+          <div class="benefits__arrow" aria-hidden="true">
+            <img src="/assets/benefits/arrow.svg" alt="" width="38" height="20" />
+          </div>
+          <img
+            class="benefits__graphic benefits__graphic--1"
+            src="/assets/benefits/graphic-1.svg"
+            alt=""
+            width="84"
+            height="80"
+            aria-hidden="true"
+          />
+        </div>
+
+        <!-- Card 2: Work with 1 connected team -->
+        <div class="benefits__card">
+          <div class="benefits__card-text">
+            <p class="benefits__card-title">Work with 1 connected team</p>
+            <p class="benefits__card-body">We read context fast and turn it into work from the start. Leverage our expertise on day one.</p>
+          </div>
+          <div class="benefits__arrow" aria-hidden="true">
+            <img src="/assets/benefits/arrow.svg" alt="" width="38" height="20" />
+          </div>
+          <img
+            class="benefits__graphic benefits__graphic--2"
+            src="/assets/benefits/graphic-2.svg"
+            alt=""
+            width="115"
+            height="66"
+            aria-hidden="true"
+          />
+        </div>
+
+        <!-- Card 3: Keep continuity from task to task -->
+        <div class="benefits__card">
+          <div class="benefits__card-text">
+            <p class="benefits__card-title">Keep continuity<br />from task to task</p>
+            <p class="benefits__card-body">UX/UI, marketing pages, brand system, mobile, decks — one workflow, one consistent visual language.</p>
+          </div>
+          <div class="benefits__arrow" aria-hidden="true">
+            <img src="/assets/benefits/arrow.svg" alt="" width="38" height="20" />
+          </div>
+          <img
+            class="benefits__graphic benefits__graphic--3"
+            src="/assets/benefits/graphic-3.svg"
+            alt=""
+            width="139"
+            height="57"
+            aria-hidden="true"
+          />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ─── Section ─────────────────────────────────────────────────── */
+  .benefits {
+    width: 100%;
+    background: var(--color-bg);
+    padding-block: var(--space-16); /* 64px top/bottom */
+  }
+
+  /* ─── Inner layout (heading + cards) ─────────────────────────── */
+  .benefits__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8); /* 32px between heading and cards */
+  }
+
+  /* ─── Heading ─────────────────────────────────────────────────── */
+  /* Figma: Factor A Bold, 44px, lh=46px, color #333, max-width 1130px */
+  .benefits__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 46px;
+    letter-spacing: 0;
+    color: var(--color-ink);
+    max-width: 1130px;
+    margin: 0;
+  }
+
+  /* ─── Cards container ─────────────────────────────────────────── */
+  /* Figma: gap 20px between 3 equal-width cards */
+  .benefits__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  /* ─── Individual card ─────────────────────────────────────────── */
+  /* Figma: bg #f3efed, border 1px solid white, radius 24px, padding 36px, overflow:hidden */
+  .benefits__card {
+    flex: 1 0 0;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    background: var(--color-sand); /* #f3efed */
+    border: 1px solid var(--color-bg); /* white */
+    border-radius: 24px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  /* ─── Text container ──────────────────────────────────────────── */
+  /* Figma: cards 1+2 have h=120px, card 3 has auto height; gap 12px */
+  .benefits__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Cards 1 and 2 text block fixed 120px height (Figma) */
+  .benefits__card:nth-child(1) .benefits__card-text,
+  .benefits__card:nth-child(2) .benefits__card-text {
+    height: 120px;
+    overflow: hidden;
+  }
+
+  /* ─── Card title ──────────────────────────────────────────────── */
+  /* Figma: Factor A Bold, 24px, lh=30px, color #333 */
+  .benefits__card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--color-ink);
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  /* ─── Card body text ──────────────────────────────────────────── */
+  /* Figma: Spectral Regular, 20px, lh=24px, letterSpacing=-0.4px, color #4a4a4a */
+  .benefits__card-body {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* ─── Arrow icon ──────────────────────────────────────────────── */
+  /* Figma: 60px container with overflow:hidden, arrow SVG 38×20 centered inside */
+  .benefits__arrow {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .benefits__arrow img {
+    display: block;
+    width: 38px;
+    height: 20px;
+  }
+
+  /* ─── Card graphics (absolute positioned bottom-right) ───────── */
+  /* All graphics are absolute, positioned per Figma card coordinates */
+  .benefits__graphic {
+    position: absolute;
+    display: block;
+  }
+
+  /* Card 1 graphic: 84×80px at left=318.54, top=167 within card */
+  .benefits__graphic--1 {
+    left: 318.54px;
+    top: 167px;
+    width: 84px;
+    height: 80px;
+  }
+
+  /* Card 2 graphic: 115×66px at left=279.54, top=185 within card */
+  .benefits__graphic--2 {
+    left: 279.54px;
+    top: 185px;
+    width: 115px;
+    height: 66px;
+  }
+
+  /* Card 3 graphic: 138.667×56.303px at left=267, top=216.03 within card */
+  .benefits__graphic--3 {
+    left: 267px;
+    top: 216.03px;
+    width: 138.667px;
+    height: 56.303px;
+  }
+</style>

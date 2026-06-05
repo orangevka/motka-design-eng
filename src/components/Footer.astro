@@ -249,4 +249,179 @@
     margin: 0;
     white-space: nowrap;
   }
+
+  /* ═══════════════════════════════════════════════════════════════
+     RESPONSIVE — 1280px and below
+     Switch from absolute positioning to flex-row layout
+     ═══════════════════════════════════════════════════════════════ */
+
+  @media (max-width: 1279px) {
+    /* Panel becomes auto-height, flex row */
+    .footer__panel {
+      height: auto;
+      padding: 40px 40px 40px 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+      overflow: visible;
+    }
+
+    /* Hide decorative mark at smaller sizes — it was absolutely placed */
+    .footer__mark {
+      display: none;
+    }
+
+    /* Reset absolute positioning for all columns */
+    .footer__col--main,
+    .footer__col--portfolio,
+    .footer__right {
+      position: static;
+      top: auto;
+      left: auto;
+    }
+
+    /* Main col: fixed width */
+    .footer__col--main {
+      width: 130px;
+      flex-shrink: 0;
+    }
+
+    /* Portfolio col: take available space */
+    .footer__col--portfolio {
+      width: auto;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    /* Right block: shrink to content, align end */
+    .footer__right {
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    /* Tighten portfolio sub-col gap at 1280 */
+    .footer__portfolio-cols .footer__links:first-child,
+    .footer__portfolio-cols .footer__links:last-child {
+      width: auto;
+      flex: 1 1 auto;
+    }
+
+    .footer__portfolio-cols {
+      gap: 24px;
+    }
+
+    /* Reduce socials bottom margin */
+    .footer__socials {
+      margin-bottom: 24px;
+    }
+  }
+
+  /* ─── 1024px ─────────────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .footer__panel {
+      padding: 32px 28px;
+      gap: 28px;
+    }
+
+    .footer__col-heading,
+    .footer__link {
+      font-size: 16px;
+    }
+  }
+
+  /* ─── 768px: stack to 2 rows (nav cols top, right block bottom) ─ */
+  @media (max-width: 767px) {
+    .footer__panel {
+      flex-direction: column;
+      padding: 32px 24px;
+      gap: 32px;
+      border-radius: 20px;
+    }
+
+    /* Row 1: Main + Portfolio side by side */
+    .footer__col--main {
+      width: auto;
+      flex-shrink: 1;
+    }
+
+    .footer__col--portfolio {
+      flex: 1 1 auto;
+    }
+
+    /* Row 2: socials/legal block — full width */
+    .footer__right {
+      width: 100%;
+    }
+
+    .footer__socials {
+      margin-bottom: 16px;
+    }
+
+    /* Wrap the two nav cols in a row via wrapper trick:
+       Use a wrapper element approach by targeting them as siblings in the panel */
+    /* Main + Portfolio sit in a flex row still, right block goes below */
+    .footer__panel {
+      flex-direction: column;
+    }
+
+    /* Group the nav columns in an inline flex row */
+    .footer__col--main,
+    .footer__col--portfolio {
+      display: flex; /* already flex-col; keep */
+    }
+
+    /* Create a nav row wrapper at 768 via CSS grid */
+    .footer__panel {
+      display: grid;
+      grid-template-areas:
+        "nav-main nav-portfolio"
+        "right    right";
+      grid-template-columns: auto 1fr;
+      gap: 32px 32px;
+    }
+
+    .footer__col--main       { grid-area: nav-main; }
+    .footer__col--portfolio  { grid-area: nav-portfolio; }
+    .footer__right           { grid-area: right; }
+  }
+
+  /* ─── 390px: full single-column stack ───────────────────────── */
+  @media (max-width: 480px) {
+    .footer__panel {
+      display: flex;
+      flex-direction: column;
+      padding: 28px 20px;
+      gap: 28px;
+      border-radius: 16px;
+    }
+
+    .footer__col--main,
+    .footer__col--portfolio {
+      width: 100%;
+    }
+
+    .footer__portfolio-cols {
+      gap: 16px;
+    }
+
+    .footer__portfolio-cols .footer__links:first-child,
+    .footer__portfolio-cols .footer__links:last-child {
+      width: auto;
+      flex: 1 1 0;
+    }
+
+    .footer__right {
+      width: 100%;
+    }
+
+    .footer__socials {
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .footer__copy {
+      white-space: normal;
+    }
+  }
 </style>

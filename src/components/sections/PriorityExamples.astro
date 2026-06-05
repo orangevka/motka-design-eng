@@ -1,0 +1,594 @@
+---
+// PriorityExamples section — 1440×1229 pixel-perfect (Figma node 15:6662)
+// "The subscription adapts to your priorities"
+// Two example cards side by side; card 2 clips off-screen (carousel-like)
+---
+
+<section class="priority">
+  <div class="container">
+
+    <!-- Heading row -->
+    <div class="priority__heading-row">
+      <div class="priority__heading-content">
+        <h2 class="priority__heading">The subscription adapts to your priorities</h2>
+        <p class="priority__subtext">
+          Some clients need mostly product, some mostly marketing, some need both.
+          The subscription adapts to your priorities.
+        </p>
+      </div>
+      <div class="priority__nav">
+        <button class="priority__nav-btn priority__nav-btn--prev" aria-label="Previous">
+          <img src="/assets/priority/arrow-left.svg" alt="" width="19" height="11" />
+        </button>
+        <button class="priority__nav-btn priority__nav-btn--next" aria-label="Next">
+          <img src="/assets/priority/arrow-right.svg" alt="" width="19" height="11" />
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cards container — full 1400px from left edge 40px, overflows right edge intentionally -->
+  <div class="priority__cards-outer">
+
+    <!-- Sprint badge — card 1 (no background, positioned top-left of cards row) -->
+    <div class="priority__sprint priority__sprint--1">
+      <p class="priority__sprint-label">What can be done in</p>
+      <div class="priority__sprint-number">
+        <span class="priority__sprint-num">6</span>
+        <span class="priority__sprint-unit">months</span>
+      </div>
+    </div>
+
+    <!-- Sprint badge — card 2 (green, hangs above card 2) -->
+    <div class="priority__sprint priority__sprint--2">
+      <p class="priority__sprint-label">What can be done in</p>
+      <div class="priority__sprint-number">
+        <span class="priority__sprint-num">2</span>
+        <span class="priority__sprint-unit">weeks</span>
+      </div>
+    </div>
+
+    <div class="priority__cards">
+
+      <!-- Card 1: Leverate -->
+      <article class="priority__card">
+
+        <!-- Top info area -->
+        <div class="priority__card-info">
+          <div class="priority__card-meta">
+            <h3 class="priority__card-title">UX/UI and marketing design for Leverate</h3>
+            <div class="priority__card-tags">
+              <span class="priority__tag priority__tag--location">
+                <img src="/assets/priority/location-icon.svg" alt="" width="12" height="15" />
+                Israel
+              </span>
+              <span class="priority__tag priority__tag--industry">Fintech</span>
+            </div>
+          </div>
+
+          <!-- Stats row -->
+          <div class="priority__stats">
+            <div class="priority__stat">
+              <span class="priority__stat-num">80+</span>
+              <span class="priority__stat-label">product UI screens <br />for 3 platforms</span>
+            </div>
+            <div class="priority__sep" aria-hidden="true">
+              <img src="/assets/priority/separator.svg" alt="" />
+            </div>
+            <div class="priority__stat">
+              <span class="priority__stat-num">12+</span>
+              <span class="priority__stat-label">user flows, interface updates and new modules</span>
+            </div>
+            <div class="priority__sep" aria-hidden="true">
+              <img src="/assets/priority/separator.svg" alt="" />
+            </div>
+            <div class="priority__stat">
+              <span class="priority__stat-num">40+</span>
+              <span class="priority__stat-label">ad creatives, banners <br />and social media assets</span>
+            </div>
+            <div class="priority__sep" aria-hidden="true">
+              <img src="/assets/priority/separator.svg" alt="" />
+            </div>
+            <div class="priority__stat">
+              <span class="priority__stat-num">10+</span>
+              <span class="priority__stat-label">merch and <br />branded materials</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project preview image -->
+        <div class="priority__card-img">
+          <img
+            src="/assets/priority/card1-project.png"
+            alt="Leverate website preview — All-in-One Tech for CFD & Prop Trading"
+            class="priority__card-img-inner"
+          />
+        </div>
+
+        <!-- Bottom badges -->
+        <div class="priority__card-badges">
+          <span class="priority__badge priority__badge--sub">
+            <img src="/assets/priority/star-icon.svg" alt="" width="14" height="14" />
+            Pro subscription
+          </span>
+          <span class="priority__badge priority__badge--active">
+            <span class="priority__dot" aria-hidden="true"></span>
+            Active since Sep 2025
+          </span>
+        </div>
+
+      </article>
+
+      <!-- Card 2: Leverate (second project / partially visible) -->
+      <article class="priority__card">
+
+        <!-- Top info area -->
+        <div class="priority__card-info">
+          <div class="priority__card-meta">
+            <h3 class="priority__card-title">UX/UI and marketing design for Leverate</h3>
+            <div class="priority__card-tags">
+              <span class="priority__tag priority__tag--location">
+                <img src="/assets/priority/location-icon.svg" alt="" width="12" height="15" />
+                Israel
+              </span>
+              <span class="priority__tag priority__tag--industry">Fintech</span>
+            </div>
+          </div>
+
+          <!-- Stats row -->
+          <div class="priority__stats">
+            <div class="priority__stat">
+              <span class="priority__stat-num">80+</span>
+              <span class="priority__stat-label">product UI screens <br />for 3 platforms</span>
+            </div>
+            <div class="priority__sep" aria-hidden="true">
+              <img src="/assets/priority/separator.svg" alt="" />
+            </div>
+            <div class="priority__stat">
+              <span class="priority__stat-num">12+</span>
+              <span class="priority__stat-label">user flows, interface updates and new modules</span>
+            </div>
+            <div class="priority__sep" aria-hidden="true">
+              <img src="/assets/priority/separator.svg" alt="" />
+            </div>
+            <div class="priority__stat">
+              <span class="priority__stat-num">40+</span>
+              <span class="priority__stat-label">ad creatives, banners <br />and social media assets</span>
+            </div>
+            <div class="priority__sep" aria-hidden="true">
+              <img src="/assets/priority/separator.svg" alt="" />
+            </div>
+            <div class="priority__stat">
+              <span class="priority__stat-num">10+</span>
+              <span class="priority__stat-label">merch and <br />branded materials</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project preview image -->
+        <div class="priority__card-img">
+          <img
+            src="/assets/priority/card2-preview2.png"
+            alt="Leverate building billboard — Smooth Trading Experience"
+            class="priority__card-img-inner"
+          />
+        </div>
+
+        <!-- Bottom badges -->
+        <div class="priority__card-badges">
+          <span class="priority__badge priority__badge--sub">
+            <img src="/assets/priority/star-icon.svg" alt="" width="14" height="14" />
+            Pro subscription
+          </span>
+          <span class="priority__badge priority__badge--active">
+            <span class="priority__dot" aria-hidden="true"></span>
+            Active since Sep 2025
+          </span>
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ─── Section ───────────────────────────────────────────────────── */
+  .priority {
+    width: 100%;
+    background: var(--color-bg);
+    padding-block: 64px;
+    overflow: hidden; /* no horizontal scrollbar from clipped card 2 */
+  }
+
+  /* ─── Heading row ───────────────────────────────────────────────── */
+  /* Figma: 15:6663 at y=64 within section, h=110, full container width */
+  .priority__heading-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px; /* Figma: cards at y=214, heading bottom at y=174, gap=40px */
+  }
+
+  .priority__heading-content {
+    flex: 1 0 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Factor A Bold 44px, lh 46px, color #333 */
+  .priority__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 46px;
+    letter-spacing: 0;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* Spectral Regular 22px, lh 26px, letter-spacing -0.44px, color #4a4a4a */
+  .priority__subtext {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: -0.44px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 657px;
+  }
+
+  /* Nav buttons — 48×48px, bg #f3efed, radius 32px */
+  .priority__nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  .priority__nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 32px;
+    background: var(--color-sand);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 12px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  .priority__nav-btn img {
+    display: block;
+    width: 19px;
+    height: 11px;
+  }
+
+  .priority__nav-btn--prev img {
+    transform: scaleX(-1);
+  }
+
+  /* ─── Cards outer container ─────────────────────────────────────── */
+  /* Figma: 15:6687 at x=40, y=214, w=1400, h=951
+     extends beyond .container (which clips at 1440-40=1360), so 1400px from x=40 means right edge at x=1440
+     We position it relative to the full viewport left edge with margin-left: var(--container-pad) */
+  .priority__cards-outer {
+    position: relative;
+    margin-left: var(--container-pad); /* 40px from left edge */
+    /* width extends to right edge of viewport — no overflow:hidden here */
+  }
+
+  /* ─── Sprint badges ─────────────────────────────────────────────── */
+  /* Badge 1: x=16, y=8 within cards-outer, w=171, h=56, no bg */
+  .priority__sprint {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+  }
+
+  .priority__sprint--1 {
+    left: 16px;
+    top: 8px;
+    width: 171px;
+    height: 56px;
+    background: #6cd6ab;
+    border-radius: 0 0 16px 16px;
+    padding: 8px 16px 12px;
+    align-items: flex-start;
+  }
+
+  /* Badge 2: x=1138, y=-16, w=200, h=76, green bg, rounded bottom corners */
+  .priority__sprint--2 {
+    left: 1138px;
+    top: -16px;
+    width: 200px;
+    height: 76px;
+    background: #6cd6ab;
+    border-radius: 0 0 16px 16px;
+    padding: 8px 16px 12px;
+    align-items: flex-start;
+  }
+
+  /* "What can be done in" — Factor A Regular 18px, lh 22px */
+  .priority__sprint-label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--color-ink);
+    margin: 0;
+    width: 109px;
+    flex-shrink: 0;
+  }
+
+  .priority__sprint-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Large number — Factor A Bold 42px, lh 44px */
+  .priority__sprint-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 44px;
+    color: var(--color-ink);
+    white-space: nowrap;
+    margin-bottom: -2px;
+  }
+
+  /* Unit label — Factor A Bold 14px, lh 14px */
+  .priority__sprint-unit {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  /* ─── Cards row ─────────────────────────────────────────────────── */
+  .priority__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    padding-top: 0;
+  }
+
+  /* ─── Individual card ───────────────────────────────────────────── */
+  /* Figma: w=1082, h=951, bg white, border 3px solid #f3efed, radius 24px, padding 36px, overflow:hidden */
+  .priority__card {
+    width: 1082px;
+    min-width: 1082px;
+    height: 951px;
+    background: var(--color-bg);
+    border: 3px solid var(--color-sand);
+    border-radius: 24px;
+    padding: 36px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* ─── Card info area (top section, h=229) ───────────────────────── */
+  .priority__card-info {
+    height: 229px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .priority__card-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* Factor A Bold 24px, lh 30px, color #333 */
+  .priority__card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--color-ink);
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .priority__card-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Tags: Factor A Regular 16px, no italic, padding 8px 12px, radius 12px */
+  .priority__tag {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--color-ink);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--color-sand);
+    flex-shrink: 0;
+  }
+
+  .priority__tag--location {
+    background: transparent;
+  }
+
+  .priority__tag--location img {
+    display: block;
+    width: 12px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .priority__tag--industry {
+    background: var(--color-sand);
+    border-color: var(--color-sand);
+  }
+
+  /* ─── Stats row ─────────────────────────────────────────────────── */
+  .priority__stats {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .priority__stat {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  /* Factor A Bold 33px, lh 46px, color #333 */
+  .priority__stat-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 33px;
+    line-height: 46px;
+    color: var(--color-ink);
+    display: block;
+  }
+
+  /* Spectral Regular 18px, lh 20px, letter-spacing -0.36px, color #4a4a4a */
+  .priority__stat-label {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.36px;
+    color: var(--color-text-secondary);
+    display: block;
+  }
+
+  /* Stat widths from Figma metadata */
+  .priority__stats .priority__stat:nth-child(1) { width: 151px; }
+  .priority__stats .priority__stat:nth-child(3) { width: 176px; }
+  .priority__stats .priority__stat:nth-child(5) { width: 176px; }
+  .priority__stats .priority__stat:nth-child(7) { width: 165px; }
+
+  /* Vertical separator */
+  .priority__sep {
+    flex-shrink: 0;
+    height: 105px;
+    width: 1px;
+    background: var(--color-sand);
+    align-self: center;
+  }
+
+  .priority__sep img {
+    display: none; /* use CSS bg instead */
+  }
+
+  /* ─── Project image area ────────────────────────────────────────── */
+  /* Figma: h=562, bg #2e3a4b, radius 16px, overflow hidden */
+  .priority__card-img {
+    height: 562px;
+    background: #2e3a4b;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .priority__card-img-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── Bottom badges row ─────────────────────────────────────────── */
+  /* Figma: 15:7499 at y=875, h=34, x=36 */
+  .priority__card-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+
+  /* Factor A Regular 16px */
+  .priority__badge {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--color-ink);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  /* "Pro subscription" — bg #f3efed, radius 16px, padding 8px 16px */
+  .priority__badge--sub {
+    background: var(--color-sand);
+    border: 1px solid var(--color-sand);
+    border-radius: 16px;
+    padding: 8px 16px;
+  }
+
+  .priority__badge--sub img {
+    display: block;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  /* "Active since…" — bg white, border 1px solid #f3efed, radius 12px, padding 8px 12px */
+  .priority__badge--active {
+    background: var(--color-bg);
+    border: 1px solid var(--color-sand);
+    border-radius: 12px;
+    padding: 8px 12px;
+    gap: 4px;
+  }
+
+  /* Green dot indicator */
+  .priority__dot {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 3px solid #6cd6ab;
+    background: rgba(108, 214, 171, 0.5);
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+</style>

@@ -608,4 +608,267 @@
     color: var(--color-text-secondary);
     margin: 0;
   }
+
+  /* ─── 1280 ───────────────────────────────────────────────────────── */
+  @media (max-width: 1280px) {
+    .process__heading-row {
+      gap: 32px;
+    }
+    .process__left {
+      width: 260px;
+    }
+    .process__heading {
+      font-size: 40px;
+      line-height: 46px;
+      width: auto;
+    }
+    .process__steps {
+      padding: 24px 16px;
+      gap: 16px;
+    }
+    .process__step-title {
+      font-size: 20px;
+      line-height: 26px;
+    }
+    .process__step-desc {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  /* ─── 1024 ───────────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .process__panel {
+      padding: 24px;
+    }
+    .process__heading-row {
+      gap: 24px;
+    }
+    .process__left {
+      width: 180px;
+      gap: 20px;
+    }
+    .process__icons {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .process__heading {
+      font-size: 28px;
+      line-height: 34px;
+    }
+    .process__steps {
+      padding: 16px 10px;
+      gap: 10px;
+    }
+    .process__mock {
+      height: auto;
+      min-height: 120px;
+    }
+    /* Trello mock — fluid */
+    .process__trello {
+      width: 100%;
+      max-width: 100%;
+    }
+    /* Review mock — fluid */
+    .process__review-mock {
+      width: 100%;
+      max-width: 100%;
+    }
+    /* Scale down step 2 figma mock */
+    .process__mock--2 {
+      width: 100%;
+      overflow: hidden;
+    }
+    .process__figma-mock {
+      width: 100%;
+      max-width: 100%;
+      height: 130px;
+    }
+    .process__figma-bg {
+      width: 100%;
+      max-width: none;
+      height: 130px;
+      left: 0;
+    }
+    .process__selection {
+      left: 8%;
+      top: 36px;
+      width: 60%;
+      height: 58px;
+    }
+    .process__letsgo {
+      left: 15%;
+      top: 50px;
+      font-size: 18px;
+      line-height: 24px;
+    }
+    .process__cursor-arrow--designer { left: 20%; top: -2px; }
+    .process__cursor-label--designer { left: calc(20% + 20px); top: 13px; font-size: 11px; height: 20px; padding: 2px 6px 2px 8px; }
+    .process__cursor-arrow--artdir   { left: 42%; top: 78px; }
+    .process__cursor-label--artdir   { left: calc(42% + 20px); top: 92px; font-size: 11px; height: 20px; padding: 2px 6px 2px 8px; }
+
+    .process__step-title {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .process__step-desc {
+      font-size: 13px;
+      line-height: 17px;
+    }
+  }
+
+  /* ─── 768 & 390 — stack layout ───────────────────────────────────── */
+  @media (max-width: 768px) {
+    .process {
+      padding-block: 40px;
+    }
+    .process__panel {
+      padding: 24px 20px;
+    }
+
+    /* Stack: left (heading+icons) on top, steps below */
+    .process__heading-row {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Left column — full width */
+    .process__left {
+      width: 100%;
+      flex-shrink: unset;
+      gap: 20px;
+    }
+    .process__heading {
+      font-size: 36px;
+      line-height: 42px;
+      width: auto;
+    }
+
+    /* Steps panel — vertical, full width */
+    .process__steps {
+      flex: none;
+      flex-direction: column;
+      gap: 0;
+      padding: 20px 16px;
+      width: 100%;
+    }
+
+    /* Steps take full width when stacked */
+    .process__step {
+      flex: unset;
+      width: 100%;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    /* First step: no top padding */
+    .process__step:first-child {
+      padding-top: 0;
+    }
+
+    /* Turn vertical dividers into horizontal ones */
+    .process__divider {
+      width: 100%;
+      height: 1px;
+      align-self: auto;
+      flex-shrink: 0;
+    }
+
+    /* Mock areas: full width, auto height */
+    .process__mock {
+      height: auto;
+      overflow: visible;
+    }
+
+    /* Step 1 trello mock — scale to container */
+    .process__trello {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    /* Step 2 figma mock — scale proportionally */
+    .process__mock--2 {
+      width: 100%;
+      overflow: visible;
+    }
+    .process__figma-mock {
+      width: 100%;
+      max-width: 320px;
+      height: 220px;
+    }
+    .process__figma-bg {
+      width: 100%;
+      max-width: 340px;
+      height: 220px;
+      left: 0;
+    }
+    .process__selection {
+      left: 19px;
+      top: 68px;
+      width: 188px;
+      height: 108px;
+    }
+    .process__letsgo {
+      left: 42px;
+      top: 96px;
+      font-size: 38px;
+      line-height: 47px;
+    }
+    .process__cursor-arrow--designer { left: 50px; top: -2px; }
+    .process__cursor-label--designer { left: 72px; top: 21px; }
+    .process__cursor-arrow--artdir   { left: 132px; top: 140px; }
+    .process__cursor-label--artdir   { left: 154px; top: 163px; }
+
+    /* Step 3 review mock — scale to container */
+    .process__review-mock {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .process__step-title {
+      font-size: 22px;
+      line-height: 28px;
+    }
+    .process__step-desc {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  /* ─── 390 fine-tuning ────────────────────────────────────────────── */
+  @media (max-width: 390px) {
+    .process__panel {
+      padding: 20px 16px;
+    }
+    .process__heading {
+      font-size: 30px;
+      line-height: 36px;
+    }
+    .process__figma-mock {
+      max-width: 260px;
+      height: 180px;
+    }
+    .process__figma-bg {
+      max-width: 280px;
+      height: 180px;
+    }
+    .process__selection {
+      left: 16px;
+      top: 56px;
+      width: 155px;
+      height: 89px;
+    }
+    .process__letsgo {
+      left: 35px;
+      top: 79px;
+      font-size: 31px;
+      line-height: 39px;
+    }
+    .process__cursor-arrow--designer { left: 41px; top: -2px; }
+    .process__cursor-label--designer { left: 59px; top: 17px; }
+    .process__cursor-arrow--artdir   { left: 109px; top: 115px; }
+    .process__cursor-label--artdir   { left: 127px; top: 134px; }
+    .process__step-desc {
+      font-size: 16px;
+    }
+  }
 </style>

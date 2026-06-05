@@ -8,7 +8,7 @@ const prefix = process.argv[3] ?? 'shot';
 const widths = (process.argv[4] ?? '1440').split(',').map(Number);
 mkdirSync('scripts/_shots', { recursive: true });
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ args: ['--disable-lcd-text'] });
 for (const w of widths) {
   const page = await browser.newPage({ viewport: { width: w, height: 1000 }, deviceScaleFactor: 1 });
   await page.goto(url, { waitUntil: 'networkidle' });

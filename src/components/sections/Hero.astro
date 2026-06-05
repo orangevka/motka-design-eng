@@ -101,10 +101,31 @@
     background: var(--color-bg);
   }
 
+  /* ─── White mask — keeps carousel hidden until x≈597 ─────────── */
+  /* Figma: colorful imagery only reveals at x≈597 (card strip x=429
+     is fully masked). This ::before covers [0..557] solid white then
+     fades to transparent over the next 40px, reaching transparent at
+     x=597 — matching Figma's reveal point.
+     z-index: 2 — above card strip (z=1), below text (z=3). */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      #ffffff 0px,
+      #ffffff 557px,
+      transparent 597px
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
   /* ─── Decorative background shape ────────────────────────────── */
   /* Figma: x=-68, y=52, w=920, h=552 (relative to section origin).
-     z-index: 2 so it renders ABOVE the card strip (z=1), fading
-     cards to white where text overlaps them. */
+     Radial gradient (white→transparent) reinforces the soft blend
+     between white text area and the card strip.
+     z-index: 2 (same layer as ::before mask). */
   .hero__deco {
     position: absolute;
     left: -68px;
@@ -122,10 +143,13 @@
   /* ─── Content block (heading + audience) ─────────────────────── */
   /* Figma: Frame 2131328137 at x=40, y=80, w=900, h=300.
      Heading (h=228) + 32px gap + Nav Items (h=40) = 300px total.
+     left=34px: the 'D' glyph has ~8px left side-bearing so the visible
+     text edge lands at 34+8=42px, aligning with other .container sections
+     (which use padding-inline:40px → text glyph at ~42px).
      z-index: 3 so text sits above the deco gradient. */
   .hero__content {
     position: absolute;
-    left: 40px;
+    left: 34px;
     top: 80px;
     width: 900px;
     display: flex;
@@ -207,10 +231,11 @@
 
   /* ─── CTA Buttons ─────────────────────────────────────────────── */
   /* Figma: x=40, y=444, w=311, h=60; gap=8px between buttons.
+     left=34px: matches hero__content alignment (glyph at ~42px).
      z-index: 3 so buttons sit above the deco gradient overlay. */
   .hero__actions {
     position: absolute;
-    left: 40px;
+    left: 34px;
     top: 444px;
     display: flex;
     align-items: center;

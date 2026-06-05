@@ -297,4 +297,145 @@
   .dk__handle--tr { top: -6px; right: -6px; }
   .dk__handle--bl { bottom: -6px; left: -6px; }
   .dk__handle--br { bottom: -6px; right: -6px; }
+
+  /* ─── 1280px ────────────────────────────────────────────────── */
+  @media (max-width: 1280px) {
+    .dk__list {
+      flex: 0 0 460px;
+      width: 460px;
+    }
+    .dk__kind-name {
+      font-size: 21px;
+      line-height: 27px;
+    }
+    .dk__kind-desc {
+      font-size: 17px;
+      line-height: 22px;
+    }
+    .dk__row-inner {
+      gap: 20px;
+      padding: 20px;
+    }
+    .dk__card {
+      height: auto;
+      aspect-ratio: 785 / 680;
+    }
+  }
+
+  /* ─── 1024px ────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .dk__list {
+      flex: 0 0 380px;
+      width: 380px;
+    }
+    .dk__title {
+      font-size: 36px;
+      line-height: 40px;
+    }
+    .dk__kind-name {
+      font-size: 18px;
+      line-height: 24px;
+    }
+    .dk__kind-desc {
+      font-size: 15px;
+      line-height: 20px;
+    }
+    .dk__row-inner {
+      gap: 12px;
+      padding: 16px;
+    }
+    .dk__row--outline {
+      min-height: auto;
+    }
+    .dk__footer-text {
+      font-size: 22px;
+      line-height: 32px;
+    }
+    .dk__highlight {
+      font-size: 22px;
+      line-height: 32px;
+    }
+  }
+
+  /* ─── 768px — stack ─────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .dk {
+      padding: 48px 0;
+    }
+    .dk__container {
+      gap: 24px;
+    }
+    .dk__title {
+      font-size: 32px;
+      line-height: 36px;
+    }
+    .dk__content {
+      flex-direction: column;
+      gap: 24px;
+    }
+    .dk__list {
+      flex: none;
+      width: 100%;
+    }
+    .dk__card {
+      flex: none;
+      width: 100%;
+      height: auto;
+      aspect-ratio: unset;
+      overflow: visible;
+    }
+    .dk__card-img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: initial;
+      border-radius: 26px;
+    }
+    .dk__footer-text {
+      font-size: 20px;
+      line-height: 28px;
+    }
+    .dk__highlight {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+
+  /* ─── 390px — mobile ────────────────────────────────────────── */
+  @media (max-width: 390px) {
+    .dk {
+      padding: 40px 0;
+    }
+    .dk__container {
+      padding-inline: 20px;
+      gap: 20px;
+    }
+    .dk__title {
+      font-size: 26px;
+      line-height: 30px;
+    }
+    .dk__kind-name {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .dk__kind-desc {
+      font-size: 14px;
+      line-height: 18px;
+    }
+    .dk__row-inner {
+      padding: 12px;
+      gap: 8px;
+    }
+    .dk__row--outline {
+      min-height: auto;
+    }
+    .dk__footer-text {
+      font-size: 17px;
+      line-height: 24px;
+    }
+    .dk__highlight {
+      font-size: 17px;
+      line-height: 24px;
+    }
+  }
 </style>

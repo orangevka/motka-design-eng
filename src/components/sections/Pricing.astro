@@ -200,7 +200,6 @@
     font-size: 44px;
     line-height: 46px;
     color: var(--color-ink);
-    white-space: nowrap;
     margin: 0;
   }
 
@@ -219,7 +218,7 @@
     line-height: 26px;
     color: var(--color-ink);
     margin: 0;
-    width: 286px;
+    max-width: 286px;
   }
 
   .pricing__header-sub {
@@ -229,7 +228,7 @@
     line-height: 22px;
     color: var(--color-text-secondary);
     margin: 0;
-    width: 419px;
+    max-width: 419px;
   }
 
   /* ─── Cards wrap ────────────────────────────────────────────────── */
@@ -238,21 +237,21 @@
     gap: 20px;
     align-items: flex-start;
     width: 100%;
-    height: 662px;
+    min-height: 662px;
     position: relative;
     margin-bottom: -32px; /* overlap with strip */
     z-index: 2;
   }
 
   /* ─── "Most requested" badge ────────────────────────────────────── */
-  /* Figma: right=650px from right edge of cards row, top=-18px */
   /* Badge sits above Standard card (middle card) top-center */
   .pricing__badge {
     position: absolute;
-    /* center on middle card: cards-wrap is 3 equal cols + 2×20px gaps
-       middle card center ≈ (1/6 + 1/2) of total width - that's tricky with flex
-       Figma: right=650px from right of 1360px container */
-    right: 650px;
+    /* center on middle card (3 equal flex cols + 2×20px gaps)
+       middle card center = col1_width + gap + col2_width/2
+       = (W - 40)/3 + 20 + (W - 40)/6 = (W - 40)/2 + 20 = W/2 */
+    left: 50%;
+    transform: translateX(-50%);
     top: -18px;
     display: flex;
     align-items: center;
@@ -458,7 +457,7 @@
     background: var(--color-sand); /* #f3efed */
     border-radius: 24px;
     padding: 80px 48px 48px;
-    width: 1280px;
+    width: 100%;
     box-sizing: border-box;
     align-self: center;
     position: relative;
@@ -526,6 +525,312 @@
     color: var(--color-text-secondary);
     text-align: center;
     margin: 0;
-    width: 585px;
+    max-width: 585px;
+  }
+
+  /* ─── Responsive ─────────────────────────────────────────────────── */
+
+  /* 1280: 3 cards stay in row, tighter padding/gaps/fonts */
+  @media (max-width: 1280px) {
+    .pricing {
+      padding-inline: 24px;
+    }
+
+    .pricing__heading {
+      font-size: 38px;
+      line-height: 42px;
+    }
+
+    .pricing__card {
+      padding: 40px 24px 28px;
+    }
+
+    .pricing__hat {
+      right: 24px;
+    }
+
+    .pricing__cards-wrap {
+      gap: 16px;
+      min-height: auto;
+    }
+
+    .pricing__strip {
+      padding: 72px 36px 40px;
+    }
+  }
+
+  /* 1024: 3 cards still in row but tighter; header row can stack */
+  @media (max-width: 1024px) {
+    .pricing {
+      padding-inline: 16px;
+      padding-block: 48px;
+      gap: 24px;
+    }
+
+    .pricing__header {
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .pricing__header-right {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .pricing__heading {
+      font-size: 34px;
+      line-height: 38px;
+    }
+
+    .pricing__cards-wrap {
+      gap: 12px;
+    }
+
+    .pricing__card {
+      padding: 36px 18px 24px;
+      gap: 18px;
+    }
+
+    .pricing__hat {
+      width: 44px;
+      height: 44px;
+      right: 18px;
+      top: 18px;
+    }
+
+    .pricing__plan-name {
+      font-size: 26px;
+      line-height: 32px;
+    }
+
+    .pricing__plan-desc {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .pricing__card-header--tall {
+      min-height: auto;
+    }
+
+    .pricing__price-main {
+      font-size: 34px;
+    }
+
+    .pricing__feature span {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .pricing__chip {
+      font-size: 15px;
+      padding: 4px 12px 4px 10px;
+    }
+
+    .pricing__strip {
+      padding: 64px 28px 36px;
+    }
+
+    .pricing__strip-heading {
+      font-size: 26px;
+      line-height: 32px;
+    }
+
+    .pricing__step-title {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    .pricing__step-body {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  /* 768: cards stack to single column */
+  @media (max-width: 768px) {
+    .pricing {
+      padding-inline: 16px;
+      padding-block: 40px;
+    }
+
+    .pricing__inner {
+      padding-top: 32px;
+    }
+
+    .pricing__heading {
+      font-size: clamp(28px, 6vw, 38px);
+      line-height: 1.1;
+    }
+
+    .pricing__header {
+      margin-bottom: 32px;
+    }
+
+    /* Cards: single column */
+    .pricing__cards-wrap {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 0;
+      min-height: auto;
+    }
+
+    /* Badge: stay centered on Standard card (now 2nd stacked item);
+       in column layout, badge reverts to relative flow above the card */
+    .pricing__badge {
+      position: static;
+      transform: none;
+      align-self: center;
+      margin-bottom: -8px;
+      z-index: 3;
+    }
+
+    /* Reorder: badge must appear between Trial and Standard.
+       Use order to place badge just before Standard card. */
+    .pricing__cards-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Trial card → order 1, badge → order 2, Standard → order 3, Premium → order 4 */
+    .pricing__card:nth-child(2) { order: 1; } /* Trial */
+    .pricing__badge             { order: 2; }
+    .pricing__card:nth-child(3) { order: 3; } /* Standard */
+    .pricing__card:nth-child(4) { order: 4; } /* Premium */
+
+    .pricing__card {
+      width: 100%;
+      height: auto;
+      padding: 32px 20px 24px;
+    }
+
+    .pricing__hat {
+      width: 44px;
+      height: 44px;
+      right: 20px;
+      top: 20px;
+    }
+
+    .pricing__card-header--tall {
+      min-height: auto;
+    }
+
+    .pricing__plan-name {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    .pricing__cta {
+      width: 100%;
+      padding: 18px 24px 14px;
+      font-size: 18px;
+    }
+
+    /* Strip: stack columns */
+    .pricing__strip {
+      border-radius: 16px;
+      padding: 32px 20px 28px;
+      margin-top: 16px;
+    }
+
+    .pricing__strip-inner {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pricing__strip-divider {
+      width: 100%;
+      height: 1px;
+      align-self: auto;
+    }
+
+    .pricing__strip-heading {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    .pricing__step-title {
+      font-size: 18px;
+    }
+
+    .pricing__step-body {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  /* 390: phone — tighten further */
+  @media (max-width: 390px) {
+    .pricing {
+      padding-inline: 12px;
+      padding-block: 32px;
+    }
+
+    .pricing__inner {
+      padding-top: 24px;
+    }
+
+    .pricing__heading {
+      font-size: 28px;
+      line-height: 34px;
+    }
+
+    .pricing__header-title {
+      font-size: 18px;
+    }
+
+    .pricing__header-sub {
+      font-size: 16px;
+    }
+
+    .pricing__card {
+      padding: 28px 16px 20px;
+      gap: 16px;
+    }
+
+    .pricing__hat {
+      right: 16px;
+      top: 16px;
+    }
+
+    .pricing__plan-name {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    .pricing__plan-desc {
+      font-size: 15px;
+    }
+
+    .pricing__price-main {
+      font-size: 30px;
+    }
+
+    .pricing__feature span {
+      font-size: 15px;
+    }
+
+    .pricing__chip {
+      font-size: 14px;
+      padding: 4px 10px;
+    }
+
+    .pricing__strip {
+      padding: 28px 16px 24px;
+    }
+
+    .pricing__strip-heading {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    .pricing__cta {
+      font-size: 17px;
+      padding: 16px 20px 12px;
+    }
+
+    .pricing__footnote {
+      font-size: 15px;
+    }
   }
 </style>

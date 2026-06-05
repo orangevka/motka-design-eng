@@ -1,4 +1,4 @@
-figma-home*.png
+figma-*.png
 node_modules/
 dist/
 .astro/

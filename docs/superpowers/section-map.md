@@ -13,19 +13,19 @@
 
 ## Секции (node id копии ↔ продуктовая секция ↔ компонент)
 
-Заполняется в T7 (чтение прямых детей обёртки `15:320`).
+Заполнено в T7 (прямые дети обёртки `15:320`, маппинг по тексту — имена слоёв ненадёжны).
 
-| # | Продуктовая секция | node id (копия) | компонент-файл | примечания/риски |
-|---|---|---|---|---|
-| 1 | Nav | — | `src/components/Nav.astro` | Header h=90 |
-| 2 | Hero | — | `src/components/sections/Hero.astro` | лента 4559px |
-| 3 | BenefitsCards | — | `src/components/sections/BenefitsCards.astro` | 3 карточки |
-| 4 | Statement | — | `src/components/sections/Statement.astro` | центр. текст |
-| 5 | DesignKinds | — | `src/components/sections/DesignKinds.astro` | тёмная карточка + чат + табы |
-| 6 | PriorityExamples | — | `src/components/sections/PriorityExamples.astro` | спринт-бейджи, статистика |
-| 7 | ClientLogos | — | `src/components/sections/ClientLogos.astro` | ряд логотипов |
-| 8 | Testimonials | — | `src/components/sections/Testimonials.astro` | 3 отзыва + Clutch |
-| 9 | Process | — | `src/components/sections/Process.astro` | гуттер 80px |
-| 10 | Pricing | — | `src/components/sections/Pricing.astro` | 3 тарифа |
-| 11 | Faq | — | `src/components/sections/Faq.astro` | аккордеон + CTA-карточка |
-| 12 | Footer | — | `src/components/Footer.astro` | фон sand |
+| # | Продуктовая секция | node id (копия) | Figma-имя слоя | y / h | компонент-файл | примечания/риски |
+|---|---|---|---|---|---|---|
+| 1 | Nav | `15:321` | Header | 0 / 90 | `src/components/Nav.astro` | HORIZONTAL; «Portfolio…» |
+| 2 | Hero | `15:334` | hero | 90 / 650 | `src/components/sections/Hero.astro` | лента `card works` 4559px |
+| 3 | BenefitsCards | `15:6415` | Pain-point | 740 / 564 | `src/components/sections/BenefitsCards.astro` | «built for teams», 3 карточки |
+| 4 | Statement | `15:6495` | Frame 2131328195 | 1304 / 96 | `src/components/sections/Statement.astro` | центр. текст «Good design…» |
+| 5 | DesignKinds | `15:6497` | Coverage block | 1400 / 1060 | `src/components/sections/DesignKinds.astro` | тёмная карточка + чат + табы; **плавающий `15:8901` (y≈2269) поверх** |
+| 6 | PriorityExamples | `15:6662` | Heading | 2460 / 1229 | `src/components/sections/PriorityExamples.astro` | «adapts to your priorities», спринт-бейджи |
+| 7 | ClientLogos | `15:8343` | Coverage block | 3689 / 182 | `src/components/sections/ClientLogos.astro` | ряд логотипов |
+| 8 | Testimonials | `15:8401` | Coverage block | 3871 / 748 | `src/components/sections/Testimonials.astro` | «What clients say», 3 отзыва + Clutch |
+| 9 | Process | `15:8493` | Frame 2131328167 | 4619 / 682 | `src/components/sections/Process.astro` | «Simple process», гуттер 80px |
+| 10 | Pricing | `15:8601` | Use cases | 5301 / 1214 | `src/components/sections/Pricing.astro` | «Two plans, clear pricing», 3 тарифа |
+| 11 | Faq | `15:8788` | process block | 6515 / 870 | `src/components/sections/Faq.astro` | «Questions», аккордеон + тёмная CTA-карточка |
+| 12 | Footer | `15:8852` | Group 2087329417 | 7385 / 381 | `src/components/Footer.astro` | «Main…», фон sand |

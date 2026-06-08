@@ -284,9 +284,14 @@
       overflow: visible;
     }
 
-    /* Hide decorative mark at smaller sizes — it was absolutely placed */
+    /* Mark stays visible: becomes an in-flow item between Portfolio and Right */
     .footer__mark {
-      display: none;
+      position: relative;
+      left: auto;
+      top: auto;
+      order: 3;
+      flex-shrink: 0;
+      align-self: flex-start;
     }
 
     /* Reset absolute positioning for all columns */
@@ -298,10 +303,14 @@
       left: auto;
     }
 
-    /* Main col: fixed width */
+    /* Main col: sized to content; links never wrap */
     .footer__col--main {
-      width: 130px;
+      width: auto;
       flex-shrink: 0;
+      order: 1;
+    }
+    .footer__col--main .footer__link {
+      white-space: nowrap;
     }
 
     /* Portfolio col: take available space */
@@ -309,12 +318,14 @@
       width: auto;
       flex: 1 1 auto;
       min-width: 0;
+      order: 2;
     }
 
     /* Right block: shrink to content, align end */
     .footer__right {
       flex-shrink: 0;
       align-self: flex-start;
+      order: 4;
     }
 
     /* Tighten portfolio sub-col gap at 1280 */
@@ -334,6 +345,14 @@
     }
   }
 
+  /* Below 1280 the in-row mark crowds the columns — hide it there.
+     (Shown in-row only 1280–1439; restored under copyright when stacked.) */
+  @media (max-width: 1279px) {
+    .footer__mark {
+      display: none;
+    }
+  }
+
   /* ─── 1024px ─────────────────────────────────────────────────── */
   @media (max-width: 1023px) {
     .footer__panel {
@@ -349,6 +368,11 @@
 
   /* ─── 768px: stack to 2 rows (nav cols top, right block bottom) ─ */
   @media (max-width: 767px) {
+    /* Decorative mark doesn't fit the stacked grid — hide it */
+    .footer__mark {
+      display: none;
+    }
+
     .footer__panel {
       flex-direction: column;
       padding: 32px 24px;

@@ -28,7 +28,7 @@
               src="/assets/testimonials/stars-row.svg"
               alt="5 stars"
               width="92"
-              height="21"
+              height="32"
             />
           </div>
         </div>
@@ -65,7 +65,7 @@
               src="/assets/testimonials/stars-row.svg"
               alt="5 stars"
               width="92"
-              height="21"
+              height="32"
             />
           </div>
         </div>
@@ -102,7 +102,7 @@
               src="/assets/testimonials/stars-row.svg"
               alt="5 stars"
               width="92"
-              height="21"
+              height="32"
             />
           </div>
         </div>
@@ -144,7 +144,7 @@
         alt=""
         aria-hidden="true"
         width="60"
-        height="60"
+        height="32"
       />
     </div>
 
@@ -223,16 +223,16 @@
   }
 
   .testimonials__stars-wrap {
-    /* The stars SVG is a speech-bubble shape at 92×21 display size */
-    width: 92px;
-    height: 21px;
+    /* speech-bubble shape; intrinsic ratio 110:38 from the SVG viewBox.
+       Высоту задаём вровень с platform-иконкой (24px), ширина — по пропорции. */
+    height: 28px;
     flex-shrink: 0;
     overflow: visible;
   }
 
   .testimonials__stars-wrap img {
-    width: 92px;
-    height: 21px;
+    width: auto;
+    height: 100%; /* сохраняем пропорции звёзд — без сплющивания */
     display: block;
   }
 
@@ -338,7 +338,7 @@
 
   .testimonials__arrow {
     width: 60px;
-    height: 60px;
+    height: auto; /* пропорции 38:20 из viewBox — без растяжения в квадрат */
     display: block;
     flex-shrink: 0;
   }
@@ -408,7 +408,7 @@
 
     .testimonials__arrow {
       width: 48px;
-      height: 48px;
+      height: auto;
     }
   }
 
@@ -491,7 +491,7 @@
 
     .testimonials__arrow {
       width: 40px;
-      height: 40px;
+      height: auto;
     }
   }
 </style>

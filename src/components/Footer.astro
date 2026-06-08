@@ -366,65 +366,52 @@
     }
   }
 
-  /* ─── 768px: stack to 2 rows (nav cols top, right block bottom) ─ */
-  @media (max-width: 767px) {
-    /* Decorative mark doesn't fit the stacked grid — hide it */
-    .footer__mark {
-      display: none;
-    }
-
-    .footer__panel {
-      flex-direction: column;
-      padding: 32px 24px;
-      gap: 32px;
-      border-radius: 20px;
-    }
-
-    /* Row 1: Main + Portfolio side by side */
-    .footer__col--main {
-      width: auto;
-      flex-shrink: 1;
-    }
-
-    .footer__col--portfolio {
-      flex: 1 1 auto;
-    }
-
-    /* Row 2: socials/legal block — full width */
-    .footer__right {
-      width: 100%;
-    }
-
+  /* ─── ≤768px: stacked grid — nav cols, then right block, then mark ─ */
+  @media (max-width: 768px) {
     .footer__socials {
       margin-bottom: 16px;
     }
 
-    /* Wrap the two nav cols in a row via wrapper trick:
-       Use a wrapper element approach by targeting them as siblings in the panel */
-    /* Main + Portfolio sit in a flex row still, right block goes below */
-    .footer__panel {
-      flex-direction: column;
-    }
-
-    /* Group the nav columns in an inline flex row */
-    .footer__col--main,
-    .footer__col--portfolio {
-      display: flex; /* already flex-col; keep */
-    }
-
-    /* Create a nav row wrapper at 768 via CSS grid */
+    /* Grid: Main + Portfolio row, right block, decorative mark under copyright */
     .footer__panel {
       display: grid;
       grid-template-areas:
         "nav-main nav-portfolio"
-        "right    right";
+        "right    right"
+        "mark     mark";
       grid-template-columns: auto 1fr;
       gap: 32px 32px;
+      padding: 32px 24px;
+      border-radius: 20px;
+      height: auto;
     }
 
-    .footer__col--main       { grid-area: nav-main; }
-    .footer__col--portfolio  { grid-area: nav-portfolio; }
-    .footer__right           { grid-area: right; }
+    .footer__col--main       { grid-area: nav-main; width: auto; flex-shrink: 1; }
+    .footer__col--portfolio  { grid-area: nav-portfolio; flex: 1 1 auto; }
+    .footer__right           { grid-area: right; width: 100%; }
+
+    /* Portfolio: single column (was two sub-columns) */
+    .footer__portfolio-cols {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer__portfolio-cols .footer__links:first-child,
+    .footer__portfolio-cols .footer__links:last-child {
+      width: auto;
+      flex: none;
+    }
+
+    /* Decorative mark: shown under the copyright block, left-aligned */
+    .footer__mark {
+      display: block;
+      grid-area: mark;
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 240px;
+      height: 180px;
+      justify-self: start;
+    }
   }
 
   /* ─── 390px: full single-column stack ───────────────────────── */
@@ -437,23 +424,15 @@
       border-radius: 16px;
     }
 
-    .footer__col--main,
-    .footer__col--portfolio {
-      width: 100%;
-    }
+    /* Order: Main, Portfolio, Right(copyright), then mark last */
+    .footer__col--main      { width: 100%; order: 1; }
+    .footer__col--portfolio { width: 100%; order: 2; }
+    .footer__right          { width: 100%; order: 3; }
+    .footer__mark           { order: 4; }
 
+    /* Portfolio stays a single column (inherited), tighter gap */
     .footer__portfolio-cols {
-      gap: 16px;
-    }
-
-    .footer__portfolio-cols .footer__links:first-child,
-    .footer__portfolio-cols .footer__links:last-child {
-      width: auto;
-      flex: 1 1 0;
-    }
-
-    .footer__right {
-      width: 100%;
+      gap: 8px;
     }
 
     .footer__socials {

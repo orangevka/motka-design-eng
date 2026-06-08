@@ -117,7 +117,7 @@
   /* 1024 — reduce gap further, allow logos to shrink a little */
   @media (max-width: 1024px) {
     .client-logos__row {
-      gap: 36px;
+      gap: 24px 36px; /* вертикальный 24 при переносе, горизонтальный 36 */
     }
     .client-logos__logo {
       flex-shrink: 1;

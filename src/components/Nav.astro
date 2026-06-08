@@ -74,18 +74,21 @@ const links = [
       <nav class="mobile-nav__menu" aria-label="Mobile primary">
         {links.map((l) => (
           l.dropdown ? (
-            <details class="mobile-nav__sub">
-              <summary class="mobile-nav__item mobile-nav__item--dropdown">
-                {l.label}
-                <img class="mobile-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
-              </summary>
+            <div class="mobile-nav__sub">
+              <input type="checkbox" id="m-portfolio-toggle" class="mobile-nav__subtoggle" aria-label="Show Portfolio cases" />
+              <div class="mobile-nav__subhead mobile-nav__item mobile-nav__item--dropdown">
+                <a class="mobile-nav__sublink" href={l.href}>{l.label}</a>
+                <label class="mobile-nav__subchevron" for="m-portfolio-toggle">
+                  <img class="mobile-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
+                </label>
+              </div>
               <div class="mobile-nav__sublist">
                 {cases.map((c) => (
                   <a class="mobile-nav__subitem" href={c.href}>{c.label}</a>
                 ))}
                 <a class="mobile-nav__subitem mobile-nav__subitem--all" href={allCasesHref}>All cases →</a>
               </div>
-            </details>
+            </div>
           ) : (
             <a class="mobile-nav__item" href={l.href}>{l.label}</a>
           )
@@ -252,24 +255,50 @@ const links = [
     .mobile-nav__item--dropdown { gap: var(--space-1); }
     .mobile-nav__chevron { width: 20px; height: 20px; }
 
-    /* Вложенный аккордеон Portfolio */
+    /* Вложенный аккордеон Portfolio — checkbox-hack (валидно, zero-JS) */
     .mobile-nav__sub { border-bottom: 1px solid var(--border-subtle); }
     .mobile-nav__sub:last-child { border-bottom: none; }
-    .mobile-nav__sub > summary {
-      list-style: none;
-      cursor: pointer;
-      border-bottom: none;       /* граница уже на .mobile-nav__sub */
+
+    /* чекбокс: визуально скрыт, но фокусируем с клавиатуры */
+    .mobile-nav__subtoggle {
+      position: absolute;
+      width: 1px; height: 1px;
+      opacity: 0;
+      margin: 0;
     }
-    .mobile-nav__sub > summary::-webkit-details-marker { display: none; }
-    .mobile-nav__sub[open] > summary .mobile-nav__chevron { transform: rotate(180deg); }
+
+    .mobile-nav__subhead { border-bottom: none; }
+
+    .mobile-nav__sublink {
+      font: inherit;
+      line-height: inherit;
+      color: var(--color-ink);
+      text-decoration: none;
+      flex: 0 0 auto;        /* ширина по тексту: тап по слову = переход */
+      align-self: center;
+    }
+
+    /* тоглер: заполняет всю правую часть строки, шеврон справа — тап = раскрытие */
+    .mobile-nav__subchevron {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      align-self: stretch;
+      cursor: pointer;
+    }
     .mobile-nav__chevron { transition: transform .2s ease; }
+    .mobile-nav__subtoggle:checked ~ .mobile-nav__subhead .mobile-nav__chevron {
+      transform: rotate(180deg);
+    }
 
     .mobile-nav__sublist {
-      display: flex;
+      display: none;
       flex-direction: column;
       padding-left: var(--space-4);
       padding-bottom: var(--space-2);
     }
+    .mobile-nav__subtoggle:checked ~ .mobile-nav__sublist { display: flex; }
     .mobile-nav__subitem {
       font-family: var(--font-display);
       font-weight: 400;

@@ -73,12 +73,22 @@ const links = [
       </summary>
       <nav class="mobile-nav__menu" aria-label="Mobile primary">
         {links.map((l) => (
-          <a class:list={['mobile-nav__item', l.dropdown && 'mobile-nav__item--dropdown']} href={l.href}>
-            {l.label}
-            {l.dropdown && (
-              <img class="mobile-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
-            )}
-          </a>
+          l.dropdown ? (
+            <details class="mobile-nav__sub">
+              <summary class="mobile-nav__item mobile-nav__item--dropdown">
+                {l.label}
+                <img class="mobile-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
+              </summary>
+              <div class="mobile-nav__sublist">
+                {cases.map((c) => (
+                  <a class="mobile-nav__subitem" href={c.href}>{c.label}</a>
+                ))}
+                <a class="mobile-nav__subitem mobile-nav__subitem--all" href={allCasesHref}>All cases →</a>
+              </div>
+            </details>
+          ) : (
+            <a class="mobile-nav__item" href={l.href}>{l.label}</a>
+          )
         ))}
       </nav>
     </details>
@@ -241,5 +251,38 @@ const links = [
 
     .mobile-nav__item--dropdown { gap: var(--space-1); }
     .mobile-nav__chevron { width: 20px; height: 20px; }
+
+    /* Вложенный аккордеон Portfolio */
+    .mobile-nav__sub { border-bottom: 1px solid var(--border-subtle); }
+    .mobile-nav__sub:last-child { border-bottom: none; }
+    .mobile-nav__sub > summary {
+      list-style: none;
+      cursor: pointer;
+      border-bottom: none;       /* граница уже на .mobile-nav__sub */
+    }
+    .mobile-nav__sub > summary::-webkit-details-marker { display: none; }
+    .mobile-nav__sub[open] > summary .mobile-nav__chevron { transform: rotate(180deg); }
+    .mobile-nav__chevron { transition: transform .2s ease; }
+
+    .mobile-nav__sublist {
+      display: flex;
+      flex-direction: column;
+      padding-left: var(--space-4);
+      padding-bottom: var(--space-2);
+    }
+    .mobile-nav__subitem {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.4px;
+      color: var(--color-ink);
+      white-space: nowrap;
+      padding-block: var(--space-3);   /* 12px → tap target */
+      display: flex;
+      align-items: center;
+    }
+    /* жирнее desktop-версии: финальный CTA в длинном мобильном списке */
+    .mobile-nav__subitem--all { font-weight: 700; }
   }
 </style>

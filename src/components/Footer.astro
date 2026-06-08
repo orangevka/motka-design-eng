@@ -8,6 +8,7 @@
 
       <!-- Logo/mark decorative area (top-left of panel right half) -->
       <div class="footer__mark" aria-hidden="true">
+        <img class="footer__mark-bg" src="/assets/footer/mark-bg.png" alt="" width="240" height="180" />
         <img class="footer__mark-img" src="/assets/footer/logo-mark.svg" alt="" width="41" height="80" />
       </div>
 
@@ -86,17 +87,31 @@
   /* Figma: left=760, top=0, w=240, h=180 (within 1360px panel) */
   /* The group2087329411 SVG (sparkle icon) is at x=93.41, y=43 within that 240×180 area */
   /* So absolute from panel left: 760+93.41 ≈ 853px */
+  /* Mark area = checkerboard placeholder bg (Figma image 709) + sparkle on top.
+     Figma: area at panel x=760, y=0, w=240, h=180; sparkle at x=93,y=43 within it. */
   .footer__mark {
     position: absolute;
-    left: 853px;
-    top: 43px;
-    width: 41px;
-    height: 80px;
+    left: 760px;
+    top: 0;
+    width: 240px;
+    height: 180px;
     pointer-events: none;
     z-index: 0;
   }
 
+  .footer__mark-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .footer__mark-img {
+    position: absolute;
+    left: 93px;
+    top: 43px;
     width: 41px;
     height: 80px;
     display: block;
@@ -255,8 +270,10 @@
      Switch from absolute positioning to flex-row layout
      ═══════════════════════════════════════════════════════════════ */
 
-  @media (max-width: 1279px) {
-    /* Panel becomes auto-height, flex row */
+  @media (max-width: 1439px) {
+    /* Panel becomes auto-height, flex row.
+       Switch BEFORE 1440: absolute desktop layout assumes a 1360px panel
+       (viewport ≥1440); below that the right column would overflow the panel. */
     .footer__panel {
       height: auto;
       padding: 40px 40px 40px 40px;

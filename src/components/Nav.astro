@@ -39,10 +39,8 @@ const links = [
       {links.map((l) => (
         l.dropdown ? (
           <div class="site-nav__has-dropdown">
-            <a class="site-nav__item site-nav__item--dropdown" href={l.href}>
-              {l.label}
-              <img class="site-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
-            </a>
+            <a class="site-nav__item" href={l.href}>{l.label}</a>
+            <img class="site-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
             <div class="site-nav__dropdown">
               {cases.map((c) => (
                 <a class="site-nav__drop-item" href={c.href}>{c.label}</a>
@@ -121,11 +119,10 @@ const links = [
     color: var(--color-ink);
     white-space: nowrap;
   }
-  .site-nav__item--dropdown { display: inline-flex; align-items: center; gap: var(--space-1); /* 4px */ }
   .site-nav__chevron { width: 20px; height: 20px; }
 
   /* ── Desktop dropdown (Portfolio) ─────────────────────── */
-  .site-nav__has-dropdown { position: relative; display: inline-flex; align-items: center; }
+  .site-nav__has-dropdown { position: relative; display: inline-flex; align-items: center; gap: var(--space-1); /* 4px между текстом и шевроном */ }
 
   .site-nav__dropdown {
     position: absolute;

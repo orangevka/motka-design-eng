@@ -235,7 +235,7 @@
   .pricing__cards-wrap {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
+    align-items: stretch; /* плашки равной высоты по самой высокой; CTA прижата к низу через features flex:1 */
     width: 100%;
     min-height: 662px;
     position: relative;
@@ -282,7 +282,6 @@
   .pricing__card {
     flex: 1 0 0;
     min-width: 0;
-    height: 100%;
     position: relative;
     border-radius: 24px;
     padding: 48px 36px 36px;

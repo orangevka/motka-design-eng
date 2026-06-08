@@ -37,12 +37,22 @@ const links = [
     <!-- Desktop nav (≥768px) -->
     <nav class="site-nav" aria-label="Primary">
       {links.map((l) => (
-        <a class:list={['site-nav__item', l.dropdown && 'site-nav__item--dropdown']} href={l.href}>
-          {l.label}
-          {l.dropdown && (
-            <img class="site-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
-          )}
-        </a>
+        l.dropdown ? (
+          <div class="site-nav__has-dropdown">
+            <a class="site-nav__item site-nav__item--dropdown" href={l.href}>
+              {l.label}
+              <img class="site-nav__chevron" src="/assets/nav/chevron.svg" width="20" height="20" alt="" aria-hidden="true" />
+            </a>
+            <div class="site-nav__dropdown" aria-label="Portfolio cases">
+              {cases.map((c) => (
+                <a class="site-nav__drop-item" href={c.href}>{c.label}</a>
+              ))}
+              <a class="site-nav__drop-item site-nav__drop-item--all" href={allCasesHref}>All cases →</a>
+            </div>
+          </div>
+        ) : (
+          <a class="site-nav__item" href={l.href}>{l.label}</a>
+        )
       ))}
     </nav>
 

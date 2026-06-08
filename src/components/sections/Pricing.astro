@@ -666,41 +666,14 @@
       margin-bottom: 32px;
     }
 
-    /* Cards: single column */
+    /* Cards stay in a 3-column row at 768 (tighter padding) */
     .pricing__cards-wrap {
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 0;
-      min-height: auto;
+      gap: 12px;
     }
-
-    /* Badge: stay centered on Standard card (now 2nd stacked item);
-       in column layout, badge reverts to relative flow above the card */
-    .pricing__badge {
-      position: static;
-      transform: none;
-      align-self: center;
-      margin-bottom: -8px;
-      z-index: 3;
-    }
-
-    /* Reorder: badge must appear between Trial and Standard.
-       Use order to place badge just before Standard card. */
-    .pricing__cards-wrap {
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Trial card → order 1, badge → order 2, Standard → order 3, Premium → order 4 */
-    .pricing__card:nth-child(2) { order: 1; } /* Trial */
-    .pricing__badge             { order: 2; }
-    .pricing__card:nth-child(3) { order: 3; } /* Standard */
-    .pricing__card:nth-child(4) { order: 4; } /* Premium */
 
     .pricing__card {
-      width: 100%;
       height: auto;
-      padding: 32px 20px 24px;
+      padding: 28px 14px 20px;
     }
 
     .pricing__hat {
@@ -755,6 +728,31 @@
     .pricing__step-body {
       font-size: 16px;
       line-height: 22px;
+    }
+  }
+
+  /* ≤560: cards finally stack to a single column (too narrow for 3-in-row) */
+  @media (max-width: 560px) {
+    .pricing__cards-wrap {
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 0;
+      min-height: auto;
+    }
+    .pricing__badge {
+      position: static;
+      transform: none;
+      align-self: center;
+      margin-bottom: -8px;
+      z-index: 3;
+    }
+    .pricing__card:nth-child(2) { order: 1; } /* Trial */
+    .pricing__badge             { order: 2; }
+    .pricing__card:nth-child(3) { order: 3; } /* Standard */
+    .pricing__card:nth-child(4) { order: 4; } /* Premium */
+    .pricing__card {
+      width: 100%;
+      padding: 32px 20px 24px;
     }
   }
 

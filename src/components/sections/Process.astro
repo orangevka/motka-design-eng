@@ -50,25 +50,8 @@
 
           <!-- Step 1: Add tasks to Trello -->
           <div class="process__step">
-            <div class="process__mock process__mock--1">
-              <!-- Trello-like task list mock -->
-              <div class="process__trello">
-                <div class="process__trello-items">
-                  <div class="process__trello-item">
-                    <div class="process__trello-avatar"></div>
-                    <div class="process__trello-bar process__trello-bar--long"></div>
-                  </div>
-                  <div class="process__trello-item">
-                    <div class="process__trello-avatar"></div>
-                    <div class="process__trello-bar process__trello-bar--medium"></div>
-                  </div>
-                  <div class="process__trello-item">
-                    <div class="process__trello-avatar"></div>
-                    <div class="process__trello-bar process__trello-bar--medium"></div>
-                  </div>
-                </div>
-                <div class="process__trello-send">Send</div>
-              </div>
+            <div class="process__mock">
+              <img src="/assets/process/step1-trello.png" alt="" width="158" height="180" class="process__mock-img" />
             </div>
             <div class="process__step-text">
               <div class="process__step-num">1</div>
@@ -84,27 +67,8 @@
 
           <!-- Step 2: First drafts in 24–48h -->
           <div class="process__step">
-            <div class="process__mock process__mock--2">
-              <div class="process__figma-mock">
-                <img src="/assets/process/step2-mock.png" alt="" width="262" height="180" class="process__figma-bg" />
-                <!-- Selection box: solid 1px blue border, sharp corners, 4 corner anchor handles -->
-                <div class="process__selection">
-                  <div class="process__handle process__handle--tl"></div>
-                  <div class="process__handle process__handle--tr"></div>
-                  <div class="process__handle process__handle--bl"></div>
-                  <div class="process__handle process__handle--br"></div>
-                </div>
-                <!-- "Let's go" text overlay -->
-                <p class="process__letsgo">Let's go</p>
-                <!-- Cursor: Designer (top-left area) -->
-                <!-- Arrow at left=40, top=-2; label at left=58, top=17 -->
-                <img src="/assets/process/cursor-blue.svg" alt="" width="18" height="16" class="process__cursor-arrow process__cursor-arrow--designer" />
-                <span class="process__cursor-label process__cursor-label--blue process__cursor-label--designer">Designer</span>
-                <!-- Cursor: Art director (bottom-right area) -->
-                <!-- Arrow at left=105, top=111; label at left=123, top=130 -->
-                <img src="/assets/process/cursor-orange.svg" alt="" width="18" height="16" class="process__cursor-arrow process__cursor-arrow--artdir" />
-                <span class="process__cursor-label process__cursor-label--orange process__cursor-label--artdir">Art director</span>
-              </div>
+            <div class="process__mock">
+              <img src="/assets/process/step2-letsgo.png" alt="" width="240" height="180" class="process__mock-img" />
             </div>
             <div class="process__step-text">
               <div class="process__step-num">2</div>
@@ -120,27 +84,8 @@
 
           <!-- Step 3: Review, iterate, ship -->
           <div class="process__step">
-            <div class="process__mock process__mock--3">
-              <div class="process__review-mock">
-                <div class="process__review-items">
-                  <div class="process__review-item">
-                    <img src="/assets/process/step-check.svg" alt="" width="24" height="24" class="process__check-icon" />
-                    <div class="process__trello-bar process__trello-bar--long2"></div>
-                  </div>
-                  <div class="process__review-item">
-                    <img src="/assets/process/step-check.svg" alt="" width="24" height="24" class="process__check-icon" />
-                    <div class="process__trello-bar process__trello-bar--medium"></div>
-                  </div>
-                  <div class="process__review-item">
-                    <img src="/assets/process/step-check.svg" alt="" width="24" height="24" class="process__check-icon" />
-                    <div class="process__trello-bar process__trello-bar--medium"></div>
-                  </div>
-                </div>
-                <div class="process__next-btn">
-                  <span class="process__next-plus">+</span>
-                  <span class="process__next-label">Next</span>
-                </div>
-              </div>
+            <div class="process__mock">
+              <img src="/assets/process/step3-review.png" alt="" width="240" height="180" class="process__mock-img" />
             </div>
             <div class="process__step-text">
               <div class="process__step-num">3</div>
@@ -299,258 +244,18 @@
     gap: 32px;
   }
 
-  /* ─── Mock area (top of each step) ───────────────────────────── */
+  /* ─── Mock area (top of each step) — rasterised Figma mock ─────── */
   .process__mock {
-    height: 180px;
     flex-shrink: 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ─── Step 1: Trello-like task list mock ─────────────────────── */
-  .process__trello {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-    width: 158px;
+    justify-content: flex-start;
   }
 
-  .process__trello-items {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 100%;
-  }
-
-  .process__trello-item {
-    display: flex;
-    align-items: center;
-    gap: 8.26px;
-    height: 38px;
-    background: #fff;
-    border: 1px solid var(--color-sand);
-    border-radius: 9.91px;
-    padding: 4.96px 6.61px;
-    flex-shrink: 0;
-    overflow: hidden;
-  }
-
-  .process__trello-avatar {
-    width: 24px;
-    height: 24px;
-    border-radius: 9.91px;
-    border: 2px solid var(--color-sand);
-    background: #fff;
-    flex-shrink: 0;
-  }
-
-  .process__trello-bar {
-    height: 11px;
-    background: var(--color-sand);
-    border-radius: 4px;
-    flex-shrink: 0;
-  }
-
-  .process__trello-bar--long  { width: 108px; }
-  .process__trello-bar--medium { width: 76px; }
-  .process__trello-bar--long2 { width: 95px; }
-
-  .process__trello-send {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 79px;
-    height: 37px;
-    background: var(--color-cta);
-    border-radius: 9.91px;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 18px;
-    color: var(--color-ink);
-    flex-shrink: 0;
-  }
-
-  /* ─── Step 2: Figma canvas mock ──────────────────────────────── */
-  .process__mock--2 {
-    width: 240px;
-    overflow: visible;
-  }
-
-  .process__figma-mock {
-    position: relative;
-    width: 240px;
-    height: 180px;
-    overflow: hidden;
-  }
-
-  .process__figma-bg {
-    position: absolute;
-    left: -1px;
-    top: 0;
-    width: 262px;
-    height: 180px;
-    object-fit: cover;
-    pointer-events: none;
+  .process__mock-img {
     display: block;
-  }
-
-  /* Selection box: 1px solid blue border, sharp corners */
-  .process__selection {
-    position: absolute;
-    left: 14.61px;
-    top: 55px;
-    width: 149px;
-    height: 86px;
-    border: 1px solid #0b99ff;
-    border-radius: 0;
-    box-sizing: border-box;
-  }
-
-  /* Corner anchor handles: 8×8px white square with 2px blue border, centered on each corner */
-  .process__handle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border: 2px solid #0b99ff;
-    border-radius: 0;
-    box-sizing: border-box;
-  }
-
-  .process__handle--tl { top: -4px;  left: -4px;  }
-  .process__handle--tr { top: -4px;  right: -4px; }
-  .process__handle--bl { bottom: -4px; left: -4px;  }
-  .process__handle--br { bottom: -4px; right: -4px; }
-
-  /* "Let's go" text overlay */
-  .process__letsgo {
-    position: absolute;
-    left: 33.61px;
-    top: 77px;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 37.6px;
-    color: var(--color-ink);
-    white-space: nowrap;
-    margin: 0;
-  }
-
-  /* Cursor arrows and labels — absolutely positioned in figma-mock */
-  .process__cursor-arrow {
-    position: absolute;
-    width: 18px;
-    height: 16px;
-    transform: rotate(-45deg);
-    display: block;
-    transform-origin: center;
-  }
-
-  .process__cursor-arrow--designer {
-    left: 40px;
-    top: -2px;
-  }
-
-  .process__cursor-arrow--artdir {
-    left: 105px;
-    top: 111px;
-  }
-
-  .process__cursor-label {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    height: 26px;
-    padding: 3px 10px 3px 12px;
-    border-radius: 2px 12px 12px 12px;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 14.29px;
-    color: #fff;
-    white-space: nowrap;
-  }
-
-  .process__cursor-label--designer {
-    left: 58px;
-    top: 17px;
-  }
-
-  .process__cursor-label--artdir {
-    left: 123px;
-    top: 130px;
-  }
-
-  .process__cursor-label--blue   { background: #627dff; }
-  .process__cursor-label--orange { background: #fb5608; }
-
-  /* ─── Step 3: Review + next mock ─────────────────────────────── */
-  .process__review-mock {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    width: 240px;
-  }
-
-  .process__review-items {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1 0 0;
-    min-width: 0;
-  }
-
-  .process__review-item {
-    display: flex;
-    align-items: center;
-    gap: 8.26px;
-    height: 38px;
-    background: #fff;
-    border: 1px solid var(--color-sand);
-    border-radius: 9.91px;
-    padding: 4.96px 6.61px;
-    flex-shrink: 0;
-    overflow: hidden;
-  }
-
-  .process__check-icon {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    display: block;
-  }
-
-  /* "Next" dashed button */
-  .process__next-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8.26px;
-    width: 79px;
-    align-self: stretch;
-    border: 2px dashed var(--color-sand);
-    border-radius: 9.91px;
-    flex-shrink: 0;
-    padding: 4.96px 6.61px;
-  }
-
-  .process__next-plus {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 18px;
-    color: var(--color-ink);
-  }
-
-  .process__next-label {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 18px;
-    color: var(--color-ink);
+    width: auto;
+    max-width: 100%;
+    height: auto;
   }
 
   /* ─── Step text row ───────────────────────────────────────────── */
@@ -660,53 +365,6 @@
       padding: 16px 10px;
       gap: 10px;
     }
-    .process__mock {
-      height: auto;
-      min-height: 120px;
-    }
-    /* Trello mock — fluid */
-    .process__trello {
-      width: 100%;
-      max-width: 100%;
-    }
-    /* Review mock — fluid */
-    .process__review-mock {
-      width: 100%;
-      max-width: 100%;
-    }
-    /* Scale down step 2 figma mock */
-    .process__mock--2 {
-      width: 100%;
-      overflow: hidden;
-    }
-    .process__figma-mock {
-      width: 100%;
-      max-width: 100%;
-      height: 130px;
-    }
-    .process__figma-bg {
-      width: 100%;
-      max-width: none;
-      height: 130px;
-      left: 0;
-    }
-    .process__selection {
-      left: 8%;
-      top: 36px;
-      width: 60%;
-      height: 58px;
-    }
-    .process__letsgo {
-      left: 15%;
-      top: 50px;
-      font-size: 18px;
-      line-height: 24px;
-    }
-    .process__cursor-arrow--designer { left: 20%; top: -2px; }
-    .process__cursor-label--designer { left: calc(20% + 20px); top: 13px; font-size: 11px; height: 20px; padding: 2px 6px 2px 8px; }
-    .process__cursor-arrow--artdir   { left: 42%; top: 78px; }
-    .process__cursor-label--artdir   { left: calc(42% + 20px); top: 92px; font-size: 11px; height: 20px; padding: 2px 6px 2px 8px; }
-
     .process__step-title {
       font-size: 16px;
       line-height: 20px;
@@ -717,7 +375,7 @@
     }
   }
 
-  /* ─── 768 & 390 — stack layout ───────────────────────────────────── */
+  /* ─── 768: heading on top, 3 image-mocks stay in a row ─────────── */
   @media (max-width: 768px) {
     .process {
       padding-block: 40px;
@@ -725,117 +383,38 @@
     .process__panel {
       padding: 24px 20px;
     }
-
-    /* Stack: left (heading+icons) on top, steps below */
     .process__heading-row {
       flex-direction: column;
       gap: 24px;
     }
-
-    /* Left column — full width */
     .process__left {
       width: 100%;
       flex-shrink: unset;
       gap: 20px;
     }
     .process__heading {
-      font-size: 36px;
-      line-height: 42px;
+      font-size: 32px;
+      line-height: 38px;
       width: auto;
     }
-
-    /* Steps panel — vertical, full width */
     .process__steps {
-      flex: none;
-      flex-direction: column;
-      gap: 0;
-      padding: 20px 16px;
+      flex: none; /* в column-heading-row не растягиваем по высоте (иначе overflow режет мокапы) */
       width: 100%;
+      padding: 20px 14px;
+      gap: 14px;
     }
-
-    /* Steps take full width when stacked */
-    .process__step {
-      flex: unset;
-      width: 100%;
-      gap: 20px;
-      padding: 20px 0;
-    }
-    /* First step: no top padding */
-    .process__step:first-child {
-      padding-top: 0;
-    }
-
-    /* Turn vertical dividers into horizontal ones */
-    .process__divider {
-      width: 100%;
-      height: 1px;
-      align-self: auto;
-      flex-shrink: 0;
-    }
-
-    /* Mock areas: full width, auto height */
-    .process__mock {
-      height: auto;
-      overflow: visible;
-    }
-
-    /* Step 1 trello mock — scale to container */
-    .process__trello {
-      width: 100%;
-      max-width: 280px;
-    }
-
-    /* Step 2 figma mock — scale proportionally */
-    .process__mock--2 {
-      width: 100%;
-      overflow: visible;
-    }
-    .process__figma-mock {
-      width: 100%;
-      max-width: 320px;
-      height: 220px;
-    }
-    .process__figma-bg {
-      width: 100%;
-      max-width: 340px;
-      height: 220px;
-      left: 0;
-    }
-    .process__selection {
-      left: 19px;
-      top: 68px;
-      width: 188px;
-      height: 108px;
-    }
-    .process__letsgo {
-      left: 42px;
-      top: 96px;
-      font-size: 38px;
-      line-height: 47px;
-    }
-    .process__cursor-arrow--designer { left: 50px; top: -2px; }
-    .process__cursor-label--designer { left: 72px; top: 21px; }
-    .process__cursor-arrow--artdir   { left: 132px; top: 140px; }
-    .process__cursor-label--artdir   { left: 154px; top: 163px; }
-
-    /* Step 3 review mock — scale to container */
-    .process__review-mock {
-      width: 100%;
-      max-width: 320px;
-    }
-
     .process__step-title {
-      font-size: 22px;
-      line-height: 28px;
+      font-size: 18px;
+      line-height: 24px;
     }
     .process__step-desc {
-      font-size: 18px;
-      line-height: 22px;
+      font-size: 15px;
+      line-height: 20px;
     }
   }
 
-  /* ─── 390 fine-tuning ────────────────────────────────────────────── */
-  @media (max-width: 390px) {
+  /* ─── ≤480: phone — 3 mocks too narrow in a row, stack them ──────── */
+  @media (max-width: 480px) {
     .process__panel {
       padding: 20px 16px;
     }
@@ -843,32 +422,26 @@
       font-size: 30px;
       line-height: 36px;
     }
-    .process__figma-mock {
-      max-width: 260px;
-      height: 180px;
+    .process__steps {
+      flex-direction: column;
+      gap: 0;
+      padding: 20px 16px;
     }
-    .process__figma-bg {
-      max-width: 280px;
-      height: 180px;
+    .process__step {
+      flex: unset;
+      width: 100%;
+      gap: 20px;
+      padding: 20px 0;
     }
-    .process__selection {
-      left: 16px;
-      top: 56px;
-      width: 155px;
-      height: 89px;
+    .process__step:first-child {
+      padding-top: 0;
     }
-    .process__letsgo {
-      left: 35px;
-      top: 79px;
-      font-size: 31px;
-      line-height: 39px;
-    }
-    .process__cursor-arrow--designer { left: 41px; top: -2px; }
-    .process__cursor-label--designer { left: 59px; top: 17px; }
-    .process__cursor-arrow--artdir   { left: 109px; top: 115px; }
-    .process__cursor-label--artdir   { left: 127px; top: 134px; }
-    .process__step-desc {
-      font-size: 16px;
+    .process__divider {
+      width: 100%;
+      height: 1px;
+      align-self: auto;
+      flex-shrink: 0;
     }
   }
+
 </style>

@@ -1,6 +1,15 @@
 ---
 // DesignKinds section — 1440×1060 pixel-perfect (Figma node 15:6497)
 // "One subscription, every kind of design"
+// CSS-only tabs: clicking a row activates it (radio + :checked). One placeholder
+// image for now (dark-card.png); on ≤768 the image opens directly under the active row.
+const kinds = [
+  { name: 'Interfaces', desc: 'Expert level product design, from screens to design systems.' },
+  { name: 'Branding', desc: 'Identity that stays consistent across every touchpoint.' },
+  { name: 'Marketing creatives', desc: 'Creative assets for campaigns, launches, and growth.' },
+  { name: 'Design support', desc: 'Replaces a part-time in-house designer, without the hire.', outline: true },
+];
+const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
 ---
 
 <section class="dk">
@@ -11,76 +20,39 @@
       <h2 class="dk__title">One subscription,<br />every kind of design</h2>
     </div>
 
-    <!-- Two-column content -->
+    <!-- Two-column content — CSS-only tabs -->
     <div class="dk__content">
 
-      <!-- Left: design kind rows -->
+      <!-- Left: radio-driven design-kind rows -->
       <div class="dk__list">
-
-        <!-- Interfaces (active / elevated) -->
-        <div class="dk__row dk__row--active">
-          <div class="dk__row-inner">
-            <div class="dk__text">
-              <p class="dk__kind-name">Interfaces</p>
-              <p class="dk__kind-desc">Expert level product design, from screens<br />to design systems.</p>
+        {kinds.map((k, i) => (
+          <>
+            <input class="dk__radio" type="radio" name="dk-tab" id={`dk-tab-${i}`} checked={i === 0} />
+            <div class="dk__item">
+              <label class:list={['dk__row', k.outline && 'dk__row--outline']} for={`dk-tab-${i}`}>
+                <span class="dk__row-inner">
+                  <span class="dk__text">
+                    <span class="dk__kind-name">{k.name}</span>
+                    <span class="dk__kind-desc">{k.desc}</span>
+                  </span>
+                  <span class="dk__arrow" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d={ARROW} stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </span>
+              </label>
+              <!-- Per-row image (shown under the active row on ≤768) -->
+              <div class="dk__card dk__card--mobile">
+                <img src="/assets/designkinds/dark-card.png" alt="" width="785" height="680" class="dk__card-img" aria-hidden="true" />
+              </div>
             </div>
-            <div class="dk__arrow" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Branding -->
-        <div class="dk__row">
-          <div class="dk__row-inner">
-            <div class="dk__text">
-              <p class="dk__kind-name">Branding</p>
-              <p class="dk__kind-desc">Identity that stays consistent across every touchpoint.</p>
-            </div>
-            <div class="dk__arrow" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Marketing creatives -->
-        <div class="dk__row">
-          <div class="dk__row-inner">
-            <div class="dk__text">
-              <p class="dk__kind-name">Marketing creatives</p>
-              <p class="dk__kind-desc">Creative assets for campaigns, launches,<br />and growth.</p>
-            </div>
-            <div class="dk__arrow" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Design support (white, outlined) -->
-        <div class="dk__row dk__row--outline">
-          <div class="dk__row-inner">
-            <div class="dk__text">
-              <p class="dk__kind-name">Design support</p>
-              <p class="dk__kind-desc">Replaces a part-time in-house designer, without the hire.</p>
-            </div>
-            <div class="dk__arrow" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-
+          </>
+        ))}
       </div>
 
-      <!-- Right: dark card -->
-      <div class="dk__card">
+      <!-- Right: dark card (desktop; reflects the active tab — placeholder image for now) -->
+      <div class="dk__card dk__card--desktop">
         <img
           src="/assets/designkinds/dark-card.png"
           alt="Sample design work: Keep Your Challenge fintech modal with UX category navigation"
@@ -153,17 +125,34 @@
     z-index: 4;
   }
 
-  /* Row card base */
+  /* Radio inputs (visually hidden, keyboard-focusable) drive the active tab */
+  .dk__radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .dk__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Row card base (label — clickable) */
   .dk__row {
+    display: block;
     background: var(--color-sand); /* #f3efed */
     border-radius: 24px;
     padding: 12px;
     width: 100%;
     position: relative;
+    cursor: pointer;
   }
 
-  /* Active row: white blend overlay */
-  .dk__row--active::before {
+  /* Active row (checked radio): white blend overlay */
+  .dk__radio:checked + .dk__item .dk__row::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -171,6 +160,11 @@
     mix-blend-mode: multiply;
     border-radius: 24px;
     pointer-events: none;
+  }
+  /* Keyboard focus ring on the active/ focused row */
+  .dk__radio:focus-visible + .dk__item .dk__row {
+    outline: 2px solid #0b99ff;
+    outline-offset: 2px;
   }
 
   /* Outline row: white bg + sand border */
@@ -231,13 +225,20 @@
     height: 24px;
   }
 
-  /* ─── Right: dark card ──────────────────────────────────────── */
+  /* ─── Dark card ─────────────────────────────────────────────── */
   .dk__card {
-    flex: 1 1 0;
-    height: 680px;
     border-radius: 26px;
     overflow: hidden;
     position: relative;
+  }
+  /* Desktop: single card on the right, reflects active tab */
+  .dk__card--desktop {
+    flex: 1 1 0;
+    height: 680px;
+  }
+  /* Per-row image: hidden on desktop, revealed under the active row at ≤768 */
+  .dk__card--mobile {
+    display: none;
   }
 
   .dk__card-img {
@@ -316,7 +317,7 @@
       gap: 20px;
       padding: 20px;
     }
-    .dk__card {
+    .dk__card--desktop {
       height: auto;
       align-self: stretch; /* тянемся по высоте списка слева — без пустоты снизу */
     }
@@ -380,12 +381,18 @@
       flex: none;
       width: 100%;
     }
-    .dk__card {
-      flex: none;
+    /* Desktop card hidden; the active row's own image opens right under it */
+    .dk__card--desktop {
+      display: none;
+    }
+    .dk__card--mobile {
       width: 100%;
       height: auto;
-      aspect-ratio: unset;
-      overflow: visible;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    .dk__radio:checked + .dk__item .dk__card--mobile {
+      display: block;
     }
     .dk__card-img {
       width: 100%;

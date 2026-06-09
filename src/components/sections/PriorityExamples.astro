@@ -31,28 +31,18 @@
   <!-- Cards container — full 1400px from left edge 40px, overflows right edge intentionally -->
   <div class="priority__cards-outer">
 
-    <!-- Sprint badge — card 1 (no background, positioned top-left of cards row) -->
-    <div class="priority__sprint priority__sprint--1">
-      <p class="priority__sprint-label">What can be done in</p>
-      <div class="priority__sprint-number">
-        <span class="priority__sprint-num">6</span>
-        <span class="priority__sprint-unit">months</span>
-      </div>
-    </div>
-
-    <!-- Sprint badge — card 2 (green, hangs above card 2) -->
-    <div class="priority__sprint priority__sprint--2">
-      <p class="priority__sprint-label">What can be done in</p>
-      <div class="priority__sprint-number">
-        <span class="priority__sprint-num">2</span>
-        <span class="priority__sprint-unit">weeks</span>
-      </div>
-    </div>
-
     <div class="priority__cards">
 
-      <!-- Card 1: Leverate -->
-      <article class="priority__card">
+      <!-- Card 1: Leverate — badge anchored to this card -->
+      <div class="priority__card-wrap">
+        <div class="priority__sprint priority__sprint--1">
+          <p class="priority__sprint-label">What can be done in</p>
+          <div class="priority__sprint-number">
+            <span class="priority__sprint-num">6</span>
+            <span class="priority__sprint-unit">months</span>
+          </div>
+        </div>
+        <article class="priority__card">
 
         <!-- Top info area -->
         <div class="priority__card-info">
@@ -118,10 +108,19 @@
           </span>
         </div>
 
-      </article>
+        </article>
+      </div>
 
-      <!-- Card 2: Leverate (second project / partially visible) -->
-      <article class="priority__card">
+      <!-- Card 2: Leverate — badge anchored to this card -->
+      <div class="priority__card-wrap">
+        <div class="priority__sprint priority__sprint--2">
+          <p class="priority__sprint-label">What can be done in</p>
+          <div class="priority__sprint-number">
+            <span class="priority__sprint-num">2</span>
+            <span class="priority__sprint-unit">weeks</span>
+          </div>
+        </div>
+        <article class="priority__card">
 
         <!-- Top info area -->
         <div class="priority__card-info">
@@ -187,7 +186,8 @@
           </span>
         </div>
 
-      </article>
+        </article>
+      </div>
 
     </div>
   </div>
@@ -286,39 +286,26 @@
     /* width extends to right edge of viewport — no overflow:hidden here */
   }
 
-  /* ─── Sprint badges ─────────────────────────────────────────────── */
-  /* Badge 1: x=16, y=8 within cards-outer, w=171, h=56, no bg */
-  .priority__sprint {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    z-index: 2;
+  /* ─── Card wrapper (anchors the sprint badge to its own card) ────── */
+  .priority__card-wrap {
+    position: relative;
+    flex-shrink: 0;
   }
 
-  /* Badge 1: x=87, y=200 in section (cards-outer starts at section x=40 y=214)
-     → relative to cards-outer: left=47px, top=-14px; w=200, h=76 */
-  .priority__sprint--1 {
-    left: 47px;
+  /* ─── Sprint badge — hangs from the top-left of its own card ─────── */
+  .priority__sprint {
+    position: absolute;
+    left: 47px;   /* relative to .priority__card-wrap */
     top: -14px;
     width: 200px;
     height: 76px;
     background: #6cd6ab;
     border-radius: 0 0 16px 16px;
     padding: 8px 16px 12px;
+    display: flex;
     align-items: flex-start;
-  }
-
-  /* Badge 2: x=1138, y=-16, w=200, h=76, green bg, rounded bottom corners */
-  .priority__sprint--2 {
-    left: 1138px;
-    top: -16px;
-    width: 200px;
-    height: 76px;
-    background: #6cd6ab;
-    border-radius: 0 0 16px 16px;
-    padding: 8px 16px 12px;
-    align-items: flex-start;
+    gap: 12px;
+    z-index: 5;
   }
 
   /* "What can be done in" — Factor A Regular 18px, lh 22px */
@@ -614,10 +601,6 @@
       padding-top: 32px; /* освободить место под висящий sprint-бейдж (перекрывал заголовок) */
     }
 
-    /* Sprint badge 2: reposition for narrower card gap */
-    .priority__sprint--2 {
-      left: 900px; /* ~= card1 width + gap */
-    }
   }
 
   /* ─── Responsive: 1024px ────────────────────────────────────────── */
@@ -632,9 +615,6 @@
       min-width: 720px;
     }
 
-    .priority__sprint--2 {
-      left: 760px; /* ~= card1 width + gap */
-    }
 
     /* Stats: allow wrapping at this width */
     .priority__stats {
@@ -657,133 +637,73 @@
     }
   }
 
-  /* ─── Responsive: 768px — stack cards vertically ────────────────── */
+  /* ─── Responsive: 768px — cards stack; badge stays anchored per card ─ */
   @media (max-width: 768px) {
     .priority {
       padding-block: 48px;
     }
-
     .priority__heading {
       font-size: 30px;
       line-height: 34px;
     }
-
     .priority__subtext {
       font-size: 18px;
       line-height: 22px;
     }
-
     .priority__heading-row {
       flex-wrap: wrap;
       gap: 16px;
-      margin-bottom: 56px; /* extra room for badge hanging above first card */
+      margin-bottom: 40px;
     }
-
-    /* Cards-outer: remove left margin, let container handle sides */
     .priority__cards-outer {
       margin-left: 0;
       padding: 0 var(--container-pad);
       box-sizing: border-box;
       width: 100%;
     }
-
-    /* Cards: stack vertically, full container width */
+    /* Stack the card-wraps; gap leaves room for the next badge hanging on top */
     .priority__cards {
       flex-direction: column;
-      gap: 56px; /* room for badge on second card */
+      gap: 48px;
     }
-
+    .priority__card-wrap {
+      width: 100%;
+    }
     .priority__card {
       width: 100%;
       min-width: 0;
       height: auto;
     }
-
-    /* Sprint badges: reposition relative to cards-outer (which is now padded) */
-    .priority__sprint {
-      position: relative;
-      left: auto;
-      top: auto;
-      margin-bottom: -14px; /* hang over card top */
-      align-self: flex-start;
+    /* card-info keeps the 1280 padding-top (badge still overhangs the card top) */
+    /* Title wraps within the card instead of being clipped ("for Le…") */
+    .priority__card-meta {
+      flex-wrap: wrap;
     }
-
-    /* Wrap each card+badge in a column flow */
-    .priority__cards {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    /* Badge 1 sits above card 1 */
-    .priority__sprint--1 {
-      position: relative;
-      left: 47px;
-      top: auto;
-      margin-bottom: 0;
-    }
-
-    /* Badge 2 sits above card 2 */
-    .priority__sprint--2 {
-      position: relative;
-      left: 47px;
-      top: auto;
-      margin-top: 42px; /* gap between card 1 bottom and badge 2 */
-      margin-bottom: 0;
-    }
-
-    /* Cards: first card follows badge 1; second card follows badge 2 */
-    .priority__cards-outer {
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Re-order: badge1, card1, badge2, card2 */
-    .priority__sprint--1 { order: 1; }
-    .priority__cards { order: 2; flex-direction: column; gap: 0; }
-    .priority__sprint--2 { order: 3; }
-
-    /* We can't interleave badges with cards using order alone since cards is a container.
-       Instead, absolutely position badges relative to cards-outer (which is now position:relative) */
-    .priority__cards-outer {
-      position: relative;
-    }
-
-    .priority__card-info {
-      height: auto;
-      padding-top: 0; /* на стеке бейджи в потоке — отступ из 1280-медиа не нужен */
-    }
-
     .priority__card-title {
       white-space: normal;
+      flex-shrink: 1;
+      min-width: 0;
       font-size: 20px;
       line-height: 26px;
     }
-
-    /* Stats: wrap to 2×2 grid */
     .priority__stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px 24px;
     }
-
     .priority__sep {
       display: none;
     }
-
     .priority__stats .priority__stat:nth-child(1),
     .priority__stats .priority__stat:nth-child(3),
     .priority__stats .priority__stat:nth-child(5),
     .priority__stats .priority__stat:nth-child(7) {
       width: auto;
     }
-
-    /* Image: fluid, auto height */
     .priority__card-img {
       height: auto;
       min-height: 240px;
     }
-
     .priority__card-img-inner {
       position: static;
       transform: none;

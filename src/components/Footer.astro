@@ -372,23 +372,22 @@
       margin-bottom: 16px;
     }
 
-    /* Grid: Main + Portfolio row, right block, decorative mark under copyright */
+    /* Grid: Main | Portfolio | Right in one row; mark drops under the 3rd column */
     .footer__panel {
       display: grid;
       grid-template-areas:
-        "nav-main nav-portfolio"
-        "right    right"
-        "mark     mark";
-      grid-template-columns: auto 1fr;
+        "nav-main nav-portfolio right"
+        ".        .             mark";
+      grid-template-columns: auto 1fr auto;
       gap: 32px 32px;
       padding: 32px 24px;
       border-radius: 20px;
       height: auto;
     }
 
-    .footer__col--main       { grid-area: nav-main; width: auto; flex-shrink: 1; }
+    .footer__col--main       { grid-area: nav-main; width: auto; flex-shrink: 0; }
     .footer__col--portfolio  { grid-area: nav-portfolio; flex: 1 1 auto; }
-    .footer__right           { grid-area: right; width: 100%; }
+    .footer__right           { grid-area: right; width: auto; }
 
     /* Portfolio: single column (was two sub-columns) */
     .footer__portfolio-cols {

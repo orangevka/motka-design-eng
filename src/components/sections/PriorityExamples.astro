@@ -749,4 +749,23 @@
       line-height: 36px;
     }
   }
+
+  /* ─── ≤425px ────────────────────────────────────────────────────── */
+  @media (max-width: 425px) {
+    .priority__card {
+      padding: 16px;
+    }
+    /* badge overhangs ~62px; push title below it (card padding is only 16) */
+    .priority__card-info {
+      padding-top: 48px;
+    }
+    .priority__sprint {
+      left: 16px;
+    }
+    /* Bottom badges (Pro subscription / Active since) stack vertically */
+    .priority__card-badges {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
 </style>

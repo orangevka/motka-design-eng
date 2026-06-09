@@ -297,8 +297,7 @@
     position: absolute;
     left: 47px;   /* relative to .priority__card-wrap */
     top: -14px;
-    width: 200px;
-    height: 76px;
+    /* width/height по контенту */
     background: #6cd6ab;
     border-radius: 0 0 16px 16px;
     padding: 8px 16px 12px;
@@ -645,6 +644,10 @@
     .priority {
       padding-block: 48px;
     }
+    /* Carousel is swipe-driven; arrows don't work without JS — hide on mobile */
+    .priority__nav {
+      display: none;
+    }
     .priority__heading {
       font-size: 30px;
       line-height: 34px;
@@ -752,11 +755,6 @@
     .priority__stat-label {
       font-size: 15px;
       line-height: 18px;
-    }
-
-    /* Badge: scale down slightly if needed */
-    .priority__sprint {
-      width: 170px;
     }
 
     .priority__sprint-num {

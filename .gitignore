@@ -7,3 +7,4 @@ scripts/_shots/
 **/.backups/
 *.stackdump
 scripts/_shots_review/
+.figma-token

@@ -6,3 +6,4 @@ scripts/_shots/
 .DS_Store
 **/.backups/
 *.stackdump
+scripts/_shots_review/

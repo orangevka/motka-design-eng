@@ -1,0 +1,120 @@
+---
+// Home About Motka — 1440×858 pixel-perfect (Figma node 46:7908)
+// Белая карточка: слева заголовок «About Motka», справа ряд аватаров команды + 2 абзаца + «More».
+// Аватары — отдельные <img> с индивидуальным alt. TODO: заменить alt на реальные имена/роли членов команды.
+const avatars = [
+  { img: 'avatar-1.png', alt: 'Motka team member' },
+  { img: 'avatar-2.png', alt: 'Motka team member' },
+  { img: 'avatar-3.png', alt: 'Motka team member' },
+  { img: 'avatar-4.png', alt: 'Motka team member' },
+  { img: 'avatar-5.png', alt: 'Motka team member' },
+  { img: 'avatar-6.png', alt: 'Motka team member' },
+  { img: 'avatar-7.png', alt: 'Motka team member' },
+  { img: 'avatar-8.png', alt: 'Motka studio cat' },
+];
+---
+
+<section class="about">
+  <div class="about__card">
+    <div class="about__col-left">
+      <h2 class="about__heading">About Motka</h2>
+    </div>
+
+    <div class="about__col-right">
+      <div class="about__avatars">
+        {avatars.map((a) => (
+          <img src={`/assets/home/about/${a.img}`} alt={a.alt} width="104" height="106" loading="lazy" />
+        ))}
+      </div>
+
+      <div class="about__paras">
+        <p>Motka works best as a close design partner. We're a small senior design team, which means fewer layers, faster decisions, clearer context, and more attention from the people actually responsible for the work.</p>
+        <p>We've spent 20 years across FinTech, telecom, logistics, retail, education, AI, and other complex digital products. That much shipped work gives us a sense of where projects tend to get stuck, and how to keep them moving. We come into projects with opinions and share them openly. We're not attached to them. If there is a better argument, our view changes. What stays consistent is the standard: every decision in the work has to earn its place.</p>
+      </div>
+
+      <a class="about__more" href="/about.html">More &gt;</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    width: 100%;
+    background: var(--color-bg);
+    box-sizing: border-box;
+    padding: 84px 40px 88px;
+  }
+  .about__card {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    background: var(--color-bg);
+    border: 1px solid var(--color-sand);
+    border-radius: 24px;
+    padding: 68px 60px;
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    box-sizing: border-box;
+  }
+
+  .about__col-left { width: 142px; flex-shrink: 0; }
+  .about__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 46px;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  .about__col-right { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+  .about__avatars { display: flex; flex-wrap: wrap; gap: 16px; }
+  .about__avatars img { width: 104px; height: 106px; border-radius: 50%; object-fit: cover; display: block; flex-shrink: 0; }
+
+  .about__paras {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  .about__paras p {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 36px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .about__more {
+    margin-top: 32px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--color-ink);
+  }
+
+  /* ─── 1024 ──────────────────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .about { padding: 56px 24px; }
+    .about__card { padding: 48px 36px; flex-direction: column; gap: 32px; }
+    .about__col-left { width: auto; }
+    .about__heading { font-size: 36px; line-height: 40px; }
+    .about__paras { margin-top: 32px; }
+    .about__paras p { font-size: 19px; line-height: 30px; }
+  }
+
+  /* ─── 768 ───────────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .about { padding: 40px 20px; }
+    .about__card { padding: 32px 24px; border-radius: 20px; }
+    .about__paras p { font-size: 18px; line-height: 28px; }
+  }
+
+  /* ─── 430 ───────────────────────────────────────────────────────── */
+  @media (max-width: 430px) {
+    .about__avatars { gap: 8px; }
+  }
+</style>

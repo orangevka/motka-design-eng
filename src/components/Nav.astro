@@ -24,9 +24,15 @@ const allCasesHref = '/portfolio.html';
 const links = [
   { label: 'Portfolio', href: '/portfolio.html', dropdown: true },
   { label: 'About', href: '/about.html' },
-  { label: 'Design Subscription', href: '/' },
+  { label: 'Design Subscription', href: '/subscription' },
   { label: 'Contact us', href: '/contacts.html' },
 ];
+
+interface Props {
+  /** Показывать тёмную кнопку «Book a call» в шапке. На /subscription — false. */
+  cta?: boolean;
+}
+const { cta = true } = Astro.props;
 ---
 <header class="site-header">
   <div class="container site-header__inner">
@@ -52,6 +58,7 @@ const links = [
           <a class="site-nav__item" href={l.href}>{l.label}</a>
         )
       ))}
+      {cta && <a class="site-nav__cta" href="/contacts.html">Book a call</a>}
     </nav>
 
     <!-- Mobile nav (<768px): details/summary CSS-only hamburger -->
@@ -91,6 +98,7 @@ const links = [
             <a class="mobile-nav__item" href={l.href}>{l.label}</a>
           )
         ))}
+        {cta && <a class="mobile-nav__cta" href="/contacts.html">Book a call</a>}
       </nav>
     </details>
   </div>
@@ -120,6 +128,23 @@ const links = [
     white-space: nowrap;
   }
   .site-nav__chevron { width: 20px; height: 20px; }
+
+  /* Dark "Book a call" pill in header (new design) */
+  .site-nav__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--space-2); /* чуть больше воздуха перед кнопкой */
+    padding: 14px 28px;
+    background: #262626;
+    color: #fff;
+    border-radius: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
 
   /* ── Desktop dropdown (Portfolio) ─────────────────────── */
   .site-nav__has-dropdown { position: relative; display: inline-flex; align-items: center; gap: var(--space-1); /* 4px между текстом и шевроном */ }
@@ -310,5 +335,28 @@ const links = [
     }
     /* жирнее desktop-версии: финальный CTA в длинном мобильном списке */
     .mobile-nav__subitem--all { font-weight: 700; }
+
+    /* Тёмная кнопка «Book a call» в мобильном меню */
+    .mobile-nav__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: var(--space-4);
+      padding: 14px 28px;
+      background: #262626;
+      color: #fff;
+      border-radius: 16px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 20px;
+      align-self: flex-start;
+    }
+  }
+
+  /* Кнопка в шапке умещается только на широком десктопе; ниже 1100 прячем
+     (в мобильном меню <768 есть своя .mobile-nav__cta; «Contact us» в навбаре остаётся). */
+  @media (max-width: 1100px) {
+    .site-nav__cta { display: none; }
   }
 </style>

@@ -1,0 +1,221 @@
+---
+// Home Footer — pixel-perfect 1440 (Figma node 46:7927), флюид ниже.
+// Верх: CTA «Tell us about your project» на шахматке (фон под анимацию, CSS-паттерн #fff/#ebebeb)
+//   + зелёная карточка Phil Smirnov. Низ: бежевый блок с колонками Main / Portfolio + соц-ссылки.
+// Десктоп-раскладка (абсолют по координатам Figma) включается на min-width:1440; ниже — флюид.
+
+const mainLinks = [
+  { label: 'How do we work', href: '/#how-we-work' },
+  { label: 'What clients say', href: '/#testimonials' },
+  { label: 'About us', href: '/about.html' },
+  { label: 'Contacts', href: '/contacts.html' },
+];
+const portfolio1 = ['Logistic SaaS', 'Mobile app for VR/AR', 'Branding for school', 'Edtech platform'];
+const portfolio2 = ['UI design for a SaaS', 'Mobile app for gifts', 'Branded illustrations', 'Catchy branding'];
+---
+
+<footer class="ft">
+  <div class="ft__inner">
+    <!-- ─── CTA блок ─── -->
+    <div class="ft__cta">
+      <img class="ft__scribble" src="/assets/home/footer/scribble.png" alt="" width="69" height="75" aria-hidden="true" />
+
+      <div class="ft__cta-content">
+        <h2 class="ft__cta-title">Tell us about<br />your project</h2>
+        <div class="ft__actions">
+          <a class="ft__book" href="/contacts.html">Book a call</a>
+          <a class="ft__email" href="mailto:hello@motka.design">hello@motka.design</a>
+        </div>
+      </div>
+
+      <div class="ft__card">
+        <img class="ft__avatar" src="/assets/home/footer/phil-avatar@2x.png" alt="Phil Smirnov" width="76" height="77" loading="lazy" />
+        <div class="ft__bubble">
+          <img class="ft__bubble-bg" src="/assets/home/footer/speech-bubble.svg" alt="" width="174" height="70" aria-hidden="true" />
+          <span class="ft__bubble-text">You can text me<br />on <span class="ft__lk">Linkedin</span></span>
+        </div>
+        <p class="ft__name">Phil Smirnov<img class="ft__badge" src="/assets/home/footer/linkedin-badge.png" alt="" width="24" height="24" aria-hidden="true" /></p>
+        <p class="ft__role">Founder<br />and Design Director</p>
+      </div>
+    </div>
+
+    <!-- ─── Бежевый блок ─── -->
+    <div class="ft__beige">
+      <nav class="ft__col ft__col--main" aria-label="Footer main">
+        <p class="ft__col-title">Main</p>
+        <div class="ft__col-links">
+          {mainLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+        </div>
+      </nav>
+
+      <nav class="ft__col ft__col--p1" aria-label="Footer portfolio">
+        <p class="ft__col-title">Portfolio</p>
+        <div class="ft__col-links">
+          {portfolio1.map((l) => <a href="/portfolio.html">{l}</a>)}
+        </div>
+      </nav>
+
+      <div class="ft__col ft__col--p2">
+        <div class="ft__col-links">
+          {portfolio2.map((l) => <a href="/portfolio.html">{l}</a>)}
+          <a href="/portfolio.html" class="ft__more">and more...</a>
+        </div>
+      </div>
+
+      <div class="ft__social">
+        <a href="https://clutch.co" target="_blank" rel="noopener" class="ft__social-name">Clutch</a>
+        <span class="ft__dot">·</span>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="ft__social-name">Linkedin</a>
+        <span class="ft__dot">·</span>
+        <a href="https://behance.net" target="_blank" rel="noopener" class="ft__social-name">Behance</a>
+      </div>
+
+      <p class="ft__legal">Privacy policy<br />© 2026 Motka&nbsp;&nbsp;All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft { width: 100%; background: var(--color-bg); box-sizing: border-box; padding: 0 24px 32px; }
+  .ft__inner { position: relative; max-width: 1360px; margin-inline: auto; }
+
+  /* ─── CTA блок (флюид база) ─── */
+  .ft__cta {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: #fff;
+    background-image: conic-gradient(#ebebeb 25%, #fff 0 50%, #ebebeb 0 75%, #fff 0);
+    background-size: 64px 64px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .ft__scribble { display: none; }
+
+  .ft__cta-content { display: flex; flex-direction: column; gap: 24px; max-width: 503px; }
+  .ft__cta-title { font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 40px; color: var(--color-ink); margin: 0; }
+  .ft__actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .ft__book {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 20px 32px 16px;
+    background: var(--color-cta);
+    color: var(--color-ink);
+    border-radius: 16px;
+    font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 24px;
+    white-space: nowrap;
+  }
+  .ft__email { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 24px; color: var(--color-ink); }
+
+  /* ─── Зелёная карточка Phil (внутренняя раскладка абсолютная на всех ширинах) ─── */
+  .ft__card {
+    position: relative;
+    width: 329.42px; max-width: 100%;
+    height: 246.84px;
+    background: var(--color-cta);
+    border-radius: 16px;
+  }
+  .ft__avatar { position: absolute; left: 34.67px; top: 31.13px; width: 76px; height: 77px; border-radius: 50%; object-fit: cover; }
+  .ft__bubble { position: absolute; left: 122.35px; top: 37.44px; width: 174px; height: 70px; }
+  .ft__bubble-bg { position: absolute; inset: 0; width: 174px; height: 70px; }
+  .ft__bubble-text {
+    position: absolute; left: 33px; top: 15px;
+    font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 20px; color: #000;
+  }
+  .ft__lk { color: #42c08d; }
+  .ft__name {
+    position: absolute; left: 34.67px; top: 124.44px;
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 32px; color: var(--color-ink); margin: 0;
+  }
+  .ft__badge { width: 24px; height: 24px; }
+  .ft__role {
+    position: absolute; left: 34.67px; top: 164.44px; width: 244px;
+    font-family: var(--font-display); font-weight: 400; font-size: 18px; line-height: 24px; color: var(--color-ink); margin: 0;
+  }
+
+  /* ─── Бежевый блок (флюид база: grid) ─── */
+  .ft__beige {
+    position: relative;
+    margin-top: 16px;
+    background: var(--color-sand);
+    border-radius: 24px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: max-content max-content max-content 1fr;
+    grid-template-areas:
+      "main p1 p2 social"
+      "main p1 p2 legal";
+    gap: 16px 48px;
+    align-items: start;
+  }
+  .ft__col { display: flex; flex-direction: column; gap: 16px; }
+  .ft__col--main { grid-area: main; }
+  .ft__col--p1 { grid-area: p1; }
+  .ft__col--p2 { grid-area: p2; }
+  .ft__col-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 24px; color: #000; margin: 0; }
+  .ft__col-links { display: flex; flex-direction: column; gap: 8px; }
+  .ft__col-links a { font-family: var(--font-display); font-weight: 400; font-size: 18px; line-height: 22px; color: var(--color-text-secondary); }
+  .ft__more { opacity: 0.5; }
+
+  .ft__social { grid-area: social; justify-self: end; align-self: start; display: flex; align-items: center; gap: 8px; }
+  .ft__social-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 20px; color: #000; white-space: nowrap; }
+  .ft__dot { font-family: var(--font-display); font-weight: 400; font-size: 16px; line-height: 20px; color: #000; }
+
+  .ft__legal { grid-area: legal; justify-self: end; align-self: end; font-family: var(--font-display); font-weight: 400; font-size: 14px; line-height: 20px; color: #000; margin: 0; text-align: right; }
+
+  /* ─── ≤768: бежевый блок в 2 колонки, карточка во всю ширину ─── */
+  @media (max-width: 768px) {
+    .ft { padding: 0 16px 24px; }
+    .ft__cta { padding: 32px 24px; }
+    .ft__cta-title { font-size: 30px; line-height: 34px; }
+    .ft__beige {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "main p1"
+        "p2 p2"
+        "social social"
+        "legal legal";
+      gap: 28px 24px;
+      padding: 32px 24px;
+    }
+    .ft__social, .ft__legal { justify-self: start; text-align: left; }
+  }
+
+  @media (max-width: 430px) {
+    .ft__beige { grid-template-columns: 1fr; grid-template-areas: "main" "p1" "p2" "social" "legal"; }
+    .ft__card { width: 100%; }
+  }
+
+  /* ─── ≥1440: точная абсолютная раскладка по Figma ─── */
+  @media (min-width: 1440px) {
+    .ft { padding: 0 40px 40px; }
+    .ft__inner { height: 649px; }
+
+    .ft__cta {
+      position: absolute; left: 0; top: 0;
+      width: 1360px; height: 307px;
+      padding: 0; display: block; gap: 0; z-index: 2;
+    }
+    .ft__scribble { display: block; position: absolute; left: 42px; top: 63px; width: 69px; height: 75px; }
+    .ft__cta-content { position: absolute; left: 159.85px; top: 60px; width: 503px; }
+    .ft__cta-title { font-size: 44px; line-height: 46px; }
+    .ft__card {
+      position: absolute; left: 1004.33px; top: 22.03px;
+      width: 329.42px; height: 246.84px; max-width: none;
+    }
+
+    .ft__beige {
+      position: absolute; left: 0; top: 268px;
+      width: 1360px; height: 381px;
+      display: block; padding: 0; margin: 0; z-index: 1;
+    }
+    .ft__col { position: absolute; top: 119px; }
+    .ft__col--main { left: 58px; width: 138px; }
+    .ft__col--p1 { left: 300px; width: 207px; }
+    .ft__col--p2 { left: 542px; top: 159px; width: 207px; }
+    .ft__social { position: absolute; left: 1039px; top: 121px; }
+    .ft__legal { position: absolute; left: 1039px; top: 178px; text-align: left; }
+  }
+</style>

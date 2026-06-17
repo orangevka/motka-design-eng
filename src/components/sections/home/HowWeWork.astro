@@ -1,0 +1,230 @@
+---
+// Home How we work — 1440×865 pixel-perfect (Figma node 46:7850)
+// Заголовок + колонки Process/Output + 3 карточки тарифов + бежевый лоток с зелёной кнопкой.
+
+const plans = [
+  {
+    title: 'Fixed rate',
+    price: 'Projects from $5K to $150K.',
+    desc: 'Clear scope, fixed price. Best for well-defined work with agreed deliverables.',
+    fig: 'card-fixed-circle@2x.png',
+    figW: 48.545, figH: 48.545,
+  },
+  {
+    title: 'Time & Material',
+    price: 'hourly rate $75–150',
+    desc: 'Flexible scope. Best when the work is still evolving.',
+    fig: 'card-tm-dots@2x.png',
+    figW: 77.262, figH: 48.545,
+  },
+  {
+    title: 'Subscription',
+    price: '$4,750/m. 24–48h delivery.',
+    desc: 'Unlimited requests and revisions.\n3-day free trial.',
+    fig: 'card-subscription-arc@2x.png',
+    figW: 50.91, figH: 52.634,
+  },
+];
+---
+
+<section class="hww">
+  <div class="hww__inner">
+    <h2 class="hww__heading">How do we work</h2>
+
+    <!-- Process / Output -->
+    <div class="hww__cols">
+      <div class="hww__col">
+        <h3 class="hww__col-title">Process</h3>
+        <p class="hww__col-text">Same-day response. Three revisions per screen, days not weeks. We work alongside your dev team, not ahead of them creating queues.</p>
+      </div>
+      <div class="hww__col">
+        <h3 class="hww__col-title">Output</h3>
+        <p class="hww__col-text">Screens, flows, components, states, versions, and mobile adaptations are structured in Figma, documented where needed, and ready for production teams.</p>
+      </div>
+    </div>
+
+    <!-- Тарифы + лоток -->
+    <div class="hww__plans">
+      <div class="hww__cards">
+        {plans.map((p) => (
+          <div class="hww-card">
+            <div class="hww-card__text">
+              <h4 class="hww-card__title">{p.title}</h4>
+              <p class="hww-card__price">{p.price}</p>
+              <p class="hww-card__desc" set:html={p.desc.replace('\n', '<br />')} />
+            </div>
+            <img class="hww-card__fig" src={`/assets/home/howwework/${p.fig}`} alt="" style={`width:${p.figW}px;height:${p.figH}px`} loading="lazy" />
+          </div>
+        ))}
+      </div>
+
+      <div class="hww__tray">
+        <a href="/contacts.html" class="hww__cta">Tell us about your project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hww { width: 100%; background: var(--color-bg); }
+  .hww__inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 72px;
+  }
+
+  .hww__heading {
+    width: 100%;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 46px;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ─── Process / Output ──────────────────────────────────────────── */
+  .hww__cols {
+    width: 1156px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .hww__col { width: 520px; display: flex; flex-direction: column; gap: 16px; }
+  .hww__col-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 24px;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .hww__col-text {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 36px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* ─── Тарифы ────────────────────────────────────────────────────── */
+  .hww__plans {
+    position: relative;
+    width: 1166px;
+    max-width: 100%;
+    padding-bottom: 124px; /* место под выступающий лоток */
+  }
+  .hww__cards { display: flex; gap: 20px; position: relative; z-index: 2; }
+
+  .hww-card {
+    flex: 1;
+    min-width: 0;
+    background: var(--color-bg);
+    border: 2px solid var(--color-sand);
+    border-radius: 24px;
+    padding: 36px 24px;
+    box-shadow: 0 31px 24px -36px rgba(30, 18, 12, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    box-sizing: border-box;
+  }
+  .hww-card__text { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+  .hww-card__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 38px;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .hww-card__price {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  .hww-card__desc {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  .hww-card__fig { display: block; }
+
+  /* ─── Бежевый лоток + кнопка ────────────────────────────────────── */
+  .hww__tray {
+    position: absolute;
+    top: 262.63px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    max-width: 100%;
+    height: 164px;
+    background: var(--color-sand);
+    border-radius: 24px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 72px;
+    box-sizing: border-box;
+  }
+  .hww__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 60px;
+    padding: 20px 32px 16px;
+    background: var(--color-cta); /* #6cd6ab */
+    color: var(--color-ink);
+    border-radius: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  /* ─── 1280 ──────────────────────────────────────────────────────── */
+  @media (max-width: 1279px) {
+    .hww__cols { width: 100%; }
+    .hww__col { width: 48%; }
+    .hww__plans { width: 100%; }
+  }
+
+  /* ─── 1024 ──────────────────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .hww__inner { gap: 48px; padding: 48px 24px; }
+    .hww__heading { font-size: 36px; line-height: 40px; }
+    .hww__col-text { font-size: 19px; line-height: 30px; }
+  }
+
+  /* ─── 768 ───────────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hww__inner { gap: 40px; padding: 40px 20px; }
+    .hww__cols { flex-direction: column; gap: 28px; }
+    .hww__col { width: 100%; }
+    .hww__cards { flex-direction: column; gap: 16px; }
+    .hww__plans { padding-bottom: 0; }
+    .hww__tray {
+      position: static;
+      transform: none;
+      width: 100%;
+      height: auto;
+      padding: 24px;
+      margin-top: 16px;
+    }
+  }
+</style>

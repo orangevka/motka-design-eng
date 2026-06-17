@@ -1,0 +1,239 @@
+---
+// Home Pain-point — 1440×1310 pixel-perfect (Figma node 46:845)
+// Сверху: блок чат-баблов (экспортированный PNG node 46:846, прозрачный).
+// Ниже: бежевая карточка #F3EFED (full-column-width) с «When it's a good idea to work with us»
+//   (3 подкарточки) + колонка Services (7 пунктов). Внизу — абзац «Since 2005…».
+
+const services = [
+  'UI/UX design',
+  'Branding',
+  'Design systems',
+  'Mobile apps design',
+  'Marketing communications',
+  'EdTech design',
+  'Design Subscription',
+];
+---
+
+<section class="pp">
+  <div class="pp__inner">
+    <!-- Чат-баблы: единый PNG (1440×419) -->
+    <div class="pp__bubbles" aria-hidden="true">
+      <picture>
+        <!-- На ≤768 — обрезанная версия (по границам баблов), чтобы они занимали больше места -->
+        <source media="(max-width: 768px)" srcset="/assets/home/painpoint/bubbles-mobile.png" width="928" height="266" />
+        <img src="/assets/home/painpoint/bubbles.png" alt="" width="1440" height="419" loading="lazy" />
+      </picture>
+    </div>
+
+    <!-- Бежевая карточка -->
+    <div class="pp__card">
+      <!-- Левая колонка: When it's a good idea -->
+      <div class="pp__col pp__col--left">
+        <h2 class="pp__heading">When it's a good idea to work with us</h2>
+
+        <div class="pp__subcards">
+          <div class="pp__row">
+            <div class="pp-sub">
+              <h3 class="pp-sub__title">If you've <br class="pp-sub__br" />outgrown your UI</h3>
+              <p class="pp-sub__text">It used to be fine,<br />now it's not</p>
+              <img class="pp-sub__icon pp-sub__icon--checklist" src="/assets/home/painpoint/icon-checklist.png" alt="" width="104" height="96" loading="lazy" />
+            </div>
+            <div class="pp-sub">
+              <h3 class="pp-sub__title">You have <br class="pp-sub__br" />a product idea</h3>
+              <p class="pp-sub__text">But zero design<br />resources</p>
+              <img class="pp-sub__icon pp-sub__icon--sparkle" src="/assets/home/painpoint/icon-sparkle.png" alt="" width="120" height="96" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="pp-sub pp-sub--wide">
+            <h3 class="pp-sub__title">If you're spending too much time arguing about <br class="pp-sub__br" />design in Slack instead of shipping</h3>
+            <p class="pp-sub__text">Build a design system so your dev team stops guessing</p>
+            <img class="pp-sub__icon pp-sub__icon--blob" src="/assets/home/painpoint/icon-blob.png" alt="" width="120" height="96" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Правая колонка: Services -->
+      <div class="pp__col pp__col--right">
+        <h2 class="pp__heading">Services</h2>
+        <ul class="pp-services">
+          {services.map((s) => (
+            <li class="pp-services__item">
+              <span>{s}</span>
+              <img class="pp-services__chevron" src="/assets/home/painpoint/chevron.svg" alt="" width="7" height="14" aria-hidden="true" />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Абзац Since 2005 -->
+    <p class="pp__statement">Since 2005. 300+ shipped products across SaaS, FinTech, EdTech, AI, retail and beyond. Three to four projects at a time, by choice. The founder is on every one</p>
+  </div>
+</section>
+
+<style>
+  .pp { width: 100%; background: var(--color-bg); padding-bottom: 64px; }
+  .pp__inner {
+    position: relative;
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* поля 40px (24/16 на адаптиве) */
+    box-sizing: border-box;
+  }
+
+  /* ─── Чат-баблы ─────────────────────────────────────────────────── */
+  .pp__bubbles { width: 100%; }
+  .pp__bubbles img { width: 100%; height: auto; display: block; }
+
+  /* ─── Бежевая карточка ──────────────────────────────────────────── */
+  .pp__card {
+    background: var(--color-sand); /* #F3EFED */
+    border-radius: 24px;
+    padding: 64px 40px;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .pp__col { display: flex; flex-direction: column; gap: 32px; }
+  .pp__col--left { width: 796px; flex-shrink: 0; }
+  .pp__col--right { flex: 1; min-width: 0; }
+
+  .pp__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 46px;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* ─── Подкарточки ───────────────────────────────────────────────── */
+  .pp__subcards { display: flex; flex-direction: column; gap: 16px; }
+  .pp__row { display: flex; gap: 16px; }
+
+  .pp-sub {
+    position: relative;
+    width: 390px;
+    min-height: 201px;
+    background: var(--color-bg);
+    border: 3px solid var(--color-sand);
+    border-radius: 24px;
+    padding: 36px;
+    overflow: clip;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pp-sub--wide { width: 796px; min-height: 183px; }
+
+  .pp-sub__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--color-ink);
+    margin: 0;
+    max-width: 240px;
+  }
+  .pp-sub--wide .pp-sub__title { max-width: none; }
+
+  .pp-sub__text {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.18px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .pp-sub__icon { position: absolute; top: 36px; right: 36px; }
+  .pp-sub__icon--checklist { width: 104px; height: 96px; }
+  .pp-sub__icon--sparkle { width: 120px; height: 96px; }
+  .pp-sub__icon--blob { width: 120px; height: 96px; }
+
+  /* ─── Services ──────────────────────────────────────────────────── */
+  .pp-services {
+    list-style: none;
+    margin: 0;
+    padding: 16px 36px;
+    background: var(--color-bg);
+    border: 3px solid var(--color-sand);
+    border-radius: 24px;
+  }
+  .pp-services__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    border-bottom: 1px solid var(--color-sand);
+  }
+  .pp-services__item:last-child { border-bottom: none; }
+  .pp-services__item span {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000;
+  }
+  .pp-services__chevron { width: 7px; height: 14px; flex-shrink: 0; }
+
+  /* ─── Statement ─────────────────────────────────────────────────── */
+  .pp__statement {
+    max-width: 1007px;
+    margin: 80px auto 0;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 48px;
+    color: #000;
+  }
+
+  /* ─── 1280 ──────────────────────────────────────────────────────── */
+  @media (max-width: 1279px) {
+    .pp__card { padding: 56px 32px; }
+    .pp__col--left { width: 680px; }
+    .pp-sub { width: 332px; }
+    .pp-sub--wide { width: 680px; }
+    .pp__statement { font-size: 28px; line-height: 42px; }
+  }
+
+  /* ─── 1024 ──────────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .pp__card { flex-direction: column; gap: 40px; padding: 48px 24px; }
+    .pp__col--left { width: 100%; }
+    .pp__row { flex-wrap: wrap; }
+    .pp-sub { flex: 1 1 280px; width: auto; }
+    .pp-sub--wide { width: 100%; min-height: 0; flex: none; }
+    .pp__col--right { width: 100%; }
+    .pp__heading { font-size: 32px; line-height: 38px; }
+    .pp__statement { font-size: 24px; line-height: 36px; }
+  }
+
+  /* ─── 768 ───────────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .pp__bubbles { margin-block: 24px; }
+    .pp__card { padding: 32px 20px; border-radius: 20px; }
+    .pp__row { flex-direction: column; }
+    .pp-sub, .pp-sub--wide { width: 100%; min-height: 0; flex: none; }
+    .pp-sub__title { max-width: none; }
+    .pp__statement { font-size: 22px; line-height: 32px; }
+  }
+
+  /* ─── 430 ───────────────────────────────────────────────────────── */
+  @media (max-width: 430px) {
+    .pp__heading { font-size: 26px; line-height: 32px; }
+    /* Заголовки плашек — без жёстких переносов */
+    .pp-sub__br { display: none; }
+    /* Иконки — в потоке между заголовком и текстом */
+    .pp-sub__title { order: 1; }
+    .pp-sub__icon { position: static; display: block; order: 2; }
+    .pp-sub__text { order: 3; }
+    .pp__statement { font-size: 19px; line-height: 28px; }
+  }
+</style>

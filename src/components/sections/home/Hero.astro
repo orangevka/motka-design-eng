@@ -1,0 +1,181 @@
+---
+// Home Hero — 1440×592 pixel-perfect (Figma node 46:685)
+// Текст слева (real text), иллюстрация-дашборд справа (экспортированный PNG из node 46:713,
+// прозрачный фон). Иллюстрация привязана к правому краю центрированной колонки 1440.
+---
+
+<section class="hero">
+  <div class="hero__inner">
+    <h1 class="hero__title">Senior <br class="hero__br" />design <br class="hero__br" />partner</h1>
+    <p class="hero__subtitle">UX/UI and branding for complex digital products</p>
+
+    <div class="hero__art" aria-hidden="true">
+      <img
+        src="/assets/home/hero-illustration.png"
+        alt=""
+        width="1032"
+        height="584"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 592px;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    position: relative;
+    width: 100%;
+    max-width: var(--container-max); /* 1440 */
+    height: 100%;
+    margin-inline: auto;
+  }
+
+  /* Заголовок: Factor A Bold 93/80, #333; left=37, top=112 (Figma 46:843) */
+  .hero__title {
+    position: absolute;
+    left: 37px;
+    top: 112px;
+    width: 596px;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 93px;
+    line-height: 80px;
+    letter-spacing: -0.5px;
+    color: var(--color-ink);
+    z-index: 2;
+  }
+
+  /* Сабтайтл: Factor A Regular 28/32, #000; left=37.5, top=393 (Figma 46:844) */
+  .hero__subtitle {
+    position: absolute;
+    left: 37.5px;
+    top: 393px;
+    width: 331px;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    color: #000;
+    z-index: 2;
+  }
+
+  /* Иллюстрация: node 46:713 (anima) — left=368, top=0, 1032×584 в колонке.
+     Лежит внутри центрированной колонки, правый край у column-right (x=1400). */
+  .hero__art {
+    position: absolute;
+    left: 368px;
+    top: 0;
+    width: 1032px;
+    height: 584px;
+    z-index: 1;
+  }
+  .hero__art img {
+    width: 1032px;
+    height: 584px;
+    display: block;
+  }
+
+  /* ─── 1280 ─────────────────────────────────────────────────────── */
+  @media (max-width: 1279px) {
+    .hero__title {
+      font-size: 80px;
+      line-height: 72px;
+    }
+    .hero__subtitle {
+      font-size: 26px;
+      line-height: 30px;
+    }
+  }
+
+  /* ─── 1024 ─────────────────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .hero {
+      height: 540px;
+    }
+    .hero__title {
+      font-size: 64px;
+      line-height: 60px;
+    }
+    .hero__subtitle {
+      top: 320px;
+      font-size: 22px;
+      line-height: 28px;
+    }
+    /* Иллюстрация уменьшается, прижата к правому краю колонки */
+    .hero__art {
+      left: auto;
+      right: -40px;
+      top: 20px;
+      width: 760px;
+      height: auto;
+    }
+    .hero__art img {
+      width: 760px;
+      height: auto;
+    }
+  }
+
+  /* ─── 768 и ниже: стек — текст сверху, иллюстрация полосой снизу ─── */
+  @media (max-width: 768px) {
+    .hero {
+      height: auto;
+      overflow: hidden;
+    }
+    .hero__inner {
+      height: auto;
+      padding: 40px 24px 0;
+    }
+    /* Заголовок и сабтайтл — без принудительных переносов, текут естественно */
+    .hero__br { display: none; }
+    .hero__title {
+      position: static;
+      width: auto;
+      font-size: clamp(48px, 11vw, 72px);
+      line-height: 1;
+    }
+    .hero__subtitle {
+      position: static;
+      width: auto;
+      max-width: none;
+      margin-top: 20px;
+      font-size: clamp(20px, 5.5vw, 26px);
+      line-height: 1.3;
+    }
+    .hero__art {
+      position: static;
+      width: 100%;
+      height: auto;
+      margin-top: 32px;
+    }
+    .hero__art img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  /* ─── 390 ──────────────────────────────────────────────────────── */
+  @media (max-width: 430px) {
+    .hero__inner {
+      padding: 32px 16px 0;
+    }
+    .hero__title {
+      font-size: clamp(40px, 11vw, 52px);
+    }
+    .hero__subtitle {
+      font-size: clamp(18px, 5vw, 22px);
+    }
+    .hero__art {
+      margin-top: 24px;
+    }
+  }
+</style>

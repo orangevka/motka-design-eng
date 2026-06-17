@@ -1,0 +1,190 @@
+---
+// Home Our work — Figma node 46:983. Сетка тизеров кейсов: картинка-мокап (PNG) + Title + Description (real text).
+// Раскладка: контейнер 1 — 2 колонки (лев. 996 / прав. 412, gap 32); featured — во всю ширину; контейнер 3 — 2 равные (gap 20).
+// Стиль карточки из Figma: border 3px #f3efed, radius 24, padding 12; Title Factor A Bold 24/30; Desc Spectral 18/24.
+
+const base = '/assets/home/ourwork/';
+// Leverate — отдельной кейс-страницы пока нет → фолбэк на /portfolio.html.
+const grid1Left = [
+  { img: 'leverate.png', w: 972, h: 623, title: 'Leverate', desc: 'Brand and full product UI for a global FinTech trading platform. Multiple broker types, multiple markets — one coherent system.', href: '/portfolio.html' },
+  { img: 'algorithmics.png', w: 972, h: 623, title: 'Algorithmics', desc: 'Branding and marketing design for an EdTech franchise in 55 countries. Behance Featured.', href: '/portfolio/algoritmika.html' },
+];
+const grid1Right = [
+  { img: 'congratz.png', w: 388, h: 297, title: 'Congratz', desc: 'Web and mobile design for gift application', href: '/portfolio/congratz.html' },
+  { img: 'logistic.png', w: 388, h: 410, title: 'Logistic SaaS', desc: 'UX/UI for logistic platform for 3,5 months', href: '/portfolio/logistic-saas-platform.html' },
+  { img: 'mtx.png', w: 388, h: 362, title: 'MTX Connect', desc: 'Brand and digital ecosystem for a Luxembourg telecom across European markets.', href: '/portfolio/mtx-connect.html' },
+];
+const featured = { img: 'journey.png', w: 1416, h: 623, title: 'Journey', desc: 'Award-winning design for an AI emotional companion', href: '/portfolio/ai-body.html' };
+const grid3 = [
+  { img: 'spherum.png', w: 686, h: 623, title: 'Spherum', desc: 'Mobile app design for a 3D video platform', href: '/portfolio/spherum.html' },
+  { img: 'deepgeo.png', w: 686, h: 623, title: 'DeepGeo', desc: 'Branding and UI for geologist platform', href: '/portfolio/deepgeo.html' },
+];
+---
+
+<section class="ow">
+  <div class="ow__inner">
+    <h2 class="ow__heading">Our work</h2>
+
+    <!-- Контейнер 1: 2 колонки -->
+    <div class="ow-grid1">
+      <div class="ow-col">
+        {grid1Left.map((t) => (
+          <a class="ow-card" href={t.href}>
+            <div class="ow-card__media"><img src={base + t.img} alt={t.title} width={t.w} height={t.h} loading="lazy" /></div>
+            <div class="ow-card__text">
+              <h3 class="ow-card__title">{t.title}</h3>
+              <p class="ow-card__desc">{t.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div class="ow-col">
+        {grid1Right.map((t) => (
+          <a class="ow-card" href={t.href}>
+            <div class="ow-card__media"><img src={base + t.img} alt={t.title} width={t.w} height={t.h} loading="lazy" /></div>
+            <div class="ow-card__text">
+              <h3 class="ow-card__title">{t.title}</h3>
+              <p class="ow-card__desc">{t.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Подпись -->
+    <p class="ow__caption">Brand and UI shipped by the same team. Same look on the landing, in the product, in the support emails.</p>
+
+    <!-- Featured -->
+    <a class="ow-card ow-card--featured" href={featured.href}>
+      <div class="ow-card__media"><img src={base + featured.img} alt={featured.title} width={featured.w} height={featured.h} loading="lazy" /></div>
+      <div class="ow-card__text">
+        <h3 class="ow-card__title">{featured.title}</h3>
+        <p class="ow-card__desc">{featured.desc}</p>
+      </div>
+    </a>
+
+    <!-- Контейнер 3: 2 равные колонки -->
+    <div class="ow-grid3">
+      {grid3.map((t) => (
+        <a class="ow-card" href={t.href}>
+          <div class="ow-card__media"><img src={base + t.img} alt={t.title} width={t.w} height={t.h} loading="lazy" /></div>
+          <div class="ow-card__text">
+            <h3 class="ow-card__title">{t.title}</h3>
+            <p class="ow-card__desc">{t.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ow { width: 100%; background: var(--color-bg); padding-block: 64px; }
+  .ow__inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .ow__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 46px;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  /* Подпись: центрированный блок max-1007, текст слева, 32/48 (в Figma блок 208px высотой) */
+  .ow__caption {
+    max-width: 1007px;
+    margin-inline: auto;
+    padding-block: 64px 48px;
+    box-sizing: border-box;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 48px;
+    color: #000;
+    margin-block: 0;
+  }
+
+  /* ─── Сетки ─────────────────────────────────────────────────────── */
+  .ow-grid1 { display: grid; grid-template-columns: 996fr 412fr; gap: 32px; align-items: start; }
+  .ow-col { display: flex; flex-direction: column; gap: 32px; }
+  .ow-grid3 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+
+  /* ─── Карточка тизера ───────────────────────────────────────────── */
+  .ow-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    border: 3px solid var(--color-sand);
+    border-radius: 24px;
+    background: var(--color-bg);
+    box-sizing: border-box;
+    color: inherit;
+    text-decoration: none;
+  }
+  .ow-card:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; }
+  .ow-card__media { border-radius: 24px; overflow: hidden; line-height: 0; }
+  .ow-card__media img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .ow-card:hover .ow-card__media img { transform: scale(1.04); }
+  .ow-card__text { display: flex; flex-direction: column; gap: 4px; padding: 8px 8px 16px 16px; }
+  .ow-card__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  .ow-card__desc {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.18px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* ─── 1024 ──────────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .ow { padding-block: 48px; }
+    .ow__heading { font-size: 36px; line-height: 40px; }
+    .ow__caption { font-size: 24px; line-height: 36px; }
+  }
+
+  /* ─── 768: всё в одну колонку ───────────────────────────────────── */
+  @media (max-width: 768px) {
+    .ow { padding-block: 40px; }
+    .ow__inner { gap: 24px; }
+    .ow__heading { font-size: 28px; line-height: 32px; }
+    .ow__caption { font-size: 19px; line-height: 28px; padding-block: 24px; }
+    .ow-grid1, .ow-grid3 { grid-template-columns: 1fr; gap: 16px; }
+    .ow-col { gap: 16px; }
+    .ow-card__title { font-size: 22px; line-height: 28px; }
+    .ow-card__desc { font-size: 16px; line-height: 22px; }
+  }
+
+  @media (max-width: 430px) {
+    .ow-card { padding: 8px; }
+    .ow-card__text { padding: 8px 8px 12px 12px; }
+    .ow-card__title { font-size: 20px; line-height: 26px; }
+  }
+
+  /* 769–1280: правая колонка (3 кейса) выравнивается по высоте левой (2 кейса) —
+     картинки правой колонки гибкие (cover) и ужимаются под высоту левой. */
+  @media (min-width: 769px) and (max-width: 1280px) {
+    .ow-grid1 { align-items: stretch; }
+    .ow-grid1 .ow-col:nth-child(2) .ow-card { flex: 1 1 0; min-height: 0; }
+    .ow-grid1 .ow-col:nth-child(2) .ow-card__media { flex: 1 1 0; min-height: 0; }
+    .ow-grid1 .ow-col:nth-child(2) .ow-card__media img { height: 100%; object-fit: cover; }
+  }
+</style>

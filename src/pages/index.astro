@@ -1,31 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import Hero from '../components/sections/Hero.astro';
-import BenefitsCards from '../components/sections/BenefitsCards.astro';
-import Statement from '../components/sections/Statement.astro';
-import DesignKinds from '../components/sections/DesignKinds.astro';
-import PriorityExamples from '../components/sections/PriorityExamples.astro';
+import Hero from '../components/sections/home/Hero.astro';
+import PainPoint from '../components/sections/home/PainPoint.astro';
+import OurWork from '../components/sections/home/OurWork.astro';
 import ClientLogos from '../components/sections/ClientLogos.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
-import Process from '../components/sections/Process.astro';
-import Pricing from '../components/sections/Pricing.astro';
-import Faq from '../components/sections/Faq.astro';
-import Footer from '../components/Footer.astro';
+import PlaceholderBlock from '../components/sections/home/PlaceholderBlock.astro';
+import HowWeWork from '../components/sections/home/HowWeWork.astro';
+import About from '../components/sections/home/About.astro';
+import Footer from '../components/sections/home/Footer.astro';
 ---
-<Base title="Design Subscription — Motka Design" description="Fixed monthly price. Pause anytime.">
+<Base title="Motka Design — Senior design partner" description="UX/UI and branding for complex digital products. Since 2005, 300+ shipped products across SaaS, FinTech, EdTech and beyond.">
   <Nav />
   <main>
     <Hero />
-    <BenefitsCards />
-    <Statement />
-    <DesignKinds />
-    <PriorityExamples />
+    <PainPoint />
+    <OurWork />
     <ClientLogos />
-    <Testimonials />
-    <Process />
-    <Pricing />
-    <Faq />
+    <div id="testimonials"><Testimonials /></div>
+    <PlaceholderBlock />
+    <div id="how-we-work"><HowWeWork /></div>
+    <About />
   </main>
   <Footer />
 </Base>

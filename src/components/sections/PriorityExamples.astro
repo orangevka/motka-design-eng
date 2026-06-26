@@ -1,7 +1,14 @@
 ---
 // PriorityExamples section — 1440×1229 pixel-perfect (Figma node 15:6662)
 // "The subscription adapts to your priorities"
-// Two example cards side by side; card 2 clips off-screen (carousel-like)
+// Карусель: стрелки сдвигают ряд на одну карточку (next влево / prev вправо).
+// Отличаются только sprint-число, картинка и alt — остальное у карточек одинаково.
+const CARDS = [
+  { sprintNum: '6', sprintUnit: 'months', img: '/assets/priority/card1-project.png',  alt: 'Leverate website preview — All-in-One Tech for CFD & Prop Trading' },
+  { sprintNum: '2', sprintUnit: 'weeks',  img: '/assets/priority/card2-preview2.png', alt: 'Leverate building billboard — Smooth Trading Experience' },
+  { sprintNum: '6', sprintUnit: 'months', img: '/assets/priority/card1-project.png',  alt: 'Leverate website preview — All-in-One Tech for CFD & Prop Trading' },
+  { sprintNum: '2', sprintUnit: 'weeks',  img: '/assets/priority/card2-preview2.png', alt: 'Leverate building billboard — Smooth Trading Experience' },
+];
 ---
 
 <section class="priority">
@@ -33,13 +40,14 @@
 
     <div class="priority__cards">
 
-      <!-- Card 1: Leverate — badge anchored to this card -->
+      {CARDS.map((c, i) => (
+      <!-- Leverate example card — sprint badge anchored to its own card -->
       <div class="priority__card-wrap">
-        <div class="priority__sprint priority__sprint--1">
+        <div class={`priority__sprint priority__sprint--${i + 1}`}>
           <p class="priority__sprint-label">What can be done in</p>
           <div class="priority__sprint-number">
-            <span class="priority__sprint-num">6</span>
-            <span class="priority__sprint-unit">months</span>
+            <span class="priority__sprint-num">{c.sprintNum}</span>
+            <span class="priority__sprint-unit">{c.sprintUnit}</span>
           </div>
         </div>
         <article class="priority__card">
@@ -89,11 +97,7 @@
 
         <!-- Project preview image -->
         <div class="priority__card-img">
-          <img
-            src="/assets/priority/card1-project.png"
-            alt="Leverate website preview — All-in-One Tech for CFD & Prop Trading"
-            class="priority__card-img-inner"
-          />
+          <img src={c.img} alt={c.alt} class="priority__card-img-inner" />
         </div>
 
         <!-- Bottom badges -->
@@ -110,84 +114,7 @@
 
         </article>
       </div>
-
-      <!-- Card 2: Leverate — badge anchored to this card -->
-      <div class="priority__card-wrap">
-        <div class="priority__sprint priority__sprint--2">
-          <p class="priority__sprint-label">What can be done in</p>
-          <div class="priority__sprint-number">
-            <span class="priority__sprint-num">2</span>
-            <span class="priority__sprint-unit">weeks</span>
-          </div>
-        </div>
-        <article class="priority__card">
-
-        <!-- Top info area -->
-        <div class="priority__card-info">
-          <div class="priority__card-meta">
-            <h3 class="priority__card-title">UX/UI and marketing design for Leverate</h3>
-            <div class="priority__card-tags">
-              <span class="priority__tag priority__tag--location">
-                <img src="/assets/priority/location-icon.svg" alt="" width="12" height="15" />
-                Israel
-              </span>
-              <span class="priority__tag priority__tag--industry">Fintech</span>
-            </div>
-          </div>
-
-          <!-- Stats row -->
-          <div class="priority__stats">
-            <div class="priority__stat">
-              <span class="priority__stat-num">80+</span>
-              <span class="priority__stat-label">product UI screens <br />for 3 platforms</span>
-            </div>
-            <div class="priority__sep" aria-hidden="true">
-              <img src="/assets/priority/separator.svg" alt="" />
-            </div>
-            <div class="priority__stat">
-              <span class="priority__stat-num">12+</span>
-              <span class="priority__stat-label">user flows, interface updates and new modules</span>
-            </div>
-            <div class="priority__sep" aria-hidden="true">
-              <img src="/assets/priority/separator.svg" alt="" />
-            </div>
-            <div class="priority__stat">
-              <span class="priority__stat-num">40+</span>
-              <span class="priority__stat-label">ad creatives, banners <br />and social media assets</span>
-            </div>
-            <div class="priority__sep" aria-hidden="true">
-              <img src="/assets/priority/separator.svg" alt="" />
-            </div>
-            <div class="priority__stat">
-              <span class="priority__stat-num">10+</span>
-              <span class="priority__stat-label">merch and <br />branded materials</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project preview image -->
-        <div class="priority__card-img">
-          <img
-            src="/assets/priority/card2-preview2.png"
-            alt="Leverate building billboard — Smooth Trading Experience"
-            class="priority__card-img-inner"
-          />
-        </div>
-
-        <!-- Bottom badges -->
-        <div class="priority__card-badges">
-          <span class="priority__badge priority__badge--sub">
-            <img src="/assets/priority/star-icon.svg" alt="" width="14" height="14" />
-            Pro subscription
-          </span>
-          <span class="priority__badge priority__badge--active">
-            <span class="priority__dot" aria-hidden="true"></span>
-            Active since Sep 2025
-          </span>
-        </div>
-
-        </article>
-      </div>
+      ))}
 
     </div>
   </div>
@@ -276,6 +203,12 @@
     transform: scaleX(-1);
   }
 
+  /* Неактивная стрелка (на границе карусели) */
+  .priority__nav-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
   /* ─── Cards outer container ─────────────────────────────────────── */
   /* Figma: 15:6687 at x=40, y=214, w=1400, h=951
      extends beyond .container (which clips at 1440-40=1360), so 1400px from x=40 means right edge at x=1440
@@ -355,6 +288,9 @@
     gap: 20px;
     align-items: flex-start;
     padding-top: 0;
+    /* Карусель: JS двигает transform на одну карточку по клику стрелок */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
 
   /* ─── Individual card ───────────────────────────────────────────── */
@@ -618,10 +554,11 @@
     }
 
 
-    /* Stats: allow wrapping at this width */
+    /* Stats: ровная сетка 2×2 (а не рваный flex-wrap по ширине контента) */
     .priority__stats {
-      flex-wrap: wrap;
-      row-gap: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
     }
 
     /* Hide separators when wrapping (they look odd between rows) */
@@ -644,7 +581,7 @@
     .priority {
       padding-block: 48px;
     }
-    /* Carousel is swipe-driven; arrows don't work without JS — hide on mobile */
+    /* На мобиле — нативный свайп (scroll-snap); стрелки скрываем */
     .priority__nav {
       display: none;
     }
@@ -784,3 +721,45 @@
     }
   }
 </style>
+
+<script>
+  // Карусель примеров: стрелки сдвигают ряд на одну карточку.
+  // На ≤768 стрелки скрыты, работает нативный свайп (scroll-snap) — transform сбрасываем.
+  const section = document.querySelector('.priority');
+  if (section) {
+    const track = section.querySelector('.priority__cards') as HTMLElement;
+    const wraps = section.querySelectorAll('.priority__card-wrap');
+    const prevBtn = section.querySelector('.priority__nav-btn--prev') as HTMLButtonElement;
+    const nextBtn = section.querySelector('.priority__nav-btn--next') as HTMLButtonElement;
+    const mq = window.matchMedia('(max-width: 768px)');
+    let index = 0;
+    const maxIndex = wraps.length - 1;
+
+    // Расстояние между соседними карточками = ширина карточки + gap (берём из факта)
+    const stepPx = () =>
+      wraps.length > 1
+        ? (wraps[1] as HTMLElement).offsetLeft - (wraps[0] as HTMLElement).offsetLeft
+        : 0;
+
+    const apply = () => {
+      if (mq.matches) {
+        track.style.transform = '';
+        return;
+      }
+      track.style.transform = `translateX(${-stepPx() * index}px)`;
+      if (prevBtn) prevBtn.disabled = index <= 0;
+      if (nextBtn) nextBtn.disabled = index >= maxIndex;
+    };
+
+    prevBtn?.addEventListener('click', () => {
+      if (index > 0) { index--; apply(); }
+    });
+    nextBtn?.addEventListener('click', () => {
+      if (index < maxIndex) { index++; apply(); }
+    });
+
+    mq.addEventListener('change', () => { index = 0; apply(); });
+    window.addEventListener('resize', apply);
+    apply();
+  }
+</script>

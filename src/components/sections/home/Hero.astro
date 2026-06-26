@@ -1,22 +1,46 @@
 ---
 // Home Hero — 1440×592 pixel-perfect (Figma node 46:685)
-// Текст слева (real text), иллюстрация-дашборд справа (экспортированный PNG из node 46:713,
-// прозрачный фон). Иллюстрация привязана к правому краю центрированной колонки 1440.
+// Текст слева (real text). Справа — чистые прозрачные дашборды (Figma node 80:7971,
+// 698×530), бегущие лентой (marquee) над неподвижной шахматкой.
+
+// Разные карточки можно добавлять сюда — петля останется бесшовной:
+// трек = один набор + его точная копия ([набор|набор]), translateX(-50%) сбрасывается
+// невидимо, т.к. вторая половина встаёт ровно на место первой.
+const CARDS = ['/assets/home/hero-dashboard.png'];
+
+// Половина (набор) должна перекрывать самый широкий экран (~2888px ≈ 4 карточки @698+24).
+// Если уникальных меньше — добиваем повтором до 4, иначе на широких мониторах будет пустота.
+const PER_HALF = Math.max(4, CARDS.length);
+const half = Array.from({ length: PER_HALF }, (_, i) => CARDS[i % CARDS.length]);
+const track = [...half, ...half]; // две идентичные половины → бесшовный -50%
+
+// Длительность держит ~72px/с на десктопе при любом числе карточек (шаг 698+24=722).
+const durationS = Math.round((PER_HALF * 722) / 72);
 ---
 
 <section class="hero">
   <div class="hero__inner">
     <h1 class="hero__title">Senior <br class="hero__br" />design <br class="hero__br" />partner</h1>
     <p class="hero__subtitle">UX/UI and branding for complex digital products</p>
+  </div>
 
-    <div class="hero__art" aria-hidden="true">
-      <img
-        src="/assets/home/hero-illustration.png"
-        alt=""
-        width="1032"
-        height="584"
-        fetchpriority="high"
-      />
+  <!-- Card strip — direct child of .hero (NOT inside .hero__inner) so it bleeds
+       past the 1440-column right edge; .hero { overflow:hidden } clips it at the
+       viewport edge. Left mirrors the illustration's 368px column offset:
+       calc(50% - 720px + 368px) = calc(50% - 352px). -->
+  <div class="hero-strip" aria-hidden="true">
+    <div class="hero-strip__track" style={`animation-duration:${durationS}s`}>
+      {track.map((src, i) => (
+        <div class="hero-strip__card">
+          <img
+            src={src}
+            alt=""
+            width="698"
+            height="530"
+            fetchpriority={i === 0 ? 'high' : undefined}
+          />
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -36,6 +60,24 @@
     max-width: var(--container-max); /* 1440 */
     height: 100%;
     margin-inline: auto;
+    z-index: 2; /* text + mask sit above the strip (z=1) */
+  }
+
+  /* Белая плашка слева — дашборды уезжают «в карман» под неё и чисто прячутся.
+     Сплошной белый до 430px + короткая растушёвка 16px → резкий край кармана,
+     без призрачного «выползания». z-index: 2 — над лентой (z=1), под текстом (z=3). */
+  .hero__inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      var(--color-bg) 0px,
+      var(--color-bg) 430px,
+      transparent 446px
+    );
+    pointer-events: none;
+    z-index: 2;
   }
 
   /* Заголовок: Factor A Bold 93/80, #333; left=37, top=112 (Figma 46:843) */
@@ -51,7 +93,7 @@
     line-height: 80px;
     letter-spacing: -0.5px;
     color: var(--color-ink);
-    z-index: 2;
+    z-index: 3;
   }
 
   /* Сабтайтл: Factor A Regular 28/32, #000; left=37.5, top=393 (Figma 46:844) */
@@ -66,22 +108,66 @@
     font-size: 28px;
     line-height: 32px;
     color: #000;
-    z-index: 2;
+    z-index: 3;
   }
 
-  /* Иллюстрация: node 46:713 (anima) — left=368, top=0, 1032×584 в колонке.
-     Лежит внутри центрированной колонки, правый край у column-right (x=1400). */
-  .hero__art {
+  /* ─── Card strip (marquee) ────────────────────────────────────── */
+  /* Левый край повторяет 368px-смещение иллюстрации от левого края колонки 1440;
+     ширина — до правого края вьюпорта (bleed на широких экранах).
+     z-index: 1 — под маской (z=2) и текстом (z=3). */
+  .hero-strip {
     position: absolute;
-    left: 368px;
+    left: calc(50% - 352px);
     top: 0;
-    width: 1032px;
+    width: calc(100% - (50% - 352px));
     height: 584px;
+    overflow: visible;
     z-index: 1;
+    /* Статичная шахматка-фон (клетка 32px, #fafafa/#ebebeb — как в исходном PNG).
+       Лежит на неподвижном контейнере: бежит только __track внутри, фон стоит. */
+    background-color: #fafafa;
+    background-image: conic-gradient(#ebebeb 25%, #fafafa 0 50%, #ebebeb 0 75%, #fafafa 0);
+    background-size: 64px 64px;
   }
-  .hero__art img {
-    width: 1032px;
+
+  /* Трек: два идентичных набора, translateX(-50%) = бесшовный цикл.
+     Интервал через margin-right (не gap), чтобы 50% точно совпадало. */
+  .hero-strip__track {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* 530-высокие карточки центрируются в 584-панели */
+    width: max-content;
     height: 584px;
+    will-change: transform;
+    /* Длительность задаётся инлайн (animation-duration) из durationS под число карточек;
+       40s — фолбэк для 4-карточной половины (~72px/с). */
+    animation: hero-marquee 40s linear infinite;
+  }
+
+  @keyframes hero-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .hero-strip:hover .hero-strip__track {
+    animation-play-state: paused;
+  }
+
+  .hero-strip__card {
+    width: 698px;
+    height: 530px;
+    flex-shrink: 0;
+    margin-right: 24px; /* интервал между картинками в карусели */
+    /* Скругление + тень — в CSS (Figma: radius 8, drop-shadow 0/4/28, #E0D7D3).
+       Окно экспортировано с прямыми углами → overflow:hidden скругляет его;
+       box-shadow рисуется снаружи и тоже повторяет скруглённую рамку. */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 28px 0 rgba(224, 215, 211, 1);
+  }
+  .hero-strip__card img {
+    width: 698px;
+    height: 530px;
     display: block;
   }
 
@@ -111,21 +197,19 @@
       font-size: 22px;
       line-height: 28px;
     }
-    /* Иллюстрация уменьшается, прижата к правому краю колонки */
-    .hero__art {
-      left: auto;
-      right: -40px;
-      top: 20px;
-      width: 760px;
-      height: auto;
+    /* Лента уменьшается, панель подгоняется под высоту hero */
+    .hero-strip,
+    .hero-strip__track {
+      height: 540px;
     }
-    .hero__art img {
-      width: 760px;
-      height: auto;
+    .hero-strip__card,
+    .hero-strip__card img {
+      width: 500px;
+      height: 380px;
     }
   }
 
-  /* ─── 768 и ниже: стек — текст сверху, иллюстрация полосой снизу ─── */
+  /* ─── 768 и ниже: стек — текст сверху, лента полосой снизу ─── */
   @media (max-width: 768px) {
     .hero {
       height: auto;
@@ -134,6 +218,10 @@
     .hero__inner {
       height: auto;
       padding: 40px 24px 0;
+    }
+    /* Маска не нужна в стеке */
+    .hero__inner::before {
+      display: none;
     }
     /* Заголовок и сабтайтл — без принудительных переносов, текут естественно */
     .hero__br { display: none; }
@@ -151,15 +239,28 @@
       font-size: clamp(20px, 5.5vw, 26px);
       line-height: 1.3;
     }
-    .hero__art {
+    /* Лента: полноширинная полоса, обрезается, под текстом.
+       Высота полосы = высота карточки + 48 → align-items:center даёт по 24px
+       шахматки сверху и снизу. Карточки крупнее, чтобы их было меньше на экране. */
+    .hero-strip {
       position: static;
+      left: auto;
+      top: auto;
       width: 100%;
-      height: auto;
+      height: 348px; /* 300 карточка + 24 + 24 */
+      overflow: hidden;
       margin-top: 32px;
     }
-    .hero__art img {
-      width: 100%;
-      height: auto;
+    .hero-strip__track {
+      height: 348px;
+    }
+    .hero-strip__card,
+    .hero-strip__card img {
+      width: 395px;
+      height: 300px;
+    }
+    .hero-strip__card {
+      margin-right: 16px;
     }
   }
 
@@ -174,8 +275,25 @@
     .hero__subtitle {
       font-size: clamp(18px, 5vw, 22px);
     }
-    .hero__art {
+    /* Телефон: карточка меньше (395 шире экрана), полоса = 228 + 24 + 24 */
+    .hero-strip {
       margin-top: 24px;
+      height: 276px;
+    }
+    .hero-strip__track {
+      height: 276px;
+    }
+    .hero-strip__card,
+    .hero-strip__card img {
+      width: 300px;
+      height: 228px;
+    }
+  }
+
+  /* ─── Reduced motion: остановить ленту ───────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-strip__track {
+      animation: none;
     }
   }
 </style>

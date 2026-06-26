@@ -95,6 +95,47 @@
       <div class="hero-strip__card">
         <img src="/assets/hero/card-730.png" alt="" width="400" height="530" />
       </div>
+
+      <!-- Duplicate set (same 13 cards) — seamless marquee loop (translateX -50%) -->
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-1.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-2.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-720.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-721.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-722.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-723.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-724.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-725.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-726.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-727.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-728.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-729.png" alt="" width="400" height="530" />
+      </div>
+      <div class="hero-strip__card">
+        <img src="/assets/hero/card-730.png" alt="" width="400" height="530" />
+      </div>
     </div>
   </div>
 </section>
@@ -123,11 +164,9 @@
     z-index: 2; /* forms stacking context above .hero-strip (z=1) */
   }
 
-  /* ─── White mask — keeps carousel hidden until x≈597 ─────────── */
-  /* Figma: colorful imagery only reveals at x≈597 (card strip x=429
-     is fully masked). This ::before covers [0..557] solid white then
-     fades to transparent over the next 40px, reaching transparent at
-     x=597 — matching Figma's reveal point.
+  /* ─── White mask — карточки уходят «в карман» под левую плашку ─── */
+  /* Сплошной белый до 557px + короткая растушёвка 16px → резкий край,
+     карточки чисто прячутся слева, без призрачного «выползания».
      Placed on __inner so gradient coords are relative to the 1440 column.
      z-index: 2 — above card strip (z=1), below text (z=3). */
   .hero__inner::before {
@@ -138,7 +177,7 @@
       to right,
       #ffffff 0px,
       #ffffff 557px,
-      transparent 597px
+      transparent 573px
     );
     pointer-events: none;
     z-index: 2;
@@ -322,23 +361,36 @@
     z-index: 1;
   }
 
-  /* Single flex row holding all cards */
-  /* stage ④: animate __track horizontally (marquee). Static offset for now. */
+  /* Single flex row holding all cards. Marquee: the track holds TWO identical
+     card sets; translateX(-50%) shifts by exactly one set, so card N+set lands
+     where card N began → seamless loop. Inter-card spacing uses margin-right
+     (not gap) so the trailing gap is part of each card's footprint and the
+     50% point stays perfectly aligned. */
   .hero-strip__track {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 14.79px; /* Figma gap between cards in strip (414.79-400=14.79) */
     width: max-content;
     height: 530px;
-    /* Static: show from start (leftmost visible card aligns with left edge) */
-    transform: translateX(0);
+    will-change: transform;
+    animation: hero-marquee 70s linear infinite;
+  }
+
+  @keyframes hero-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Pause when the visitor hovers the strip */
+  .hero-strip:hover .hero-strip__track {
+    animation-play-state: paused;
   }
 
   .hero-strip__card {
     width: 400px;
     height: 530px;
     flex-shrink: 0;
+    margin-right: 14.79px; /* Figma gap between cards (414.79-400=14.79) */
     border-radius: 26px;
     overflow: hidden;
   }
@@ -490,12 +542,12 @@
 
     .hero-strip__track {
       height: 260px;
-      gap: 10px;
     }
 
     .hero-strip__card {
       width: 200px;
       height: 260px;
+      margin-right: 10px;
       border-radius: 16px;
     }
     .hero-strip__card img {
@@ -537,6 +589,13 @@
     .hero-strip__card img {
       width: 170px;
       height: 220px;
+    }
+  }
+
+  /* ─── Reduced motion: stop the marquee ───────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-strip__track {
+      animation: none;
     }
   }
 </style>

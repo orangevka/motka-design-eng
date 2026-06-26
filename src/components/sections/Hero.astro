@@ -359,6 +359,10 @@
     height: 530px;
     overflow: visible;
     z-index: 1;
+    /* Обрезаем ленту по ЛЕВОМУ краю, чтобы карточки прятались «в карман» и не
+       выползали в левое поле на широких экранах (маска покрывает только колонку 1440).
+       Сверху/снизу/справа не режем (inset −200px). */
+    clip-path: inset(-200px -200px -200px 0);
   }
 
   /* Single flex row holding all cards. Marquee: the track holds TWO identical

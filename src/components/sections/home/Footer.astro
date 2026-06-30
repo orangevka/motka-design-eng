@@ -28,15 +28,15 @@ const portfolio2 = ['UI design for a SaaS', 'Mobile app for gifts', 'Branded ill
         </div>
       </div>
 
-      <div class="ft__card">
+      <a class="ft__card" href="https://www.linkedin.com/in/philsmirnov/" target="_blank" rel="noopener" aria-label="Phil Smirnov on LinkedIn">
         <img class="ft__avatar" src="/assets/home/footer/phil-avatar@2x.png" alt="Phil Smirnov" width="76" height="77" loading="lazy" />
         <div class="ft__bubble">
           <img class="ft__bubble-bg" src="/assets/home/footer/speech-bubble.svg" alt="" width="174" height="70" aria-hidden="true" />
           <span class="ft__bubble-text">You can text me<br />on <span class="ft__lk">Linkedin</span></span>
         </div>
-        <p class="ft__name">Phil Smirnov<img class="ft__badge" src="/assets/home/footer/linkedin-badge.png" alt="" width="24" height="24" aria-hidden="true" /></p>
+        <p class="ft__name">Phil Smirnov<img class="ft__badge" src="/assets/home/footer/linkedin-badge.svg" alt="" width="24" height="24" aria-hidden="true" /></p>
         <p class="ft__role">Founder<br />and Design Director</p>
-      </div>
+      </a>
     </div>
 
     <!-- ─── Бежевый блок ─── -->
@@ -110,11 +110,14 @@ const portfolio2 = ['UI design for a SaaS', 'Mobile app for gifts', 'Branded ill
 
   /* ─── Зелёная карточка Phil (внутренняя раскладка абсолютная на всех ширинах) ─── */
   .ft__card {
+    display: block;
     position: relative;
     width: 329.42px; max-width: 100%;
     height: 246.84px;
     background: var(--color-cta);
     border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
   }
   .ft__avatar { position: absolute; left: 34.67px; top: 31.13px; width: 76px; height: 77px; border-radius: 50%; object-fit: cover; }
   .ft__bubble { position: absolute; left: 122.35px; top: 37.44px; width: 174px; height: 70px; }

@@ -285,4 +285,70 @@
     height: 41.771px;
     display: block;
   }
+
+  /* ── Мобильная бегущая строка (≤768) ───────────────────────────
+     Класс --marquee вешает JS после клонирования логотипов; без JS
+     остаётся обычный перенос (graceful fallback). Трек = 2 копии набора,
+     translateX(-50%) даёт бесшовный цикл; интервал через margin-right
+     (а не gap), чтобы 50% точно совпадало по ширине. */
+  @media (max-width: 768px) {
+    .client-logos--marquee {
+      padding-left: 0;
+      padding-right: 0;
+      overflow: hidden;
+    }
+    .client-logos--marquee .client-logos__row {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      width: max-content;
+      gap: 0;
+      animation: logos-marquee 22s linear infinite;
+      will-change: transform;
+    }
+    .client-logos--marquee .client-logos__logo {
+      flex-shrink: 0;
+      margin-right: 44px;
+    }
+  }
+
+  @keyframes logos-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .client-logos--marquee .client-logos__row { animation: none; }
+  }
 </style>
+
+<script>
+  // На мобиле (≤768) показываем логотипы бегущей строкой: клонируем набор
+  // один раз (для бесшовного -50%) и включаем класс --marquee. На десктопе
+  // клоны убираем и возвращаем обычный центрированный ряд.
+  const cl = document.querySelector('.client-logos');
+  if (cl) {
+    const row = cl.querySelector('.client-logos__row') as HTMLElement;
+    const mq = window.matchMedia('(max-width: 768px)');
+    const originals = Array.from(row.children);
+    let cloned = false;
+
+    const setup = () => {
+      if (mq.matches && !cloned) {
+        originals.forEach((n) => {
+          const c = n.cloneNode(true) as HTMLElement;
+          c.setAttribute('aria-hidden', 'true');
+          row.appendChild(c);
+        });
+        cloned = true;
+        cl.classList.add('client-logos--marquee');
+      } else if (!mq.matches && cloned) {
+        Array.from(row.children).slice(originals.length).forEach((c) => c.remove());
+        cloned = false;
+        cl.classList.remove('client-logos--marquee');
+      }
+    };
+
+    setup();
+    mq.addEventListener('change', setup);
+  }
+</script>

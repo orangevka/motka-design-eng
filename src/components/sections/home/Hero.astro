@@ -60,24 +60,7 @@ const durationS = Math.round((PER_HALF * 722) / 72);
     max-width: var(--container-max); /* 1440 */
     height: 100%;
     margin-inline: auto;
-    z-index: 2; /* text + mask sit above the strip (z=1) */
-  }
-
-  /* Белая плашка слева — дашборды уезжают «в карман» под неё и чисто прячутся.
-     Сплошной белый до 430px + короткая растушёвка 16px → резкий край кармана,
-     без призрачного «выползания». z-index: 2 — над лентой (z=1), под текстом (z=3). */
-  .hero__inner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to right,
-      var(--color-bg) 0px,
-      var(--color-bg) 430px,
-      transparent 446px
-    );
-    pointer-events: none;
-    z-index: 2;
+    z-index: 2; /* text sits above the strip (z=1) */
   }
 
   /* Заголовок: Factor A Bold 93/80, #333; left=37, top=112 (Figma 46:843) */
@@ -111,23 +94,24 @@ const durationS = Math.round((PER_HALF * 722) / 72);
     z-index: 3;
   }
 
-  /* ─── Card strip (marquee) ────────────────────────────────────── */
-  /* Левый край повторяет 368px-смещение иллюстрации от левого края колонки 1440;
-     ширина — до правого края вьюпорта (bleed на широких экранах).
-     z-index: 1 — под маской (z=2) и текстом (z=3). */
+  /* ─── Card strip (marquee panel) ──────────────────────────────── */
+  /* Панель-контейнер анимации (Figma 80:683): блок честно поделён на две части —
+     слева белый фон с текстом, справа — скруглённая панель с анимацией ВНУТРИ
+     колонки 1440 (не до края экрана). Левый край = 436px от левого края колонки
+     (граница в макете), правый край = 40px до правого края контента (как у других
+     секций). overflow:hidden + radius 24px обрезают шахматку и ленту по панели —
+     анимация не вылезает ни под заголовок слева, ни за край справа.
+     left/right через max(): ≥1440 привязаны к центрированной колонке, на узких
+     остаются фиксированными (436px слева, 40px справа). z-index: 1 — под текстом. */
   .hero-strip {
     position: absolute;
-    left: calc(50% - 352px);
+    left: max(436px, calc(50% - 284px));
+    right: max(40px, calc(50% - 680px));
     top: 0;
-    width: calc(100% - (50% - 352px));
     height: 584px;
-    overflow: visible;
+    overflow: hidden;
+    border-radius: 24px;
     z-index: 1;
-    /* Обрезаем ленту по ЛЕВОМУ краю (left=0), чтобы карточки прятались «в карман»
-       и не выползали в левое поле на широких экранах (маска покрывает только
-       центрированную колонку 1440). Сверху/снизу/справа не режем (inset −200px) —
-       чтобы не обрезать тень карточек и правый bleed. */
-    clip-path: inset(-200px -200px -200px 0);
     /* Статичная шахматка-фон (клетка 32px, #fafafa/#ebebeb — как в исходном PNG).
        Лежит на неподвижном контейнере: бежит только __track внутри, фон стоит. */
     background-color: #fafafa;
@@ -224,10 +208,6 @@ const durationS = Math.round((PER_HALF * 722) / 72);
       height: auto;
       padding: 40px 24px 0;
     }
-    /* Маска не нужна в стеке */
-    .hero__inner::before {
-      display: none;
-    }
     /* Заголовок и сабтайтл — без принудительных переносов, текут естественно */
     .hero__br { display: none; }
     .hero__title {
@@ -250,10 +230,12 @@ const durationS = Math.round((PER_HALF * 722) / 72);
     .hero-strip {
       position: static;
       left: auto;
+      right: auto;
       top: auto;
       width: 100%;
       height: 348px; /* 300 карточка + 24 + 24 */
       overflow: hidden;
+      border-radius: 0; /* полноширинная полоса — без скруглений */
       margin-top: 32px;
     }
     .hero-strip__track {

@@ -13,7 +13,7 @@
       <div class="faq__accordion">
 
         <!-- Item 1: OPEN by default -->
-        <details class="faq__item faq__item--open" name="faq" open>
+        <details class="faq__item faq__item--open" open>
           <summary class="faq__summary">
             <span class="faq__question">What tasks can I submit?</span>
             <span class="faq__chevron" aria-hidden="true">
@@ -25,7 +25,7 @@
         </details>
 
         <!-- Item 2 -->
-        <details class="faq__item" name="faq">
+        <details class="faq__item">
           <summary class="faq__summary">
             <span class="faq__question">What does "1 active task at a time" mean?</span>
             <span class="faq__chevron" aria-hidden="true">
@@ -37,7 +37,7 @@
         </details>
 
         <!-- Item 3 -->
-        <details class="faq__item" name="faq">
+        <details class="faq__item">
           <summary class="faq__summary">
             <span class="faq__question">Is this good for product design, not just marketing?</span>
             <span class="faq__chevron" aria-hidden="true">
@@ -49,7 +49,7 @@
         </details>
 
         <!-- Item 4 -->
-        <details class="faq__item" name="faq">
+        <details class="faq__item">
           <summary class="faq__summary">
             <span class="faq__question">Can I pause?</span>
             <span class="faq__chevron" aria-hidden="true">
@@ -61,7 +61,7 @@
         </details>
 
         <!-- Item 5 -->
-        <details class="faq__item" name="faq">
+        <details class="faq__item">
           <summary class="faq__summary">
             <span class="faq__question">What's not included?</span>
             <span class="faq__chevron" aria-hidden="true">
@@ -73,7 +73,7 @@
         </details>
 
         <!-- Item 6 -->
-        <details class="faq__item" name="faq">
+        <details class="faq__item">
           <summary class="faq__summary">
             <span class="faq__question">How quickly can I expect results?</span>
             <span class="faq__chevron" aria-hidden="true">
@@ -178,15 +178,16 @@
   /* ─── Individual accordion item ────────────────────────────── */
   .faq__item {
     background: var(--color-sand); /* #f3efed — closed state */
+    border: 3px solid transparent; /* зарезервировано под обводку открытого — без скачка layout */
     border-radius: 24px;
     overflow: hidden;
     position: relative;
   }
 
-  /* Open item gets white bg with border + shadow (matching Figma node 15:8793) */
+  /* Open item gets white bg with 3px border + shadow (matching Figma node 15:8793) */
   .faq__item[open] {
     background: var(--color-bg);
-    border: 1.417px solid var(--border-subtle); /* #f3efed */
+    border-color: var(--border-subtle); /* #f3efed, 3px */
     box-shadow: 0px 31px 24px -36px rgba(30, 18, 12, 0.3);
   }
 
@@ -618,3 +619,90 @@
     }
   }
 </style>
+
+<script>
+  // Плавное раскрытие FAQ: нативный <details> не анимирует высоту, поэтому
+  // перехватываем клик и анимируем height через Web Animations API.
+  // Эксклюзивность (открыт только один) — на нас (атрибут name убран), поэтому
+  // при открытии анимированно закрываем остальные открытые пункты.
+  const ACC = document.querySelector('.faq__accordion');
+  if (ACC) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const items = Array.from(ACC.querySelectorAll<HTMLDetailsElement>('.faq__item'));
+    const EASE = 'cubic-bezier(0.33, 0, 0.2, 1)';
+
+    items.forEach((details) => {
+      const summary = details.querySelector('summary') as HTMLElement;
+      let animation: Animation | null = null;
+      let state: 'idle' | 'opening' | 'closing' = 'idle';
+
+      const finish = (open: boolean) => {
+        details.open = open;
+        animation = null;
+        state = 'idle';
+        details.style.height = '';
+        details.style.overflow = '';
+      };
+
+      const shrink = () => {
+        state = 'closing';
+        details.style.overflow = 'hidden';
+        const start = details.offsetHeight;
+        const end = summary.offsetHeight;
+        animation?.cancel();
+        animation = details.animate(
+          { height: [`${start}px`, `${end}px`] },
+          { duration: 300, easing: EASE },
+        );
+        animation.onfinish = () => finish(false);
+        animation.oncancel = () => { state = 'idle'; };
+      };
+
+      const expand = () => {
+        details.style.overflow = 'hidden';
+        const start = details.offsetHeight;
+        details.open = true; // показать контент + стили [open]
+        details.style.height = `${start}px`;
+        requestAnimationFrame(() => {
+          details.style.height = 'auto';
+          const end = details.offsetHeight; // полная высота с учётом 3px-бордера
+          details.style.height = `${start}px`;
+          void details.offsetHeight; // reflow
+          state = 'opening';
+          animation?.cancel();
+          animation = details.animate(
+            { height: [`${start}px`, `${end}px`] },
+            { duration: 360, easing: EASE },
+          );
+          animation.onfinish = () => finish(true);
+          animation.oncancel = () => { state = 'idle'; };
+        });
+      };
+
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (reduce) {
+          if (!details.open) { closeOthers(details); details.open = true; }
+          else details.open = false;
+          return;
+        }
+        if (state === 'closing' || !details.open) {
+          closeOthers(details);
+          expand();
+        } else {
+          shrink();
+        }
+      });
+
+      (details as any)._shrink = shrink;
+    });
+
+    function closeOthers(except: HTMLDetailsElement) {
+      items.forEach((d) => {
+        if (d === except || !d.open) return;
+        if (reduce) { d.open = false; return; }
+        (d as any)._shrink();
+      });
+    }
+  }
+</script>

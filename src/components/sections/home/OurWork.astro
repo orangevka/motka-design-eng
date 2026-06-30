@@ -56,7 +56,23 @@ const grid3 = [
 
     <!-- Featured -->
     <a class="ow-card ow-card--featured" href={featured.href}>
-      <div class="ow-card__media"><img src={base + featured.img} alt={featured.title} width={featured.w} height={featured.h} loading="lazy" /></div>
+      <div class="ow-card__media">
+        <video
+          class="ow-card__video"
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+          poster={base + 'journey-poster.jpg'}
+          width="1280"
+          height="548"
+          aria-label={featured.title}
+        >
+          <source src={base + 'journey.webm'} type="video/webm" />
+          <source src={base + 'journey.mp4'} type="video/mp4" />
+        </video>
+      </div>
       <div class="ow-card__text">
         <h3 class="ow-card__title">{featured.title}</h3>
         <p class="ow-card__desc">{featured.desc}</p>
@@ -132,9 +148,11 @@ const grid3 = [
     text-decoration: none;
   }
   .ow-card:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; }
-  .ow-card__media { border-radius: 24px; overflow: hidden; line-height: 0; }
-  .ow-card__media img { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
-  .ow-card:hover .ow-card__media img { transform: scale(1.04); }
+  .ow-card__media { border-radius: 16px; overflow: hidden; line-height: 0; }
+  .ow-card__media img,
+  .ow-card__media video { width: 100%; height: auto; display: block; transition: transform 0.4s ease; }
+  .ow-card:hover .ow-card__media img,
+  .ow-card:hover .ow-card__media video { transform: scale(1.04); }
   .ow-card__text { display: flex; flex-direction: column; gap: 4px; padding: 8px 8px 16px 16px; }
   .ow-card__title {
     font-family: var(--font-display);

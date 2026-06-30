@@ -149,7 +149,7 @@ const grid3 = [
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    letter-spacing: -0.18px;
+    letter-spacing: normal;
     color: var(--color-text-secondary);
     margin: 0;
   }
@@ -179,9 +179,11 @@ const grid3 = [
     .ow-card__title { font-size: 20px; line-height: 26px; }
   }
 
-  /* 769–1280: правая колонка (3 кейса) выравнивается по высоте левой (2 кейса) —
-     картинки правой колонки гибкие (cover) и ужимаются под высоту левой. */
-  @media (min-width: 769px) and (max-width: 1280px) {
+  /* Двухколоночная раскладка (≥769px): правая колонка (3 кейса) выравнивается по
+     высоте левой (2 кейса). Левая с двумя крупными картинками задаёт высоту, а
+     картинки правой колонки гибкие (cover) и кадрируются под эту высоту, чтобы
+     сумма высот правой колонки совпадала с левой. */
+  @media (min-width: 769px) {
     .ow-grid1 { align-items: stretch; }
     .ow-grid1 .ow-col:nth-child(2) .ow-card { flex: 1 1 0; min-height: 0; }
     .ow-grid1 .ow-col:nth-child(2) .ow-card__media { flex: 1 1 0; min-height: 0; }

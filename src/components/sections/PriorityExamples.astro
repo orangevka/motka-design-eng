@@ -163,7 +163,7 @@ const CARDS = [
     font-weight: 400;
     font-size: 22px;
     line-height: 26px;
-    letter-spacing: -0.44px;
+    letter-spacing: normal;
     color: var(--color-text-secondary);
     margin: 0;
     max-width: 657px;
@@ -215,7 +215,13 @@ const CARDS = [
      We position it relative to the full viewport left edge with margin-left: var(--container-pad) */
   .priority__cards-outer {
     position: relative;
-    margin-left: var(--container-pad); /* 40px from left edge */
+    /* Левый край листалки = левая граница контента контейнера.
+       При vw≤1440 это 40px; при vw>1440 контейнер центрируется,
+       поэтому отступ = (vw - 1440)/2 + 40. max() не даёт уйти левее 40px. */
+    margin-left: max(
+      var(--container-pad),
+      calc(50% - var(--container-max) / 2 + var(--container-pad))
+    );
     /* width extends to right edge of viewport — no overflow:hidden here */
   }
 
@@ -410,7 +416,7 @@ const CARDS = [
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
-    letter-spacing: -0.36px;
+    letter-spacing: normal;
     color: var(--color-text-secondary);
     display: block;
   }
@@ -723,43 +729,85 @@ const CARDS = [
 </style>
 
 <script>
-  // Карусель примеров: стрелки сдвигают ряд на одну карточку.
+  // Карусель примеров: стрелки сдвигают ряд на одну карточку, зациклено в обе стороны.
+  // Бесшовность: дублируем все карточки в конец трека. Позиция index===realCount
+  // визуально идентична index===0, поэтому на стыке делаем мгновенный «прыжок» без анимации.
   // На ≤768 стрелки скрыты, работает нативный свайп (scroll-snap) — transform сбрасываем.
   const section = document.querySelector('.priority');
   if (section) {
     const track = section.querySelector('.priority__cards') as HTMLElement;
-    const wraps = section.querySelectorAll('.priority__card-wrap');
     const prevBtn = section.querySelector('.priority__nav-btn--prev') as HTMLButtonElement;
     const nextBtn = section.querySelector('.priority__nav-btn--next') as HTMLButtonElement;
     const mq = window.matchMedia('(max-width: 768px)');
+
+    // Клоны всех оригиналов в конец трека — буфер для бесшовного цикла.
+    const originals = Array.from(track.children) as HTMLElement[];
+    const realCount = originals.length;
+    originals.forEach((node) => {
+      const clone = node.cloneNode(true) as HTMLElement;
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+
     let index = 0;
-    const maxIndex = wraps.length - 1;
+    let animating = false;
 
-    // Расстояние между соседними карточками = ширина карточки + gap (берём из факта)
-    const stepPx = () =>
-      wraps.length > 1
-        ? (wraps[1] as HTMLElement).offsetLeft - (wraps[0] as HTMLElement).offsetLeft
-        : 0;
-
-    const apply = () => {
-      if (mq.matches) {
-        track.style.transform = '';
-        return;
-      }
-      track.style.transform = `translateX(${-stepPx() * index}px)`;
-      if (prevBtn) prevBtn.disabled = index <= 0;
-      if (nextBtn) nextBtn.disabled = index >= maxIndex;
+    // После первого смещения карусели левая стрелка из серой (#A3A3A3 «старт»)
+    // становится тёмной как правая (#4A4A4A). Подмена src на идентичный по форме
+    // arrow-right.svg; флип scaleX(-1) уже задан в CSS. Одноразово.
+    let engaged = false;
+    const engage = () => {
+      if (engaged) return;
+      engaged = true;
+      const img = prevBtn?.querySelector('img');
+      if (img) img.setAttribute('src', '/assets/priority/arrow-right.svg');
     };
 
-    prevBtn?.addEventListener('click', () => {
-      if (index > 0) { index--; apply(); }
-    });
+    // Расстояние между соседними карточками = ширина карточки + gap (берём из факта)
+    const stepPx = () => {
+      const w = track.children;
+      return w.length > 1
+        ? (w[1] as HTMLElement).offsetLeft - (w[0] as HTMLElement).offsetLeft
+        : 0;
+    };
+
+    // animate=false → мгновенный сдвиг (с принудительным reflow, чтобы стык был незаметен)
+    const setX = (i: number, animate: boolean) => {
+      track.style.transition = animate ? '' : 'none';
+      track.style.transform = `translateX(${-stepPx() * i}px)`;
+      if (!animate) {
+        void track.offsetWidth; // reflow — зафиксировать позицию без анимации
+        track.style.transition = '';
+      }
+    };
+
     nextBtn?.addEventListener('click', () => {
-      if (index < maxIndex) { index++; apply(); }
+      if (mq.matches || animating) return;
+      engage();
+      animating = true;
+      index++;
+      setX(index, true);
     });
 
-    mq.addEventListener('change', () => { index = 0; apply(); });
-    window.addEventListener('resize', apply);
-    apply();
+    prevBtn?.addEventListener('click', () => {
+      if (mq.matches || animating) return;
+      engage();
+      // С нулевой позиции сперва незаметно прыгаем в эквивалентную позицию клонов.
+      if (index === 0) { index = realCount; setX(index, false); }
+      animating = true;
+      index--;
+      setX(index, true);
+    });
+
+    // По окончании анимации вперёд — если дошли до клон-зоны, снапим в начало.
+    track.addEventListener('transitionend', (e) => {
+      if (e.propertyName !== 'transform') return;
+      animating = false;
+      if (index >= realCount) { index = 0; setX(index, false); }
+    });
+
+    mq.addEventListener('change', () => { index = 0; animating = false; setX(index, false); });
+    window.addEventListener('resize', () => setX(index, false));
+    setX(index, false);
   }
 </script>

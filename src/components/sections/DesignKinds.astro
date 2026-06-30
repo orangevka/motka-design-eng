@@ -4,10 +4,10 @@
 // CSS-only tabs: clicking a row activates it (radio + :checked). One placeholder
 // image for now (dark-card.png); on ≤768 the image opens directly under the active row.
 const kinds = [
-  { name: 'Interfaces', desc: 'Expert level product design, from screens to design systems.' },
-  { name: 'Branding', desc: 'Identity that stays consistent across every touchpoint.' },
-  { name: 'Marketing creatives', desc: 'Creative assets for campaigns, launches, and growth.' },
-  { name: 'Design support', desc: 'Replaces a part-time in-house designer, without the hire.', outline: true },
+  { name: 'Interfaces', desc: 'Expert level product design, from screens to design systems.', img: '/assets/designkinds/interfaces-card.png', alt: 'Product UI screens and design-system examples' },
+  { name: 'Branding', desc: 'Identity that stays consistent across every touchpoint.', img: '/assets/designkinds/branding-card.png', alt: 'DeepGeo brand identity: logo, typography and color palette' },
+  { name: 'Marketing creatives', desc: 'Creative assets for campaigns, launches, and growth.', img: '/assets/designkinds/marketing-card.png', alt: 'Marketing creatives: social media stories and ad designs' },
+  { name: 'Design support', desc: 'Replaces a part-time in-house designer, without the hire.', img: '/assets/designkinds/dark-card.png', alt: 'Design support: in-product modal and a design feedback thread' },
 ];
 const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
 ---
@@ -27,9 +27,9 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
       <div class="dk__list">
         {kinds.map((k, i) => (
           <>
-            <input class="dk__radio" type="radio" name="dk-tab" id={`dk-tab-${i}`} checked={i === 0} />
+            <input class="dk__radio" type="radio" name="dk-tab" id={`dk-tab-${i}`} checked={i === 0} data-img={k.img} data-alt={k.alt} />
             <div class="dk__item">
-              <label class:list={['dk__row', k.outline && 'dk__row--outline']} for={`dk-tab-${i}`}>
+              <label class="dk__row" for={`dk-tab-${i}`}>
                 <span class="dk__row-inner">
                   <span class="dk__text">
                     <span class="dk__kind-name">{k.name}</span>
@@ -44,18 +44,19 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
               </label>
               <!-- Per-row image (shown under the active row on ≤768) -->
               <div class="dk__card dk__card--mobile">
-                <img src="/assets/designkinds/dark-card.png" alt="" width="785" height="680" class="dk__card-img" aria-hidden="true" />
+                <img src={k.img} alt={k.alt} width="785" height="680" class="dk__card-img" />
               </div>
             </div>
           </>
         ))}
       </div>
 
-      <!-- Right: dark card (desktop; reflects the active tab — placeholder image for now) -->
+      <!-- Right: card reflecting the active tab. Defaults to the first tab's image;
+           JS swaps src/alt on tab change (mobile shows each row's own image via CSS). -->
       <div class="dk__card dk__card--desktop">
         <img
-          src="/assets/designkinds/dark-card.png"
-          alt="Sample design work: Keep Your Challenge fintech modal with UX category navigation"
+          src={kinds[0].img}
+          alt={kinds[0].alt}
           width="785"
           height="680"
           class="dk__card-img"
@@ -140,41 +141,29 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
     flex-direction: column;
   }
 
-  /* Row card base (label — clickable) */
+  /* Row card base (label — clickable). 3px transparent border is reserved so the
+     active border doesn't shift layout; 9px + 3px border = 12px effective frame. */
   .dk__row {
-    display: block;
+    display: flex;
+    align-items: center;
     background: var(--color-sand); /* #f3efed */
+    border: 3px solid transparent;
     border-radius: 24px;
-    padding: 12px;
+    padding: 9px;
     width: 100%;
     position: relative;
     cursor: pointer;
   }
 
-  /* Active row (checked radio): white blend overlay */
-  .dk__radio:checked + .dk__item .dk__row::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: white;
-    mix-blend-mode: multiply;
-    border-radius: 24px;
-    pointer-events: none;
+  /* Active row (checked radio): white fill + sand border (Figma node 88:4021) */
+  .dk__radio:checked + .dk__item .dk__row {
+    background: #fff;
+    border-color: var(--color-sand);
   }
   /* Keyboard focus ring on the active/ focused row */
   .dk__radio:focus-visible + .dk__item .dk__row {
     outline: 2px solid #0b99ff;
     outline-offset: 2px;
-  }
-
-  /* Outline row: white bg + sand border */
-  .dk__row--outline {
-    background: white;
-    border: 3px solid var(--color-sand);
-    padding: 9px; /* 12px - 3px border */
-    min-height: 158px;
-    display: flex;
-    align-items: center;
   }
 
   .dk__row-inner {
@@ -184,11 +173,6 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
     padding: 24px;
     border-radius: 24px;
     width: 100%;
-  }
-
-  /* outline row inner doesn't need extra padding since parent handles it */
-  .dk__row--outline .dk__row-inner {
-    padding: 24px;
   }
 
   .dk__text {
@@ -212,7 +196,7 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-    letter-spacing: -0.4px;
+    letter-spacing: normal;
     color: var(--color-text-secondary);
   }
 
@@ -348,9 +332,6 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
       gap: 12px;
       padding: 16px;
     }
-    .dk__row--outline {
-      min-height: auto;
-    }
     .dk__footer-text {
       font-size: 22px;
       line-height: 32px;
@@ -436,9 +417,6 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
       padding: 12px;
       gap: 8px;
     }
-    .dk__row--outline {
-      min-height: auto;
-    }
     .dk__footer-text {
       font-size: 17px;
       line-height: 24px;
@@ -457,9 +435,22 @@ const ARROW = 'M5 12H19M19 12L13 6M19 12L13 18';
     .dk__row-inner {
       padding: 16px;
     }
-    /* outline row had a more-specific base padding:24 — match it to 16 too */
-    .dk__row--outline .dk__row-inner {
-      padding: 16px;
-    }
   }
 </style>
+
+<script>
+  // Десктоп: правая карта отражает активный таб. Подмена src/alt по checked-радио.
+  // (Мобайл ≤768 показывает картинку своего ряда через CSS — JS там не нужен.)
+  const dk = document.querySelector('.dk');
+  if (dk) {
+    const deskImg = dk.querySelector('.dk__card--desktop .dk__card-img') as HTMLImageElement;
+    const radios = dk.querySelectorAll<HTMLInputElement>('.dk__radio');
+    radios.forEach((r) => {
+      r.addEventListener('change', () => {
+        if (!r.checked || !deskImg) return;
+        if (r.dataset.img) deskImg.src = r.dataset.img;
+        deskImg.alt = r.dataset.alt ?? '';
+      });
+    });
+  }
+</script>

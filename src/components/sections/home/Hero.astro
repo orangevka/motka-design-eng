@@ -20,8 +20,8 @@ const durationS = Math.round((PER_HALF * 722) / 72);
 
 <section class="hero">
   <div class="hero__inner">
-    <h1 class="hero__title">Senior <br class="hero__br" />design <br class="hero__br" />partner</h1>
-    <p class="hero__subtitle">UX/UI and branding for complex digital products</p>
+    <h1 class="hero__title">Your Senior <br class="hero__br" />Design Partner</h1>
+    <p class="hero__subtitle">Responsible for your <br class="hero__br" />UX/UI, branding <br class="hero__br" />&amp; product design</p>
   </div>
 
   <!-- Card strip — direct child of .hero (NOT inside .hero__inner) so it bleeds
@@ -63,27 +63,29 @@ const durationS = Math.round((PER_HALF * 722) / 72);
     z-index: 2; /* text sits above the strip (z=1) */
   }
 
-  /* Заголовок: Factor A Bold 93/80, #333; left=37, top=112 (Figma 46:843) */
+  /* Заголовок: «Your Senior Design Partner» — Factor A Bold 93/88, #333;
+     left=37, top=112, box 759 (Figma 92:16298). 2 строки. */
   .hero__title {
     position: absolute;
     left: 37px;
     top: 112px;
-    width: 596px;
+    width: 759px;
     margin: 0;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 93px;
-    line-height: 80px;
+    line-height: 88px;
     letter-spacing: -0.5px;
     color: var(--color-ink);
     z-index: 3;
   }
 
-  /* Сабтайтл: Factor A Regular 28/32, #000; left=37.5, top=393 (Figma 46:844) */
+  /* Сабтайтл: «Responsible for your UX/UI, branding & product design» —
+     Factor A Regular 28/32, #000; left=37.5, top=313 (Figma 92:16299). 3 строки. */
   .hero__subtitle {
     position: absolute;
     left: 37.5px;
-    top: 393px;
+    top: 313px;
     width: 331px;
     margin: 0;
     font-family: var(--font-display);

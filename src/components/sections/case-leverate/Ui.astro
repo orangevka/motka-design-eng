@@ -1,0 +1,111 @@
+---
+// Leverate case — section-ui (Figma 1951:1674, 1440×2013).
+// Тёмный фон. Заголовок + тело сверху, ниже — полный композитный showcase
+// (ui-showcase.png: 2x экспорт ui-content 1359×1503, мокапы + аннотации + iPhone).
+---
+<section class="lc-ui">
+  <div class="lc-ui__inner">
+
+    <!-- text block -->
+    <div class="lc-ui__text">
+      <h2 class="lc-ui__heading">Replicating the UI</h2>
+      <div class="lc-ui__lead">
+        <p>Branding a marketing page is one thing.<br />
+        Creating efficient 24/7 Trading terminal UI is another.<br />
+        These screens are calibrated for the trader's eight-hour working day.</p>
+        <p>We took the new language and pressed it into every key product surface:
+        assets, order management, dashboards, trading history, account setup.
+        ~30% of screens were redrawn from the ground up; every key trading scenario was optimized</p>
+        <p>The result reads as one Leverate brand.
+        Whether you're a trader on web, an account manager on the broker portal,
+        or a partner in the affiliate dashboard.</p>
+      </div>
+    </div>
+
+    <!-- ui showcase composite (ui-content node, 2x PNG) -->
+    <div class="lc-ui__content">
+      <img
+        class="lc-ui__showcase"
+        src="/assets/case-leverate/ui-showcase.png"
+        alt="Leverate trading terminal UI — SiRiX Trader Terminal and Prop/CFD screens"
+        width="2718"
+        height="3006"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .lc-ui {
+    width: 100%;
+    background: var(--case-bg);
+  }
+  .lc-ui__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    padding-top: 80px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  /* ── text block ── */
+  .lc-ui__text {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* Factor A Bold 62/1, tracking -1.24px, white */
+  .lc-ui__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -1.24px;
+    color: #fff;
+    margin: 0;
+  }
+
+  /* Literata (Spectral) 24/1.34, tracking -0.32px, white; три абзаца */
+  .lc-ui__lead {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.34;
+    letter-spacing: -0.32px;
+    color: #fff;
+  }
+  .lc-ui__lead p { margin: 0; }
+  .lc-ui__lead p + p { margin-top: 20px; }
+
+  /* ── showcase visual ── */
+  .lc-ui__content {
+    display: flex;
+    justify-content: center;
+  }
+  /* 2x PNG → width 100% of inner container renders at correct 1359px logical width */
+  .lc-ui__showcase {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 1024px) {
+    .lc-ui__heading { font-size: 48px; }
+    .lc-ui__lead { font-size: 20px; }
+  }
+  @media (max-width: 768px) {
+    .lc-ui__inner { padding-top: 48px; padding-bottom: 48px; gap: 40px; }
+    .lc-ui__text { gap: 32px; }
+    .lc-ui__heading { font-size: 36px; letter-spacing: -0.72px; }
+    .lc-ui__lead { font-size: 18px; }
+  }
+</style>

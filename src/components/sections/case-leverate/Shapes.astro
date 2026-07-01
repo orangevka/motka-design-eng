@@ -1,0 +1,59 @@
+---
+// Leverate case — section-shapes (Figma 1946:496). Тёмный фон,
+// шесть декоративных фигур бренда в ряд по центру.
+---
+<section class="lc-shapes">
+  <div class="lc-shapes__inner">
+    <div class="lc-shapes__row">
+      <img class="lc-shapes__shape" src="/assets/case-leverate/shapes-cta.png"      alt="" aria-hidden="true" width="200" height="200" />
+      <img class="lc-shapes__shape" src="/assets/case-leverate/shapes-diamond.png"  alt="" aria-hidden="true" width="200" height="200" />
+      <img class="lc-shapes__shape" src="/assets/case-leverate/shapes-star.png"     alt="" aria-hidden="true" width="200" height="200" />
+      <img class="lc-shapes__shape" src="/assets/case-leverate/shapes-lines.png"    alt="" aria-hidden="true" width="200" height="200" />
+      <img class="lc-shapes__shape" src="/assets/case-leverate/shapes-circles.png"  alt="" aria-hidden="true" width="200" height="200" />
+      <img class="lc-shapes__shape" src="/assets/case-leverate/shapes-arrows.png"   alt="" aria-hidden="true" width="200" height="200" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .lc-shapes {
+    width: 100%;
+    background: var(--case-bg);
+    /* Высота секции 140px; pb-40 снизу (из Figma) */
+    padding-bottom: 40px;
+  }
+  .lc-shapes__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    box-sizing: border-box;
+  }
+
+  /* Шесть фигур по центру, gap 64px */
+  .lc-shapes__row {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Каждая фигура 100×100 (2× PNG → 100px display) */
+  .lc-shapes__shape {
+    width: 100px;
+    height: 100px;
+    display: block;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 1024px) {
+    .lc-shapes__row { gap: 36px; }
+    .lc-shapes__shape { width: 80px; height: 80px; }
+  }
+  @media (max-width: 768px) {
+    .lc-shapes__row { gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .lc-shapes__shape { width: 64px; height: 64px; }
+    .lc-shapes { padding-bottom: 24px; }
+  }
+</style>

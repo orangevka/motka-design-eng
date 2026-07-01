@@ -1,0 +1,130 @@
+---
+// Leverate case — section-logo-colors (Figma 1946:436, 1440×515).
+// Dark section: large centered logo wordmark + triangle mark, top strip with
+// colour swatches and logo evolution stages, decorative glow/polygon triangle.
+---
+<section class="lc-lc">
+  <div class="lc-lc__inner">
+
+    <!-- Decorative background glow + triangle (mix-blend-screen in Figma) -->
+    <img
+      class="lc-lc__glow"
+      src="/assets/case-leverate/logo-colors-glow.png"
+      alt=""
+      aria-hidden="true"
+      width="1237"
+      height="1312"
+    />
+
+    <!-- Top strip: color swatches + logo evolution stages -->
+    <img
+      class="lc-lc__top-row"
+      src="/assets/case-leverate/logo-colors-top-row.png"
+      alt="Brand colour palette and Leverate logo evolution stages"
+      width="986"
+      height="92"
+    />
+
+    <!-- Large centred logo: leverate wordmark + triangle mark -->
+    <img
+      class="lc-lc__logo"
+      src="/assets/case-leverate/logo-colors-logo.png"
+      alt="Leverate logo — wordmark with triangle icon"
+      width="464"
+      height="168"
+    />
+
+  </div>
+</section>
+
+<style>
+  .lc-lc {
+    position: relative;
+    width: 100%;
+    background: var(--case-bg);
+    overflow: hidden;
+  }
+
+  .lc-lc__inner {
+    position: relative;
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    /* Figma section height 515px; we replicate via min-height so content fits */
+    min-height: 515px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* top-row y≈29px → pad-top to position it correctly */
+    padding-top: 29px;
+    padding-bottom: 48px;
+    gap: 0;
+  }
+
+  /* ── Top row: centered strip, width 985 on 1440 canvas ── */
+  .lc-lc__top-row {
+    display: block;
+    width: 100%;
+    max-width: 986px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Large logo centred, starts at y≈286 (286-29=257px below top-row bottom) ──
+     top-row height ≈ 92px → gap before logo ≈ 286-29-92 = 165px */
+  .lc-lc__logo {
+    display: block;
+    width: auto;
+    max-width: 464px;
+    height: auto;
+    margin-top: 165px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── Decorative glow: positioned absolute so it bleeds right,
+     matching Figma position of polygon (x≈447, centred vertically at ~50%+224px).
+     Exported PNG at 2x → display at 1x (half pixel dimensions). ── */
+  .lc-lc__glow {
+    position: absolute;
+    /* Figma polygon left edge ~447px, mix-blend-screen → sits behind text */
+    left: 447px;
+    /* Figma: top of glow group = 50% + 224px - half-height(744px) = 257.5+224-743.9 ≈ -262px */
+    top: -262px;
+    width: 1237px; /* 2473/2 */
+    height: auto;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+    opacity: 0.9;
+  }
+
+  /* ── Responsive fallback ── */
+  @media (max-width: 768px) {
+    .lc-lc__inner {
+      min-height: 0;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      gap: 32px;
+    }
+
+    .lc-lc__top-row {
+      max-width: 100%;
+    }
+
+    .lc-lc__logo {
+      margin-top: 0;
+      max-width: 280px;
+    }
+
+    .lc-lc__glow {
+      left: 20%;
+      top: auto;
+      bottom: -20%;
+      width: 120%;
+      opacity: 0.6;
+    }
+  }
+</style>

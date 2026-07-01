@@ -1,0 +1,42 @@
+---
+// Leverate case — section-product-mockups (Figma 1946:499, 1440×637).
+// Три тёмных карточки с мокапами (телефон, абстракция, ноутбук) — один PNG 2×,
+// ложится бесшовно на --case-bg (#1d222f).
+---
+<section class="lc-pm">
+  <div class="lc-pm__inner">
+    <img
+      class="lc-pm__visual"
+      src="/assets/case-leverate/product-mockups.png"
+      alt="Product mockups: mobile app, abstract brand shape, and stationery notebook"
+      width="2880"
+      height="1274"
+    />
+  </div>
+</section>
+
+<style>
+  .lc-pm {
+    width: 100%;
+    background: var(--case-bg);
+  }
+  .lc-pm__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    box-sizing: border-box;
+  }
+
+  /* PNG экспортирован 2× → отображаем на полную ширину контейнера */
+  .lc-pm__visual {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+  }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 768px) {
+    .lc-pm__inner { padding-inline: var(--container-pad); }
+  }
+</style>

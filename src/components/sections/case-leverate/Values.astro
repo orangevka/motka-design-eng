@@ -1,0 +1,114 @@
+---
+// Leverate case — section-values (Figma 1951:1672). Тёмный фон, заголовок сверху,
+// пять brand values в ряд (иконка + лейбл каждая).
+---
+<section class="lc-values">
+  <div class="lc-values__inner">
+    <div class="lc-values__block">
+      <p class="lc-values__heading">The values</p>
+      <div class="lc-values__row">
+        <div class="lc-values__item">
+          <img class="lc-values__icon" src="/assets/case-leverate/values-icon-hitech.png" alt="" aria-hidden="true" width="96" height="96" />
+          <span class="lc-values__label">Hi-tech</span>
+        </div>
+        <div class="lc-values__item">
+          <img class="lc-values__icon" src="/assets/case-leverate/values-icon-innovation.png" alt="" aria-hidden="true" width="96" height="96" />
+          <span class="lc-values__label">Innovation</span>
+        </div>
+        <div class="lc-values__item">
+          <img class="lc-values__icon" src="/assets/case-leverate/values-icon-trust.png" alt="" aria-hidden="true" width="96" height="96" />
+          <span class="lc-values__label">Trust</span>
+        </div>
+        <div class="lc-values__item">
+          <img class="lc-values__icon" src="/assets/case-leverate/values-icon-customization.png" alt="" aria-hidden="true" width="96" height="96" />
+          <span class="lc-values__label">Customization</span>
+        </div>
+        <div class="lc-values__item">
+          <img class="lc-values__icon" src="/assets/case-leverate/values-icon-growth.png" alt="" aria-hidden="true" width="96" height="96" />
+          <span class="lc-values__label">Growth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lc-values {
+    width: 100%;
+    background: var(--case-bg);
+  }
+  .lc-values__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    box-sizing: border-box;
+  }
+
+  /* Блок: заголовок + ряд с отступом 48px */
+  .lc-values__block {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  /* Factor A Bold 62/1 -1.24px, white */
+  .lc-values__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -1.24px;
+    color: #fff;
+    margin: 0;
+  }
+
+  /* Ряд: 5 айтемов, пространство между ними */
+  .lc-values__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Один айтем: иконка + лейбл, gap 12px */
+  .lc-values__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Иконка 48×48 (2× PNG → отображаем в 48px) */
+  .lc-values__icon {
+    width: 48px;
+    height: 48px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Factor A Regular 36/1.2, white */
+  .lc-values__label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.2;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 1024px) {
+    .lc-values__heading { font-size: 48px; }
+    .lc-values__label { font-size: 28px; }
+    .lc-values__row { gap: 24px; justify-content: flex-start; flex-wrap: wrap; }
+  }
+  @media (max-width: 768px) {
+    .lc-values__heading { font-size: 36px; letter-spacing: -0.72px; }
+    .lc-values__block { gap: 32px; }
+    .lc-values__row { gap: 20px; }
+    .lc-values__label { font-size: 22px; }
+    .lc-values__icon { width: 36px; height: 36px; }
+  }
+</style>

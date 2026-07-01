@@ -1,0 +1,162 @@
+---
+// Leverate case — section-credits (Figma 1950:1171). 1440×554.
+// Two-column credits list: MOTKA team + Leverate client contacts.
+---
+<section class="lc-cr">
+  <div class="lc-cr__inner">
+
+    <h2 class="lc-cr__title">Credits</h2>
+
+    <div class="lc-cr__columns">
+
+      <!-- MOTKA column -->
+      <div class="lc-cr__col">
+        <div class="lc-cr__badge lc-cr__badge--motka">MOTKA</div>
+        <div class="lc-cr__names">
+          <!-- Left sub-column -->
+          <div class="lc-cr__subcol">
+            <p><strong>Phil Smirnov</strong><br />Design Director</p>
+            <p><strong>Anna Gapeeva</strong><br />Lead Product Designer</p>
+            <p><strong>Masha Yekimova</strong><br />Art Director</p>
+            <p><strong>Natasha Bulanova</strong><br />Designer</p>
+            <p><strong>Liza Plakhotnaya</strong><br />Print Designer</p>
+            <p><strong>Nikita Kozlov</strong><br />Pre-Press</p>
+          </div>
+          <!-- Right sub-column -->
+          <div class="lc-cr__subcol">
+            <p><strong>Elena Nochka</strong><br />Operations &amp; PM</p>
+            <p><strong>Sergey Maximov</strong><br />Designer</p>
+            <p><strong>Sonya Alyabeva</strong><br />Designer</p>
+            <p><strong>Maria Korol</strong><br />Designer</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leverate column -->
+      <div class="lc-cr__col">
+        <div class="lc-cr__badge lc-cr__badge--leverate">Leverate</div>
+        <div class="lc-cr__names">
+          <div class="lc-cr__subcol lc-cr__subcol--full">
+            <p><strong>Yael Almor</strong><br />VP Product &amp; Deputy CEO</p>
+            <p><strong>Gil Ben Yelid</strong><br />Management</p>
+            <p><strong>Idan Stambulchik</strong><br />Product Manager</p>
+            <p><strong>Matan Funes</strong><br />Head of Marketing</p>
+            <p><strong>Ortal Nachum</strong><br />Marketing Operations</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .lc-cr {
+    width: 100%;
+    background: var(--case-bg);
+  }
+
+  .lc-cr__inner {
+    max-width: var(--container-max); /* 1440px */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  /* Factor A Bold 62/62, tracking -1.24px */
+  .lc-cr__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -1.24px;
+    color: #fff;
+    margin: 0;
+  }
+
+  /* Two equal columns, gap 20px */
+  .lc-cr__columns {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .lc-cr__col {
+    flex: 1 0 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  /* Badge pill */
+  .lc-cr__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 8px 16px;
+    border-radius: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .lc-cr__badge--motka {
+    background: #f81c1c;
+    color: #fff;
+  }
+  .lc-cr__badge--leverate {
+    background: #fff;
+    color: #181a20;
+  }
+
+  /* Names grid: two sub-columns inside MOTKA, one full inside Leverate */
+  .lc-cr__names {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .lc-cr__subcol {
+    flex: 1 0 0;
+    min-width: 0;
+  }
+  .lc-cr__subcol--full {
+    flex: 1 1 100%;
+  }
+
+  /* Factor A 20/1.3, tracking -0.6px; bold name, regular role */
+  .lc-cr__subcol p {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.6px;
+    color: #fff;
+    margin: 0 0 12px 0;
+  }
+  .lc-cr__subcol p:last-child { margin-bottom: 0; }
+  .lc-cr__subcol strong {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .lc-cr__title { font-size: 40px; letter-spacing: -0.8px; }
+    .lc-cr__columns { flex-direction: column; gap: 40px; }
+    .lc-cr__col { width: 100%; }
+  }
+</style>

@@ -8,3 +8,5 @@ scripts/_shots/
 *.stackdump
 scripts/_shots_review/
 .figma-token
+
+.claude/settings.local.json

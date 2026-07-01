@@ -1,0 +1,140 @@
+---
+// Leverate case — dark footer (Figma 2116:50888). Тёмная карточка #161621,
+// 3 колонки ссылок + соц + копирайт. Тёмный вариант обвязки для кейса.
+const main = [
+  { label: 'How do we work', href: '/#how-we-work' },
+  { label: 'What clients say', href: '/#testimonials' },
+  { label: 'About us', href: '/about.html' },
+  { label: 'Contacts', href: '/contacts.html' },
+];
+const portfolio = [
+  { label: 'Logistic SaaS', href: '/portfolio/logistic-saas-platform.html' },
+  { label: 'Mobile app for VR/AR', href: '/portfolio/ai-body.html' },
+  { label: 'Branding for school', href: '/portfolio/algoritmika.html' },
+  { label: 'Edtech platform', href: '/portfolio/algoritmika.html' },
+];
+const more = [
+  { label: 'UI design for a SaaS', href: '/portfolio/logistic-saas-platform.html' },
+  { label: 'Mobile app for gifts', href: '/portfolio/congratz.html' },
+  { label: 'Branded illustrations', href: '/portfolio.html' },
+  { label: 'Catchy branding', href: '/portfolio/deepgeo.html' },
+];
+---
+<footer class="lc-footer">
+  <div class="lc-footer__inner">
+    <div class="lc-footer__card">
+      <div class="lc-footer__cols">
+        <nav class="lc-footer__col" aria-label="Main">
+          <p class="lc-footer__col-title">Main</p>
+          <div class="lc-footer__links">
+            {main.map((l) => <a href={l.href}>{l.label}</a>)}
+          </div>
+        </nav>
+        <nav class="lc-footer__col" aria-label="Portfolio">
+          <p class="lc-footer__col-title">Portfolio</p>
+          <div class="lc-footer__links">
+            {portfolio.map((l) => <a href={l.href}>{l.label}</a>)}
+          </div>
+        </nav>
+        <div class="lc-footer__col lc-footer__col--more">
+          <div class="lc-footer__links">
+            {more.map((l) => <a href={l.href}>{l.label}</a>)}
+            <a class="lc-footer__more" href="/portfolio.html">and more...</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lc-footer__bottom">
+        <div class="lc-footer__social">
+          <a href="https://clutch.co" target="_blank" rel="noopener">Clutch</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://www.linkedin.com/company/motka-design/" target="_blank" rel="noopener">Linkedin</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://behance.net" target="_blank" rel="noopener">Behance</a>
+        </div>
+        <p class="lc-footer__legal"><a href="/privacy-policy.html">Privacy policy</a><br />© 2026 Motka&nbsp;&nbsp;All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .lc-footer { width: 100%; background: var(--case-bg); padding-block: 32px 40px; }
+  .lc-footer__inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+    box-sizing: border-box;
+  }
+  /* Тёмная карточка футера */
+  .lc-footer__card {
+    background: #161621;
+    border-radius: 24px;
+    padding: 118px 41px 0;
+    min-height: 381px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    color: #fff;
+    box-sizing: border-box;
+  }
+  .lc-footer__cols { display: flex; gap: 92px; }
+  .lc-footer__col { width: 207px; }
+  .lc-footer__col--more { padding-top: 40px; } /* «more» без заголовка — сдвиг как в макете */
+  .lc-footer__col-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    margin: 0 0 16px;
+  }
+  .lc-footer__links { display: flex; flex-direction: column; gap: 8px; }
+  .lc-footer__links a {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #fff;
+  }
+  .lc-footer__links a:hover { opacity: 0.7; }
+  .lc-footer__more { opacity: 0.5; }
+
+  .lc-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+  .lc-footer__social { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .lc-footer__social a {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+  }
+  .lc-footer__social span { font-family: var(--font-display); font-size: 16px; line-height: 20px; color: #fff; }
+  .lc-footer__legal {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #fff;
+    margin: 0;
+  }
+  .lc-footer__legal a { color: #fff; }
+  .lc-footer__legal a:hover { opacity: 0.7; }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 1024px) {
+    .lc-footer__cols { gap: 48px; }
+    .lc-footer__col { width: auto; }
+  }
+  @media (max-width: 768px) {
+    .lc-footer__card { flex-direction: column; gap: 40px; padding: 40px 24px; min-height: 0; }
+    .lc-footer__cols { flex-wrap: wrap; gap: 32px; }
+    .lc-footer__col--more { padding-top: 0; }
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+// Leverate case — section-brand-elements (Figma 1946:432). Тёмный фон,
+// три стеклянных карточки с метриками в ряд (сложный blur+blend → PNG).
+---
+<section class="lc-brand-elements">
+  <div class="lc-brand-elements__inner">
+    <div class="lc-brand-elements__row">
+      <img
+        class="lc-brand-elements__card"
+        src="/assets/case-leverate/brand-elements-card1.png"
+        alt="+29% — Increased broker's revenue"
+        width="880"
+        height="384"
+      />
+      <img
+        class="lc-brand-elements__card"
+        src="/assets/case-leverate/brand-elements-card2.png"
+        alt="+37% — Faster deal closure"
+        width="880"
+        height="384"
+      />
+      <img
+        class="lc-brand-elements__card"
+        src="/assets/case-leverate/brand-elements-card3.png"
+        alt="-14% — Less customer churn rate"
+        width="880"
+        height="384"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .lc-brand-elements {
+    width: 100%;
+    background: var(--case-bg);
+  }
+  .lc-brand-elements__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    /* Figma: px-[64px] — section uses 64px, not the standard 40px */
+    padding-inline: 64px;
+    box-sizing: border-box;
+  }
+
+  /* Три карточки в ряд, gap 20px */
+  .lc-brand-elements__row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Каждая карточка — flex-1, высота 192px в дизайне; PNG 2× → отображаем по ширине */
+  .lc-brand-elements__card {
+    flex: 1 0 0;
+    min-width: 0;
+    width: 0; /* flex override */
+    height: auto;
+    display: block;
+    border-radius: 24px;
+  }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 768px) {
+    .lc-brand-elements__inner { padding-inline: var(--container-pad); }
+    .lc-brand-elements__row { flex-direction: column; gap: 12px; }
+    .lc-brand-elements__card { width: 100%; flex: none; }
+  }
+</style>

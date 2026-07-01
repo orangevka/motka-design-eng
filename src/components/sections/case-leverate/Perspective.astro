@@ -1,0 +1,186 @@
+---
+// Leverate case — section-perspective (Figma 1946:510). Тёмный фон, три блока:
+// текст-шапка, большое фото офиса/стенда, 3D-рендер expo-стенда, фото брошюр.
+---
+<section class="lc-perspective">
+  <div class="lc-perspective__inner">
+
+    <!-- section-text: заголовок + тело -->
+    <div class="lc-perspective__text">
+      <h2 class="lc-perspective__title">Putting things in perspective</h2>
+      <p class="lc-perspective__body">
+        A brand truly earns its place in the world when it goes physical.&nbsp;
+        We designed several expo stands across UAE, Mexico, Cyprus, Asia, LATAM.&nbsp;
+        An office wall in Tel Aviv. Printed brochures in English and Spanish.
+        <br /><br />
+        Suddenly the language is everywhere — radiating outward, holding its shape across surfaces and scales.
+      </p>
+    </div>
+
+    <!-- perspective-content: три изображения -->
+    <div class="lc-perspective__content">
+      <!-- expo-photo-main: офис/брендированная стена -->
+      <div class="lc-perspective__photo-main">
+        <img
+          src="/assets/case-leverate/perspective-photo-main.png"
+          alt="Leverate branded office wall and corridor"
+          width="2720"
+          height="1800"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- expo-stand: 3D-рендер выставочного стенда -->
+      <div class="lc-perspective__expo-stand">
+        <img
+          src="/assets/case-leverate/perspective-expo-stand.png"
+          alt="Leverate expo stand 3D render"
+          width="2720"
+          height="2047"
+          loading="lazy"
+        />
+      </div>
+
+      <!-- expo-photo-secondary: фото брошюр -->
+      <div class="lc-perspective__photo-secondary">
+        <img
+          src="/assets/case-leverate/perspective-photo-secondary.png"
+          alt="Leverate printed brochures"
+          width="2720"
+          height="1564"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .lc-perspective {
+    width: 100%;
+    background: var(--case-bg);
+    overflow: hidden;
+  }
+
+  .lc-perspective__inner {
+    max-width: var(--container-max); /* 1440px */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    padding-top: 120px;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* ─── section-text ─── */
+  .lc-perspective__text {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* Factor A Bold 62px / 1 (leading-none), tracking -1.24px, white */
+  .lc-perspective__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -1.24px;
+    color: #fff;
+    margin: 0;
+    max-width: 1061px;
+  }
+
+  /* Spectral (Literata) Regular 24px / 1.34, tracking -0.32px, white */
+  .lc-perspective__body {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.34;
+    letter-spacing: -0.32px;
+    color: #fff;
+    margin: 0;
+    max-width: 1360px;
+  }
+
+  /* ─── perspective-content ─── */
+  .lc-perspective__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* expo-photo-main: 1360×900, border-radius 32px */
+  .lc-perspective__photo-main {
+    border-radius: 32px;
+    overflow: hidden;
+    width: 100%;
+    height: 900px;
+    flex-shrink: 0;
+  }
+  .lc-perspective__photo-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* expo-stand: 1360×1023, border-radius 32px */
+  .lc-perspective__expo-stand {
+    border-radius: 32px;
+    overflow: hidden;
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .lc-perspective__expo-stand img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* expo-photo-secondary: 1360×782, border-radius 32px */
+  .lc-perspective__photo-secondary {
+    border-radius: 32px;
+    overflow: hidden;
+    width: 100%;
+    height: 782px;
+    flex-shrink: 0;
+  }
+  .lc-perspective__photo-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    display: block;
+  }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 1200px) {
+    .lc-perspective__title { font-size: 52px; }
+    .lc-perspective__photo-main { height: 700px; }
+    .lc-perspective__photo-secondary { height: 600px; }
+  }
+
+  @media (max-width: 768px) {
+    .lc-perspective__inner {
+      padding-top: 64px;
+      padding-bottom: 64px;
+      gap: 32px;
+    }
+    .lc-perspective__text { gap: 24px; }
+    .lc-perspective__title {
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -0.72px;
+    }
+    .lc-perspective__body { font-size: 18px; }
+    .lc-perspective__content { gap: 12px; }
+    .lc-perspective__photo-main { height: 280px; border-radius: 16px; }
+    .lc-perspective__expo-stand { border-radius: 16px; }
+    .lc-perspective__photo-secondary { height: 260px; border-radius: 16px; }
+  }
+</style>

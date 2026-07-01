@@ -1,0 +1,215 @@
+---
+// Leverate case — section-brandbook (Figma 1951:1684). Тёмный фон, текст + двухколоночный
+// список, затем полноширинный скриншот брендбука с rounded-углами.
+---
+<section class="lc-brandbook">
+  <div class="lc-brandbook__inner">
+    <!-- Text block -->
+    <div class="lc-brandbook__text">
+      <h2 class="lc-brandbook__title">An encompassing brand book</h2>
+
+      <div class="lc-brandbook__content">
+        <div class="lc-brandbook__desc-block">
+          <p class="lc-brandbook__lead">The brand book is an essential component that makes this design scale well.</p>
+
+          <div class="lc-brandbook__checklist">
+            <p class="lc-brandbook__inside-label">Inside:</p>
+            <div class="lc-brandbook__lists">
+              <ul class="lc-brandbook__list">
+                <li>Typography guidelines</li>
+                <li>Color and gradient system</li>
+                <li>Recurring graphic blocks</li>
+                <li>Icons library</li>
+                <li>Branded backgrounds</li>
+                <li>Logo do's and don'ts</li>
+                <li>Tone of voice</li>
+                <li>Image usage rules</li>
+              </ul>
+              <ul class="lc-brandbook__list">
+                <li>Business cards</li>
+                <li>Brochures templates</li>
+                <li>Banners system</li>
+                <li>Merch print files</li>
+                <li>Expo stand designs</li>
+                <li>Website templates</li>
+                <li>Email signatures</li>
+                <li>HubSpot template</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="lc-brandbook__closing">It has practically everything Leverate's marketing team needs to ship new work every day</p>
+      </div>
+    </div>
+
+    <!-- Brandbook spread screenshot -->
+    <img
+      class="lc-brandbook__spread"
+      src="/assets/case-leverate/brandbook-spread.png"
+      alt="Brandbook spread preview showing fonts, colors, graphics, print, slides, banners, and product images"
+      width="2720"
+      height="1542"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  .lc-brandbook {
+    width: 100%;
+    background: var(--case-bg);
+  }
+
+  .lc-brandbook__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    padding-top: 80px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* ── Text block ── */
+  .lc-brandbook__text {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    color: #fff;
+  }
+
+  /* Factor A Bold 62/62, tracking -1.24px */
+  .lc-brandbook__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -1.24px;
+    color: #fff;
+    margin: 0;
+    width: 100%;
+  }
+
+  .lc-brandbook__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .lc-brandbook__desc-block {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+  }
+
+  /* Literata Regular 24/1.34, tracking -0.32px */
+  .lc-brandbook__lead {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.34;
+    letter-spacing: -0.32px;
+    color: #fff;
+    margin: 0;
+  }
+
+  .lc-brandbook__checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Factor A Bold 32/32, tracking -0.64px */
+  .lc-brandbook__inside-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: -0.64px;
+    color: #fff;
+    margin: 0;
+  }
+
+  .lc-brandbook__lists {
+    display: flex;
+    gap: 33px;
+    align-items: flex-start;
+  }
+
+  /* Literata Regular 24/1.34, tracking -0.32px, list */
+  .lc-brandbook__list {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.34;
+    letter-spacing: -0.32px;
+    color: #fff;
+    margin: 0;
+    padding-left: 36px;
+    list-style: disc;
+  }
+
+  .lc-brandbook__list li {
+    margin-bottom: 6px;
+  }
+
+  .lc-brandbook__list li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Closing sentence — same as lead */
+  .lc-brandbook__closing {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.34;
+    letter-spacing: -0.32px;
+    color: #fff;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* ── Brandbook spread image ── */
+  .lc-brandbook__spread {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 24px;
+  }
+
+  /* ─── Адаптив ─── */
+  @media (max-width: 768px) {
+    .lc-brandbook__inner {
+      padding-top: 48px;
+      padding-bottom: 48px;
+      gap: 32px;
+    }
+    .lc-brandbook__title {
+      font-size: 40px;
+      letter-spacing: -0.8px;
+    }
+    .lc-brandbook__inside-label {
+      font-size: 24px;
+      letter-spacing: -0.48px;
+    }
+    .lc-brandbook__lists {
+      flex-direction: column;
+      gap: 0;
+    }
+    .lc-brandbook__list {
+      font-size: 18px;
+    }
+    .lc-brandbook__lead,
+    .lc-brandbook__closing {
+      font-size: 18px;
+    }
+    .lc-brandbook__spread {
+      border-radius: 16px;
+    }
+  }
+</style>

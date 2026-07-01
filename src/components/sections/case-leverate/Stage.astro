@@ -1,0 +1,141 @@
+---
+// Leverate case — section-stage (Figma 2112:10002, 1440×864).
+// Text left column (heading + body), two visual cards below (exported as PNG).
+---
+<section class="lc-stage">
+  <div class="lc-stage__inner">
+
+    <!-- Text block: heading + body -->
+    <div class="lc-stage__text">
+      <h2 class="lc-stage__heading">Setting up the stage</h2>
+      <p class="lc-stage__body">
+        We started with the smallest building blocks:
+        <br />— Slightly modernized logo
+        <br />— A triangle shape
+        <br />— Branded Orange color against deep Leverate Black
+        <br />— <strong>Factor A,</strong> engineered for clarity at any size
+        <br />— A spotlight
+        <br /><br />
+        The rest of the design system evolved from these elements.
+      </p>
+    </div>
+
+    <!-- Two showcase cards side by side -->
+    <div class="lc-stage__showcase">
+      <img
+        class="lc-stage__card"
+        src="/assets/case-leverate/stage-card-left.png"
+        alt="Orange triangle and spotlight — the Leverate brand's primary visual elements"
+        width="670"
+        height="450"
+      />
+      <img
+        class="lc-stage__card"
+        src="/assets/case-leverate/stage-card-right.png"
+        alt="Gradient triangle symbol — purple-to-orange gradient mark"
+        width="670"
+        height="450"
+      />
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .lc-stage {
+    width: 100%;
+    background: var(--case-bg);
+  }
+
+  .lc-stage__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    padding-top: 80px;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  /* ── Text block ── */
+  .lc-stage__text {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    width: 100%;
+  }
+
+  /* Factor A Bold 62px / leading: none (62px), tracking -1.24px */
+  .lc-stage__heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 62px;
+    line-height: 1;
+    letter-spacing: -1.24px;
+    color: #fff;
+    margin: 0;
+  }
+
+  /* Spectral Regular 24px / lh 1.34, tracking -0.32px */
+  .lc-stage__body {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.34;
+    letter-spacing: -0.32px;
+    color: #fff;
+    margin: 0;
+    white-space: pre-line;
+  }
+
+  .lc-stage__body strong {
+    font-weight: 700;
+  }
+
+  /* ── Showcase: two cards side by side ── */
+  .lc-stage__showcase {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .lc-stage__card {
+    flex: 1 0 0;
+    min-width: 0;
+    height: 450px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+  }
+
+  /* ── Responsive fallback ── */
+  @media (max-width: 768px) {
+    .lc-stage__inner {
+      padding-top: 48px;
+      padding-bottom: 48px;
+      gap: 32px;
+    }
+
+    .lc-stage__heading {
+      font-size: 38px;
+      line-height: 1;
+      letter-spacing: -0.76px;
+    }
+
+    .lc-stage__body {
+      font-size: 18px;
+    }
+
+    .lc-stage__showcase {
+      flex-direction: column;
+    }
+
+    .lc-stage__card {
+      height: auto;
+      aspect-ratio: 670 / 450;
+    }
+  }
+</style>

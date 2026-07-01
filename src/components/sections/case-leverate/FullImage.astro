@@ -1,0 +1,47 @@
+---
+// Leverate case — section-full-image (Figma 1951:1686). Тёмный фон,
+// одно большое изображение (SiRiX platform + астероиды), скруглённые углы.
+---
+<section class="lc-fullimage">
+  <div class="lc-fullimage__inner">
+    <img
+      class="lc-fullimage__img"
+      src="/assets/case-leverate/fullimage-mockup.png"
+      alt=""
+      aria-hidden="true"
+      width="2720"
+      height="1985"
+    />
+  </div>
+</section>
+
+<style>
+  .lc-fullimage {
+    width: 100%;
+    background: var(--case-bg);
+  }
+  .lc-fullimage__inner {
+    max-width: var(--container-max); /* 1440 */
+    margin-inline: auto;
+    padding-inline: var(--container-pad); /* 40px */
+    padding-top: 0;
+    padding-bottom: 0;
+    box-sizing: border-box;
+  }
+
+  /* Figma: image node 1360×992 inside 1440 container (40px padding each side) */
+  .lc-fullimage__img {
+    width: 100%;
+    height: auto;
+    /* Preserve Figma aspect ratio: 1360 / 992.432 */
+    aspect-ratio: 1360 / 992;
+    border-radius: 32px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ─── адаптив ─── */
+  @media (max-width: 768px) {
+    .lc-fullimage__img { border-radius: 16px; }
+  }
+</style>

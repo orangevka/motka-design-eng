@@ -24,6 +24,17 @@
   --border-strong: #a3a3a3;
   --border-subtle: #f3efed;
 
+  /* chrome (шапка/футер) — тема; переключается [data-theme="dark"] на <html>.
+     Светлые значения по умолчанию = текущий вид. */
+  --chrome-bg: var(--color-bg);        /* фон header/footer */
+  --chrome-fg: var(--color-ink);       /* текст/лого */
+  --chrome-border: var(--border-subtle);
+  --chrome-hover: rgba(0, 0, 0, 0.04); /* ховер пунктов дропдауна */
+  --chrome-panel: var(--color-bg);     /* фон дропдауна и мобильного меню */
+  --chrome-cta-bg: #262626;            /* кнопка «Book a call» */
+  --chrome-cta-fg: #ffffff;
+  --case-bg: #1d222f;                  /* базовый тёмный фон кейса (Leverate) */
+
   /* spacing */
   --space-0: 0; --space-1: 4px; --space-2: 8px; --space-3: 12px;
   --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-7: 28px;
@@ -37,4 +48,17 @@
   /* layout */
   --container-max: 1440px;
   --container-pad: 40px; /* гуттер по краям контейнера */
+}
+
+/* ─── Тёмная тема обвязки (шапка/футер) ─────────────────────────────
+   Ставится на <html data-theme="dark"> (через проп Base). Переопределяет
+   только chrome-токены — сами Nav/Footer читают их и перекрашиваются. */
+[data-theme="dark"] {
+  --chrome-bg: var(--case-bg);
+  --chrome-fg: #ffffff;
+  --chrome-border: rgba(255, 255, 255, 0.14);
+  --chrome-hover: rgba(255, 255, 255, 0.08);
+  --chrome-panel: #262c3b;             /* дропдаун/мобильное меню на тёмном */
+  --chrome-cta-bg: #ffffff;            /* инверсная кнопка на тёмном фоне */
+  --chrome-cta-fg: #1d222f;
 }

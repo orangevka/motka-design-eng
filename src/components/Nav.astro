@@ -106,7 +106,7 @@ const { cta = true } = Astro.props;
 
 <style>
   /* ── Shared header shell ─────────────────────────────── */
-  .site-header { width: 100%; background: var(--color-bg); }
+  .site-header { width: 100%; background: var(--chrome-bg); }
   .site-header__inner {
     display: flex;
     align-items: center;
@@ -124,7 +124,7 @@ const { cta = true } = Astro.props;
     font-size: 22px;
     line-height: 20px;
     letter-spacing: -0.56px;
-    color: var(--color-ink);
+    color: var(--chrome-fg);
     white-space: nowrap;
   }
   .site-nav__chevron { width: 20px; height: 20px; }
@@ -136,8 +136,8 @@ const { cta = true } = Astro.props;
     justify-content: center;
     margin-left: var(--space-2); /* чуть больше воздуха перед кнопкой */
     padding: 14px 28px;
-    background: #262626;
-    color: #fff;
+    background: var(--chrome-cta-bg);
+    color: var(--chrome-cta-fg);
     border-radius: 16px;
     font-family: var(--font-display);
     font-weight: 700;
@@ -154,8 +154,8 @@ const { cta = true } = Astro.props;
     top: 100%;            /* примыкает к пункту — без зазора, hover не теряется */
     left: 0;
     min-width: 220px;
-    background: var(--color-bg);
-    border: 1px solid var(--border-subtle);
+    background: var(--chrome-panel);
+    border: 1px solid var(--chrome-border);
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     padding: var(--space-2);
@@ -182,16 +182,16 @@ const { cta = true } = Astro.props;
     font-size: 18px;
     line-height: 1.3;
     letter-spacing: -0.4px;
-    color: var(--color-ink);
+    color: var(--chrome-fg);
     white-space: nowrap;
     padding: var(--space-2) var(--space-3);
     border-radius: 8px;
   }
-  .site-nav__drop-item:hover { background: rgba(0, 0, 0, 0.04); }
+  .site-nav__drop-item:hover { background: var(--chrome-hover); }
   .site-nav__drop-item--all {
     margin-top: var(--space-1);
     padding-top: var(--space-3);
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid var(--chrome-border);
     border-radius: 0;
   }
 
@@ -220,7 +220,7 @@ const { cta = true } = Astro.props;
       width: 44px;
       height: 44px;
       cursor: pointer;
-      color: var(--color-ink);
+      color: var(--chrome-fg);
       background: none;
       border: none;
       border-radius: 8px;
@@ -228,7 +228,7 @@ const { cta = true } = Astro.props;
       outline: none;
     }
     .mobile-nav__toggle:focus-visible {
-      outline: 2px solid var(--color-ink);
+      outline: 2px solid var(--chrome-fg);
       outline-offset: 2px;
     }
 
@@ -249,8 +249,8 @@ const { cta = true } = Astro.props;
       top: 100%;
       left: 0;
       right: 0;
-      background: var(--color-bg);
-      border-top: 1px solid var(--border-subtle);
+      background: var(--chrome-panel);
+      border-top: 1px solid var(--chrome-border);
       padding: var(--space-4) var(--container-pad);
       display: flex;
       flex-direction: column;
@@ -265,10 +265,10 @@ const { cta = true } = Astro.props;
       font-size: 20px;
       line-height: 1.2;
       letter-spacing: -0.4px;
-      color: var(--color-ink);
+      color: var(--chrome-fg);
       white-space: nowrap;
       padding-block: var(--space-4); /* 16px top+bottom = 48px tap target */
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--chrome-border);
       display: flex;
       align-items: center;
     }
@@ -278,7 +278,7 @@ const { cta = true } = Astro.props;
     .mobile-nav__chevron { width: 20px; height: 20px; }
 
     /* Вложенный аккордеон Portfolio — checkbox-hack (валидно, zero-JS) */
-    .mobile-nav__sub { border-bottom: 1px solid var(--border-subtle); }
+    .mobile-nav__sub { border-bottom: 1px solid var(--chrome-border); }
     .mobile-nav__sub:last-child { border-bottom: none; }
 
     /* чекбокс: визуально скрыт, но фокусируем с клавиатуры */
@@ -294,7 +294,7 @@ const { cta = true } = Astro.props;
     .mobile-nav__sublink {
       font: inherit;
       line-height: inherit;
-      color: var(--color-ink);
+      color: var(--chrome-fg);
       text-decoration: none;
       flex: 0 0 auto;        /* ширина по тексту: тап по слову = переход */
       align-self: center;
@@ -327,7 +327,7 @@ const { cta = true } = Astro.props;
       font-size: 18px;
       line-height: 1.2;
       letter-spacing: -0.4px;
-      color: var(--color-ink);
+      color: var(--chrome-fg);
       white-space: nowrap;
       padding-block: var(--space-3);   /* 12px → tap target */
       display: flex;
@@ -343,8 +343,8 @@ const { cta = true } = Astro.props;
       justify-content: center;
       margin-top: var(--space-4);
       padding: 14px 28px;
-      background: #262626;
-      color: #fff;
+      background: var(--chrome-cta-bg);
+      color: var(--chrome-cta-fg);
       border-radius: 16px;
       font-family: var(--font-display);
       font-weight: 700;

@@ -22,3 +22,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 700; }
 
 @media (max-width: 1024px) { :root { --container-pad: 24px; } }
 @media (max-width: 768px)  { :root { --container-pad: 16px; } }
+
+/* Тёмная тема: канва страницы тёмная (кейсы на тёмном фоне) */
+html[data-theme="dark"] body { background: var(--case-bg); }

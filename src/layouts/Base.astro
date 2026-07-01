@@ -3,12 +3,14 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  /** 'dark' переключает тему обвязки (шапка/футер) на тёмную — для кейсов на тёмном фоне */
+  theme?: 'light' | 'dark';
 }
-const { title, description = '', ogImage = '/assets/og.png' } = Astro.props;
+const { title, description = '', ogImage = '/assets/og.png', theme } = Astro.props;
 import '../styles/global.css';
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme={theme === 'dark' ? 'dark' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

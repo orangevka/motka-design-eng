@@ -51,3 +51,14 @@ import CaseFooter from '../../components/sections/case-leverate/CaseFooter.astro
   </main>
   <CaseFooter />
 </Base>
+
+<style is:global>
+  /* Единый вертикальный ритм кейса: 152px между секциями (десктоп).
+     Секции сами не задают вертикальных паддингов на десктопе — весь
+     межсекционный отступ задаётся здесь. Мобилка не трогается. */
+  @media (min-width: 769px) {
+    main.lc > section + section {
+      margin-top: 152px;
+    }
+  }
+</style>

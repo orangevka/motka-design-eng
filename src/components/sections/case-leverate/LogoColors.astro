@@ -4,17 +4,12 @@
 // colour swatches and logo evolution stages, decorative glow/polygon triangle.
 ---
 <section class="lc-lc">
-  <div class="lc-lc__inner">
+  <!-- Тёплое свечение-прожектор (Figma: rotated polygon, mix-blend-screen).
+       Воспроизведено CSS-радиальным градиентом — мягко уходит за правый край,
+       без «грубого» обрезания растра. -->
+  <div class="lc-lc__glow" aria-hidden="true"></div>
 
-    <!-- Decorative background glow + triangle (mix-blend-screen in Figma) -->
-    <img
-      class="lc-lc__glow"
-      src="/assets/case-leverate/logo-colors-glow.png"
-      alt=""
-      aria-hidden="true"
-      width="1237"
-      height="1312"
-    />
+  <div class="lc-lc__inner">
 
     <!-- Top strip: color swatches + logo evolution stages -->
     <img
@@ -47,6 +42,7 @@
 
   .lc-lc__inner {
     position: relative;
+    z-index: 2;
     max-width: var(--container-max); /* 1440 */
     margin-inline: auto;
     padding-inline: var(--container-pad); /* 40px */
@@ -58,7 +54,7 @@
     align-items: center;
     /* top-row y≈29px → pad-top to position it correctly */
     padding-top: 29px;
-    padding-bottom: 48px;
+    padding-bottom: 0;
     gap: 0;
   }
 
@@ -84,21 +80,21 @@
     z-index: 2;
   }
 
-  /* ── Decorative glow: positioned absolute so it bleeds right,
-     matching Figma position of polygon (x≈447, centred vertically at ~50%+224px).
-     Exported PNG at 2x → display at 1x (half pixel dimensions). ── */
+  /* ── Тёплый прожектор: CSS-радиальный градиент, уходит за правый край.
+     Центр смещён вправо-вниз, мягкое затухание к прозрачному. ── */
   .lc-lc__glow {
     position: absolute;
-    /* Figma polygon left edge ~447px, mix-blend-screen → sits behind text */
-    left: 447px;
-    /* Figma: top of glow group = 50% + 224px - half-height(744px) = 257.5+224-743.9 ≈ -262px */
-    top: -262px;
-    width: 1237px; /* 2473/2 */
-    height: auto;
-    pointer-events: none;
+    inset: 0;
     z-index: 1;
-    mix-blend-mode: screen;
-    opacity: 0.9;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        58% 82% at 82% 58%,
+        rgba(255, 116, 74, 0.55) 0%,
+        rgba(255, 96, 62, 0.30) 34%,
+        rgba(255, 96, 62, 0.10) 52%,
+        rgba(255, 96, 62, 0) 68%
+      );
   }
 
   /* ── Responsive (mobile): match Figma px-24px py-64px, stacked, no overflow ── */

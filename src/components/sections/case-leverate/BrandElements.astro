@@ -1,80 +1,131 @@
 ---
-// Leverate case — section-brand-elements (Figma 1946:432). Тёмный фон,
-// три стеклянных карточки с метриками в ряд (сложный blur+blend → PNG).
+// Leverate case — section-brand-elements (Figma 111:14449, 1440×192).
+// Три стеклянные карточки с метриками. Текст (%+подпись) — реальный HTML,
+// иконки-графика (градиенты) — PNG @2x. Фон карточки — стеклянный градиент.
 ---
-<section class="lc-brand-elements">
-  <div class="lc-brand-elements__inner">
-    <div class="lc-brand-elements__row">
-      <img
-        class="lc-brand-elements__card"
-        src="/assets/case-leverate/brand-elements-card1.png"
-        alt="+29% — Increased broker's revenue"
-        width="880"
-        height="384"
-      />
-      <img
-        class="lc-brand-elements__card"
-        src="/assets/case-leverate/brand-elements-card2.png"
-        alt="+37% — Faster deal closure"
-        width="880"
-        height="384"
-      />
-      <img
-        class="lc-brand-elements__card"
-        src="/assets/case-leverate/brand-elements-card3.png"
-        alt="-14% — Less customer churn rate"
-        width="880"
-        height="384"
-      />
+<section class="lc-be">
+  <div class="lc-be__inner">
+    <div class="lc-be__row">
+
+      <!-- Card 1 — +29% (icon left, text right) -->
+      <div class="lc-be__card">
+        <img class="lc-be__icon lc-be__icon--1" src="/assets/case-leverate/brand-icon-1.png" alt="" aria-hidden="true" width="148" height="143" />
+        <div class="lc-be__text lc-be__text--left">
+          <p class="lc-be__num">+29%</p>
+          <p class="lc-be__label">Increased broker’s<br />revenue</p>
+        </div>
+      </div>
+
+      <!-- Card 2 — +37% (icon top, text centered) -->
+      <div class="lc-be__card lc-be__card--center">
+        <img class="lc-be__icon lc-be__icon--2" src="/assets/case-leverate/brand-icon-2.png" alt="" aria-hidden="true" width="167" height="50" />
+        <div class="lc-be__text lc-be__text--row">
+          <p class="lc-be__num">+37%</p>
+          <p class="lc-be__label">Faster deal<br />closure</p>
+        </div>
+      </div>
+
+      <!-- Card 3 — -14% (icon left, text right) -->
+      <div class="lc-be__card">
+        <img class="lc-be__icon lc-be__icon--3" src="/assets/case-leverate/brand-icon-3.png" alt="" aria-hidden="true" width="114" height="134" />
+        <div class="lc-be__text lc-be__text--left">
+          <p class="lc-be__num">-14%</p>
+          <p class="lc-be__label">Less customer<br />churn rate</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <style>
-  .lc-brand-elements {
+  .lc-be {
     width: 100%;
     background: var(--case-bg);
   }
-  .lc-brand-elements__inner {
+  .lc-be__inner {
     max-width: var(--container-max); /* 1440 */
     margin-inline: auto;
-    /* Figma: px-[64px] — section uses 64px, not the standard 40px */
-    padding-inline: 64px;
+    padding-inline: 64px; /* Figma: section px-64 */
     box-sizing: border-box;
   }
 
-  /* Три карточки в ряд, gap 20px */
-  .lc-brand-elements__row {
+  /* Три карточки в ряд, gap 20 */
+  .lc-be__row {
     display: flex;
     gap: 20px;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
   }
 
-  /* Каждая карточка — flex-1, высота 192px в дизайне; PNG 2× → отображаем по ширине */
-  .lc-brand-elements__card {
+  /* Карточка — стеклянная панель, высота 192, скругление 24 */
+  .lc-be__card {
+    position: relative;
     flex: 1 0 0;
     min-width: 0;
-    width: 0; /* flex override */
-    height: auto;
-    display: block;
+    height: 192px;
     border-radius: 24px;
+    overflow: hidden;
+    /* Figma: linear-gradient(180deg, rgba(42,44,55,.1) 26%, rgba(255,255,255,.1) 142%) + blur */
+    background: linear-gradient(
+      180deg,
+      rgba(42, 44, 55, 0.1) 26%,
+      rgba(255, 255, 255, 0.1) 142%
+    );
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   }
 
-  /* ─── адаптив ─── */
+  /* Иконки-графика позиционируются абсолютно по координатам Figma */
+  .lc-be__icon { position: absolute; display: block; pointer-events: none; }
+  .lc-be__icon--1 { left: 32px;  top: 24px;  width: 148px; height: 143px; }
+  .lc-be__icon--2 { left: 116px; top: 32px;  width: 167px; height: 50px; }
+  .lc-be__icon--3 { left: 39px;  top: 32px;  width: 114px; height: 134px; }
+
+  /* Текстовый блок */
+  .lc-be__text { position: absolute; color: #fff; }
+  .lc-be__text--left { left: 199px; top: 43px; }
+
+  /* +37% — иконка сверху, текст-строка по центру */
+  .lc-be__card--center .lc-be__text--row {
+    left: 50%;
+    top: 110px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    white-space: nowrap;
+  }
+
+  /* Factor A Bold 46 / lh 1.2 / -0.92 */
+  .lc-be__num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 1.2;
+    letter-spacing: -0.92px;
+    margin: 0;
+    white-space: nowrap;
+  }
+  /* Factor A Regular 18 / lh 24 */
+  .lc-be__label {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+  }
+
+  /* ─── адаптив: карточки в столбец ─── */
   @media (max-width: 768px) {
-    /* Mobile: cards stack vertically, full-width, Figma py-64px px-24px gap-16px */
-    .lc-brand-elements__inner {
+    .lc-be__inner {
       padding-inline: 24px;
-      padding-block: 64px;
     }
-    .lc-brand-elements__row {
+    .lc-be__row {
       flex-direction: column;
       gap: 16px;
     }
-    .lc-brand-elements__card {
-      width: 100%;
-      flex: none;
-    }
+    .lc-be__card { width: 100%; flex: none; }
   }
 </style>

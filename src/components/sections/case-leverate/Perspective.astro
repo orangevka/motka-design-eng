@@ -167,20 +167,27 @@
 
   @media (max-width: 768px) {
     .lc-perspective__inner {
+      padding-inline: 24px;
       padding-top: 64px;
       padding-bottom: 64px;
-      gap: 32px;
+      gap: 48px;
     }
     .lc-perspective__text { gap: 24px; }
     .lc-perspective__title {
-      font-size: 36px;
+      font-size: 32px;
       line-height: 1.1;
-      letter-spacing: -0.72px;
+      letter-spacing: -0.64px;
+      max-width: none;
     }
-    .lc-perspective__body { font-size: 18px; }
-    .lc-perspective__content { gap: 12px; }
-    .lc-perspective__photo-main { height: 280px; border-radius: 16px; }
-    .lc-perspective__expo-stand { border-radius: 16px; }
-    .lc-perspective__photo-secondary { height: 260px; border-radius: 16px; }
+    .lc-perspective__body {
+      font-size: 18px;
+      line-height: 1.4;
+      max-width: none;
+    }
+    .lc-perspective__content { gap: 16px; }
+    .lc-perspective__photo-main { height: 400px; border-radius: 24px; }
+    .lc-perspective__expo-stand { border-radius: 24px; }
+    .lc-perspective__expo-stand img { height: auto; }
+    .lc-perspective__photo-secondary { height: 300px; border-radius: 24px; }
   }
 </style>

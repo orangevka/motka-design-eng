@@ -63,8 +63,18 @@
 
   /* ─── адаптив ─── */
   @media (max-width: 768px) {
-    .lc-brand-elements__inner { padding-inline: var(--container-pad); }
-    .lc-brand-elements__row { flex-direction: column; gap: 12px; }
-    .lc-brand-elements__card { width: 100%; flex: none; }
+    /* Mobile: cards stack vertically, full-width, Figma py-64px px-24px gap-16px */
+    .lc-brand-elements__inner {
+      padding-inline: 24px;
+      padding-block: 64px;
+    }
+    .lc-brand-elements__row {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .lc-brand-elements__card {
+      width: 100%;
+      flex: none;
+    }
   }
 </style>

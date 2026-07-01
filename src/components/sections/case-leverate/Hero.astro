@@ -88,15 +88,43 @@
   }
   @media (max-width: 768px) {
     .lc-hero { overflow: hidden; }
-    .lc-hero__inner { min-height: 0; padding-bottom: 40px; }
+    .lc-hero__inner {
+      min-height: 0;
+      padding-inline: 24px;
+      padding-top: 40px;
+      padding-bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    /* text block stacks first, then visual below */
+    .lc-hero__text {
+      order: 1;
+      padding-top: 0;
+      max-width: none;
+      gap: 24px;
+    }
     .lc-hero__visual {
+      order: 2;
       position: static;
       width: 100%;
-      margin-top: 24px;
+      height: auto;
       right: auto;
+      top: auto;
+      left: auto;
+      margin-top: 0;
+      display: block;
     }
-    .lc-hero__text { padding-top: 48px; max-width: none; }
-    .lc-hero__title { font-size: 44px; line-height: 48px; letter-spacing: -0.88px; }
-    .lc-hero__lead { font-size: 18px; }
+    .lc-hero__eyebrow { width: 55px; height: auto; }
+    .lc-hero__title {
+      font-size: 36px;
+      line-height: 1.1;
+      letter-spacing: -0.72px;
+    }
+    .lc-hero__lead {
+      font-size: 18px;
+      line-height: 1.4;
+      max-width: none;
+    }
   }
 </style>

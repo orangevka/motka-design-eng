@@ -142,11 +142,47 @@
 
   /* ─── адаптив ─── */
   @media (max-width: 768px) {
-    .lc-expanding__inner { padding-top: 48px; padding-bottom: 48px; gap: 40px; }
-    .lc-expanding__title { font-size: 40px; letter-spacing: -0.8px; }
-    .lc-expanding__lead { font-size: 18px; }
-    .lc-expanding__row { flex-direction: column; gap: 12px; }
-    .lc-expanding__left,
-    .lc-expanding__phone { flex: none; width: 100%; }
+    .lc-expanding__inner {
+      padding-inline: 24px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+      gap: 48px;
+    }
+    .lc-expanding__text { gap: 24px; }
+    .lc-expanding__title {
+      font-size: 32px;
+      line-height: 1.1;
+      letter-spacing: -0.64px;
+    }
+    .lc-expanding__lead {
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.32px;
+    }
+    /* Images: stack vertically, fixed heights matching Figma mobile */
+    .lc-expanding__content { gap: 16px; }
+    .lc-expanding__row {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .lc-expanding__left {
+      flex: none;
+      width: 100%;
+      height: 400px;
+      aspect-ratio: unset;
+      border-radius: 24px;
+    }
+    .lc-expanding__phone {
+      flex: none;
+      width: 100%;
+      height: 300px;
+      aspect-ratio: unset;
+      border-radius: 24px;
+    }
+    .lc-expanding__bottom {
+      height: auto;
+      aspect-ratio: unset;
+      border-radius: 24px;
+    }
   }
 </style>

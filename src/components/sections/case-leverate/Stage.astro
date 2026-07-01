@@ -114,28 +114,37 @@
   /* ── Responsive fallback ── */
   @media (max-width: 768px) {
     .lc-stage__inner {
-      padding-top: 48px;
-      padding-bottom: 48px;
-      gap: 32px;
+      padding-inline: 24px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+      gap: 48px;
+    }
+
+    .lc-stage__text {
+      gap: 24px;
     }
 
     .lc-stage__heading {
-      font-size: 38px;
-      line-height: 1;
-      letter-spacing: -0.76px;
+      font-size: 32px;
+      line-height: 1.1;
+      letter-spacing: -0.64px;
     }
 
     .lc-stage__body {
       font-size: 18px;
+      line-height: 1.4;
     }
 
     .lc-stage__showcase {
       flex-direction: column;
+      gap: 16px;
     }
 
     .lc-stage__card {
-      height: auto;
-      aspect-ratio: 670 / 450;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 24px;
     }
   }
 </style>

@@ -101,12 +101,13 @@
     opacity: 0.9;
   }
 
-  /* ── Responsive fallback ── */
+  /* ── Responsive (mobile): match Figma px-24px py-64px, stacked, no overflow ── */
   @media (max-width: 768px) {
     .lc-lc__inner {
       min-height: 0;
-      padding-top: 40px;
-      padding-bottom: 40px;
+      padding-inline: 24px;
+      padding-top: 64px;
+      padding-bottom: 64px;
       gap: 32px;
     }
 
@@ -116,15 +117,18 @@
 
     .lc-lc__logo {
       margin-top: 0;
-      max-width: 280px;
+      max-width: 240px;
     }
 
+    /* Glow: contained, no horizontal bleed */
     .lc-lc__glow {
-      left: 20%;
+      left: 50%;
+      transform: translateX(-50%);
       top: auto;
-      bottom: -20%;
-      width: 120%;
-      opacity: 0.6;
+      bottom: -10%;
+      width: 100%;
+      max-width: 100%;
+      opacity: 0.5;
     }
   }
 </style>

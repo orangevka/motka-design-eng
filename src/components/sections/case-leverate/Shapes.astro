@@ -52,8 +52,20 @@
     .lc-shapes__shape { width: 80px; height: 80px; }
   }
   @media (max-width: 768px) {
-    .lc-shapes__row { gap: 20px; flex-wrap: wrap; justify-content: center; }
+    /* Mobile: 3-col grid so 6 shapes fit 2 rows, no overflow */
+    .lc-shapes { padding-bottom: 32px; }
+    .lc-shapes__inner { padding-inline: 24px; }
+    .lc-shapes__row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      justify-items: center;
+    }
+    .lc-shapes__shape { width: 72px; height: 72px; }
+  }
+
+  @media (max-width: 390px) {
     .lc-shapes__shape { width: 64px; height: 64px; }
-    .lc-shapes { padding-bottom: 24px; }
+    .lc-shapes__row { gap: 12px; }
   }
 </style>

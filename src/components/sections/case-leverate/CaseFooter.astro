@@ -133,8 +133,28 @@ const more = [
     .lc-footer__col { width: auto; }
   }
   @media (max-width: 768px) {
-    .lc-footer__card { flex-direction: column; gap: 40px; padding: 40px 24px; min-height: 0; }
-    .lc-footer__cols { flex-wrap: wrap; gap: 32px; }
-    .lc-footer__col--more { padding-top: 0; }
+    .lc-footer { padding-block: 0 24px; }
+    .lc-footer__inner { padding-inline: 24px; }
+    .lc-footer__card {
+      flex-direction: column;
+      gap: 32px;
+      padding: 32px;
+      min-height: 0;
+    }
+    /* Hide the Main and "more" nav cols on mobile — show only Portfolio */
+    .lc-footer__col:not(:nth-child(2)) { display: none; }
+    .lc-footer__cols { gap: 0; }
+    .lc-footer__col-title { font-size: 18px; margin-bottom: 16px; }
+    .lc-footer__links a { font-size: 16px; color: rgba(255,255,255,0.7); }
+    .lc-footer__bottom {
+      gap: 24px;
+    }
+    .lc-footer__social { gap: 12px; }
+    .lc-footer__social a {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .lc-footer__social span { font-size: 14px; }
+    .lc-footer__legal { font-size: 12px; color: rgba(255,255,255,0.7); }
   }
 </style>

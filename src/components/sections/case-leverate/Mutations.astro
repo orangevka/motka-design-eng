@@ -83,8 +83,26 @@
 
   /* ─── адаптив ─── */
   @media (max-width: 768px) {
-    .lc-mut__inner { gap: 40px; }
-    .lc-mut__heading { font-size: 40px; line-height: 1; letter-spacing: -0.8px; }
-    .lc-mut__body { font-size: 18px; }
+    .lc-mut__inner {
+      padding-inline: 24px;
+      gap: 48px;
+    }
+    .lc-mut__text { gap: 24px; }
+    .lc-mut__heading {
+      font-size: 32px;
+      line-height: 1.1;
+      letter-spacing: -0.64px;
+    }
+    .lc-mut__body {
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.32px;
+    }
+    /* Grid PNG: full-width, height auto, no overflow */
+    .lc-mut__grid {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
   }
 </style>

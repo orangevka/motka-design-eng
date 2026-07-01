@@ -155,8 +155,59 @@
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
-    .lc-cr__title { font-size: 40px; letter-spacing: -0.8px; }
-    .lc-cr__columns { flex-direction: column; gap: 40px; }
+    .lc-cr__inner {
+      padding-inline: 24px;
+      padding-top: 64px;
+      padding-bottom: 40px;
+      gap: 24px;
+    }
+    .lc-cr__title {
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    .lc-cr__columns {
+      flex-direction: column;
+      gap: 40px;
+    }
     .lc-cr__col { width: 100%; }
+    .lc-cr__badge {
+      height: auto;
+      font-size: 16px;
+      line-height: normal;
+      padding: 8px 16px;
+      border-radius: 12px;
+    }
+    /* On mobile, names render as flat comma-separated flowing text (no roles) */
+    .lc-cr__names {
+      display: block;
+    }
+    .lc-cr__subcol {
+      display: inline;
+    }
+    .lc-cr__subcol--full {
+      display: inline;
+    }
+    .lc-cr__subcol p {
+      display: inline;
+      margin-bottom: 0;
+      /* font-size 0 hides role text nodes; strong restores name */
+      font-size: 0;
+      color: transparent;
+    }
+    .lc-cr__subcol br { display: none; }
+    .lc-cr__subcol strong {
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 400;
+      color: #fff;
+    }
+    /* Comma after each name, none after the last in the whole names block */
+    .lc-cr__subcol p::after {
+      content: ', ';
+      font-size: 14px;
+      color: #fff;
+    }
+    .lc-cr__subcol:last-child p:last-child::after { content: ''; }
   }
 </style>

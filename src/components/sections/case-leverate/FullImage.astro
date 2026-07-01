@@ -42,6 +42,14 @@
 
   /* ─── адаптив ─── */
   @media (max-width: 768px) {
-    .lc-fullimage__img { border-radius: 16px; }
+    .lc-fullimage__inner {
+      padding-inline: 24px;
+    }
+    .lc-fullimage__img {
+      border-radius: 32px;
+      aspect-ratio: auto;
+      height: 300px;
+      object-fit: cover;
+    }
   }
 </style>

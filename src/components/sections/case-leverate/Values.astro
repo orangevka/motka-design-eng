@@ -105,10 +105,35 @@
     .lc-values__row { gap: 24px; justify-content: flex-start; flex-wrap: wrap; }
   }
   @media (max-width: 768px) {
-    .lc-values__heading { font-size: 36px; letter-spacing: -0.72px; }
-    .lc-values__block { gap: 32px; }
-    .lc-values__row { gap: 20px; }
-    .lc-values__label { font-size: 22px; }
-    .lc-values__icon { width: 36px; height: 36px; }
+    .lc-values__inner { padding-inline: 24px; padding-top: 64px; padding-bottom: 64px; }
+    .lc-values__block { gap: 40px; }
+    .lc-values__heading {
+      font-size: 32px;
+      line-height: 1.1;
+      letter-spacing: -0.64px;
+    }
+    /* Mobile: vertical list, one item per row */
+    .lc-values__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+    .lc-values__item {
+      width: 100%;
+      gap: 12px;
+    }
+    .lc-values__icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #fff;
+    }
+    .lc-values__label {
+      font-size: 18px;
+      line-height: 1.2;
+      white-space: normal;
+    }
   }
 </style>

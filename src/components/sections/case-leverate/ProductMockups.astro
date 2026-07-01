@@ -37,6 +37,16 @@
 
   /* ─── адаптив ─── */
   @media (max-width: 768px) {
-    .lc-pm__inner { padding-inline: var(--container-pad); }
+    /* Mobile: Figma shows two separate stacked images (px-24px py-64px, gap-16px).
+       Single-PNG approach: show full-width, taller aspect — no height clamp. */
+    .lc-pm__inner {
+      padding-inline: 24px;
+      padding-block: 64px;
+    }
+    .lc-pm__visual {
+      width: 100%;
+      height: auto;
+      /* Preserve natural 2:1 aspect of the 3-card PNG; scale naturally */
+    }
   }
 </style>
